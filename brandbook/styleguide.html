@@ -1,0 +1,2552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenAEC Foundation — Style Guide</title>
+
+  <!-- Fonts (all OFL licensed) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ================================================================
+       CSS CUSTOM PROPERTIES — OpenAEC Design Tokens
+       ================================================================ */
+    :root {
+      /* Primary */
+      --amber:         #D97706;
+      --deep-forge:    #36363E;
+
+      /* Secondary */
+      --signal-orange: #EA580C;
+      --warm-gold:     #F59E0B;
+      --scaffold-gray: #A1A1AA;
+
+      /* Backgrounds */
+      --blueprint-white: #FAFAF9;
+      --concrete:        #F5F5F4;
+      --night-build:     #2A2A32;
+
+      /* Semantic */
+      --success:  #16A34A;
+      --error:    #DC2626;
+      --warning:  var(--warm-gold);
+      --info:     #2563EB;
+
+      /* Typography */
+      --font-heading: "Space Grotesk", system-ui, sans-serif;
+      --font-body:    "Inter", system-ui, sans-serif;
+      --font-code:    "JetBrains Mono", monospace;
+
+      /* Spacing scale (4px base) */
+      --sp-1: 0.25rem;  --sp-2: 0.5rem;   --sp-3: 0.75rem;
+      --sp-4: 1rem;     --sp-5: 1.25rem;   --sp-6: 1.5rem;
+      --sp-8: 2rem;     --sp-10: 2.5rem;   --sp-12: 3rem;
+      --sp-16: 4rem;    --sp-20: 5rem;     --sp-24: 6rem;
+
+      /* Border radius */
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-full: 9999px;
+
+      /* Shadows */
+      --shadow-sm:  0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md:  0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+      --shadow-lg:  0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+    }
+
+    /* ================================================================
+       RESET & BASE
+       ================================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--deep-forge);
+      background: var(--blueprint-white);
+    }
+
+    /* ================================================================
+       TYPOGRAPHY
+       ================================================================ */
+    h1, h2, h3 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: var(--deep-forge);
+    }
+
+    h4, h5, h6 {
+      font-family: var(--font-heading);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+      color: var(--deep-forge);
+    }
+
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.5rem; }
+    h4 { font-size: 1.25rem; }
+    h5 { font-size: 1.125rem; }
+    h6 { font-size: 1rem; }
+
+    p { margin-bottom: var(--sp-4); max-width: 70ch; }
+
+    a {
+      color: var(--amber);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color 0.15s;
+    }
+    a:hover { color: var(--signal-orange); }
+
+    strong { font-weight: 600; }
+    em { font-style: italic; }
+
+    small, .text-sm { font-size: 0.875rem; }
+    .text-xs { font-size: 0.75rem; }
+    .text-lg { font-size: 1.125rem; }
+    .text-xl { font-size: 1.25rem; }
+
+    .text-muted { color: var(--scaffold-gray); }
+    .text-amber { color: var(--amber); }
+
+    code, .code {
+      font-family: var(--font-code);
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+
+    /* Inline code */
+    :not(pre) > code {
+      background: var(--concrete);
+      padding: 0.15em 0.4em;
+      border-radius: var(--radius-sm);
+      font-size: 0.85em;
+    }
+
+    /* Code block */
+    pre {
+      background: var(--night-build);
+      color: var(--blueprint-white);
+      padding: var(--sp-6);
+      border-radius: var(--radius-md);
+      overflow-x: auto;
+      margin-bottom: var(--sp-6);
+    }
+    pre code {
+      background: none;
+      padding: 0;
+      color: inherit;
+      font-size: 0.875rem;
+    }
+    pre .comment { color: var(--scaffold-gray); }
+    pre .keyword { color: var(--warm-gold); }
+    pre .string  { color: #34D399; }
+    pre .function { color: var(--amber); }
+
+    blockquote {
+      border-left: 4px solid var(--amber);
+      padding: var(--sp-4) var(--sp-6);
+      background: var(--concrete);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      margin-bottom: var(--sp-6);
+      font-style: italic;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #E7E5E4;
+      margin: var(--sp-12) 0;
+    }
+
+    /* ================================================================
+       LAYOUT
+       ================================================================ */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--sp-6);
+    }
+
+    .section {
+      padding: var(--sp-16) 0;
+    }
+
+    .section-title {
+      font-size: 0.75rem;
+      font-family: var(--font-code);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--amber);
+      margin-bottom: var(--sp-2);
+    }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-6); }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-6); }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-6); }
+
+    @media (max-width: 768px) {
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    }
+
+    .flex { display: flex; }
+    .flex-wrap { flex-wrap: wrap; }
+    .items-center { align-items: center; }
+    .gap-2 { gap: var(--sp-2); }
+    .gap-4 { gap: var(--sp-4); }
+    .gap-6 { gap: var(--sp-6); }
+
+    /* ================================================================
+       HERO SECTION
+       ================================================================ */
+    .hero {
+      background: var(--night-build);
+      color: var(--blueprint-white);
+      padding: var(--sp-24) 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-illustration {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.38;
+      z-index: 0;
+    }
+
+    .hero > .container { position: relative; z-index: 1; }
+
+    .hero h1 {
+      color: var(--blueprint-white);
+      font-size: 3.5rem;
+      margin-bottom: var(--sp-4);
+    }
+
+    .hero h1 span { color: var(--amber); }
+
+    .hero .tagline {
+      font-size: 1.25rem;
+      color: var(--scaffold-gray);
+      margin-bottom: var(--sp-8);
+      max-width: 50ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ================================================================
+       COLOR SWATCHES
+       ================================================================ */
+    .swatch {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+
+    .swatch-color {
+      height: 100px;
+      display: flex;
+      align-items: flex-end;
+      padding: var(--sp-3);
+    }
+
+    .swatch-info {
+      padding: var(--sp-3) var(--sp-4);
+      background: white;
+    }
+
+    .swatch-info .name {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.875rem;
+    }
+
+    .swatch-info .hex {
+      font-family: var(--font-code);
+      font-size: 0.75rem;
+      color: var(--scaffold-gray);
+    }
+
+    /* ================================================================
+       BUTTONS
+       ================================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--sp-2);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.875rem;
+      padding: var(--sp-3) var(--sp-6);
+      border-radius: var(--radius-md);
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-decoration: none;
+      line-height: 1;
+    }
+
+    .btn-primary {
+      background: var(--amber);
+      color: white;
+    }
+    .btn-primary:hover {
+      background: var(--signal-orange);
+      color: white;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--deep-forge);
+      border-color: var(--deep-forge);
+    }
+    .btn-secondary:hover {
+      background: var(--deep-forge);
+      color: var(--blueprint-white);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--amber);
+      border-color: var(--amber);
+    }
+    .btn-ghost:hover {
+      background: var(--amber);
+      color: white;
+    }
+
+    .btn-dark {
+      background: var(--deep-forge);
+      color: var(--blueprint-white);
+    }
+    .btn-dark:hover {
+      background: #27272A;
+    }
+
+    .btn-sm { font-size: 0.75rem; padding: var(--sp-2) var(--sp-4); }
+    .btn-lg { font-size: 1rem; padding: var(--sp-4) var(--sp-8); }
+
+    .btn:disabled, .btn[aria-disabled="true"] {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    /* ================================================================
+       FORM ELEMENTS
+       ================================================================ */
+    .form-group { margin-bottom: var(--sp-6); }
+
+    .form-label {
+      display: block;
+      font-weight: 500;
+      font-size: 0.875rem;
+      margin-bottom: var(--sp-2);
+      color: var(--deep-forge);
+    }
+
+    .form-hint {
+      font-size: 0.75rem;
+      color: var(--scaffold-gray);
+      margin-top: var(--sp-1);
+    }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      padding: var(--sp-3) var(--sp-4);
+      border: 1.5px solid #D6D3D1;
+      border-radius: var(--radius-md);
+      background: white;
+      color: var(--deep-forge);
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      outline: none;
+      border-color: var(--amber);
+      box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15);
+    }
+
+    .form-input::placeholder { color: var(--scaffold-gray); }
+
+    .form-input.is-error { border-color: var(--error); }
+    .form-input.is-error:focus { box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15); }
+
+    .form-textarea { min-height: 100px; resize: vertical; }
+
+    .form-checkbox {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      cursor: pointer;
+    }
+
+    .form-checkbox input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--amber);
+    }
+
+    /* ================================================================
+       CARDS
+       ================================================================ */
+    .card {
+      background: white;
+      border: 1px solid #E7E5E4;
+      border-radius: var(--radius-lg);
+      padding: var(--sp-6);
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.15s, border-color 0.15s;
+    }
+
+    .card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: #D6D3D1;
+    }
+
+    .card-featured {
+      border-color: var(--amber);
+      border-width: 2px;
+    }
+
+    .card-dark {
+      background: var(--deep-forge);
+      color: var(--blueprint-white);
+      border-color: #27272A;
+    }
+    .card-dark h3, .card-dark h4 { color: var(--blueprint-white); }
+    .card-dark p { color: #A1A1AA; }
+
+    .card-title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.125rem;
+      margin-bottom: var(--sp-2);
+    }
+
+    .card-description {
+      font-size: 0.875rem;
+      color: #57534E;
+      line-height: 1.6;
+    }
+
+    /* ================================================================
+       TABLE
+       ================================================================ */
+    .table-wrapper {
+      overflow-x: auto;
+      border: 1px solid #E7E5E4;
+      border-radius: var(--radius-md);
+      margin-bottom: var(--sp-6);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+
+    thead {
+      background: var(--concrete);
+      border-bottom: 2px solid #E7E5E4;
+    }
+
+    th {
+      text-align: left;
+      font-weight: 600;
+      padding: var(--sp-3) var(--sp-4);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #57534E;
+    }
+
+    td {
+      padding: var(--sp-3) var(--sp-4);
+      border-bottom: 1px solid #F5F5F4;
+    }
+
+    tbody tr:hover { background: #FAFAF9; }
+    tbody tr:last-child td { border-bottom: none; }
+
+    /* ================================================================
+       BADGES & TAGS
+       ================================================================ */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-1);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.2em 0.6em;
+      border-radius: var(--radius-full);
+    }
+
+    .badge-amber   { background: #FEF3C7; color: #92400E; }
+    .badge-green   { background: #DCFCE7; color: #166534; }
+    .badge-red     { background: #FEE2E2; color: #991B1B; }
+    .badge-blue    { background: #DBEAFE; color: #1E40AF; }
+    .badge-gray    { background: #F4F4F5; color: #3F3F46; }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: var(--sp-1) var(--sp-3);
+      border-radius: var(--radius-full);
+      border: 1px solid #E7E5E4;
+      color: #57534E;
+      background: white;
+    }
+
+    /* ================================================================
+       ALERTS
+       ================================================================ */
+    .alert {
+      padding: var(--sp-4) var(--sp-6);
+      border-radius: var(--radius-md);
+      border-left: 4px solid;
+      margin-bottom: var(--sp-6);
+      font-size: 0.875rem;
+    }
+
+    .alert-title {
+      font-weight: 600;
+      margin-bottom: var(--sp-1);
+    }
+
+    .alert-info    { background: #EFF6FF; border-color: var(--info); color: #1E40AF; }
+    .alert-success { background: #F0FDF4; border-color: var(--success); color: #166534; }
+    .alert-warning { background: #FFFBEB; border-color: var(--amber); color: #92400E; }
+    .alert-error   { background: #FEF2F2; border-color: var(--error); color: #991B1B; }
+
+    /* ================================================================
+       NAVIGATION (SOFTWARE)
+       ================================================================ */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--sp-4) var(--sp-6);
+      background: var(--deep-forge);
+      border-bottom: 1px solid #27272A;
+    }
+
+    .navbar-brand {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--blueprint-white);
+      text-decoration: none;
+    }
+    .navbar-brand span { color: var(--amber); }
+
+    .navbar-links {
+      display: flex;
+      gap: var(--sp-6);
+      list-style: none;
+    }
+
+    .navbar-links a {
+      color: var(--scaffold-gray);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .navbar-links a:hover { color: var(--blueprint-white); }
+    .navbar-links a.active { color: var(--amber); }
+
+    /* ================================================================
+       SIDEBAR (SOFTWARE)
+       ================================================================ */
+    .sidebar {
+      width: 260px;
+      background: var(--concrete);
+      border-right: 1px solid #E7E5E4;
+      padding: var(--sp-6);
+      min-height: 400px;
+    }
+
+    .sidebar-section { margin-bottom: var(--sp-6); }
+
+    .sidebar-heading {
+      font-family: var(--font-code);
+      font-size: 0.65rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--scaffold-gray);
+      margin-bottom: var(--sp-3);
+    }
+
+    .sidebar-link {
+      display: block;
+      padding: var(--sp-2) var(--sp-3);
+      font-size: 0.875rem;
+      color: #57534E;
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+      margin-bottom: 2px;
+      transition: all 0.1s;
+    }
+    .sidebar-link:hover { background: #E7E5E4; color: var(--deep-forge); }
+    .sidebar-link.active {
+      background: var(--amber);
+      color: white;
+      font-weight: 500;
+    }
+
+    /* ================================================================
+       LISTS
+       ================================================================ */
+    ul.list, ol.list {
+      padding-left: var(--sp-6);
+      margin-bottom: var(--sp-6);
+    }
+
+    .list li {
+      margin-bottom: var(--sp-2);
+      line-height: 1.6;
+    }
+
+    ul.list li::marker { color: var(--amber); }
+
+    .checklist {
+      list-style: none;
+      padding: 0;
+    }
+
+    .checklist li {
+      position: relative;
+      padding-left: var(--sp-8);
+      margin-bottom: var(--sp-3);
+    }
+
+    .checklist li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 4px;
+      width: 18px;
+      height: 18px;
+      border: 2px solid #D6D3D1;
+      border-radius: var(--radius-sm);
+    }
+
+    .checklist li.checked::before {
+      background: var(--amber);
+      border-color: var(--amber);
+    }
+
+    .checklist li.checked::after {
+      content: "✓";
+      position: absolute;
+      left: 3px;
+      top: 2px;
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    /* ================================================================
+       PROGRESS / METER
+       ================================================================ */
+    .progress-bar {
+      height: 8px;
+      background: #E7E5E4;
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--amber);
+      border-radius: var(--radius-full);
+      transition: width 0.3s ease;
+    }
+
+    .progress-fill.success { background: var(--success); }
+    .progress-fill.danger  { background: var(--error); }
+
+    /* ================================================================
+       TOOLTIP
+       ================================================================ */
+    .tooltip-container { position: relative; display: inline-block; }
+
+    .tooltip {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--deep-forge);
+      color: var(--blueprint-white);
+      font-size: 0.75rem;
+      padding: var(--sp-2) var(--sp-3);
+      border-radius: var(--radius-sm);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .tooltip::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-top-color: var(--deep-forge);
+    }
+
+    /* ================================================================
+       DIVIDER WITH LABEL
+       ================================================================ */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-4);
+      margin: var(--sp-12) 0;
+      color: var(--scaffold-gray);
+      font-size: 0.75rem;
+      font-family: var(--font-code);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .divider::before, .divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #E7E5E4;
+    }
+
+    /* ================================================================
+       PRINT / REPORT STYLES
+       ================================================================ */
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: var(--sp-12) auto;
+      background: white;
+      box-shadow: var(--shadow-lg);
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* --- Header banner --- */
+    .page-header-banner {
+      background: var(--deep-forge);
+      color: var(--blueprint-white);
+      padding: 10mm 12mm 10mm 12mm;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      min-height: 38mm;
+    }
+
+    .page-header-banner::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--amber) 0%, var(--warm-gold) 40%, var(--signal-orange) 100%);
+    }
+
+    .page-header-left {
+      position: relative;
+      z-index: 2;
+    }
+
+    .page-header-logo {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--blueprint-white);
+      margin-bottom: 2mm;
+    }
+    .page-header-logo span { color: var(--amber); }
+
+    .page-header-tagline {
+      font-size: 0.7rem;
+      color: var(--scaffold-gray);
+      font-family: var(--font-body);
+      letter-spacing: 0.03em;
+    }
+
+    .page-header-meta {
+      text-align: right;
+      font-size: 0.7rem;
+      color: var(--scaffold-gray);
+      line-height: 1.7;
+      position: relative;
+      z-index: 2;
+    }
+
+    .page-header-meta strong {
+      color: var(--blueprint-white);
+      font-weight: 600;
+    }
+
+    .page-header-illustration {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      opacity: 0.35;
+      z-index: 1;
+    }
+
+    /* --- Page body area --- */
+    .page-content {
+      padding: 10mm 12mm 30mm 12mm;
+    }
+
+    .page-title {
+      font-size: 1.75rem;
+      margin-bottom: 2mm;
+      color: var(--deep-forge);
+    }
+
+    .page-subtitle {
+      font-size: 1rem;
+      color: var(--scaffold-gray);
+      font-weight: 400;
+      margin-bottom: 8mm;
+    }
+
+    .page-body p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-bottom: 4mm;
+      text-align: justify;
+      hyphens: auto;
+    }
+
+    .page-body h3 {
+      font-size: 1.1rem;
+      margin-top: 8mm;
+      margin-bottom: 3mm;
+      color: var(--deep-forge);
+    }
+
+    /* --- Footer --- */
+    .page-footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--deep-forge);
+      color: var(--scaffold-gray);
+      padding: 5mm 12mm;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.6rem;
+      gap: 4mm;
+    }
+
+    .page-footer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--amber) 0%, var(--warm-gold) 50%, var(--signal-orange) 100%);
+    }
+
+    .page-footer-brand {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.75rem;
+      color: var(--blueprint-white);
+    }
+    .page-footer-brand em { color: var(--amber); font-style: normal; }
+
+    .page-footer-icons {
+      display: flex;
+      align-items: center;
+      gap: 4mm;
+    }
+
+    .page-footer-icons svg {
+      width: 14px;
+      height: 14px;
+      opacity: 0.5;
+    }
+
+    .page-footer-right {
+      text-align: right;
+      line-height: 1.5;
+    }
+
+    .page-footer-pagenum {
+      font-family: var(--font-code);
+      font-size: 0.65rem;
+      color: var(--amber);
+    }
+
+    /* Letter-specific */
+    .letter-address {
+      font-size: 0.85rem;
+      line-height: 1.6;
+      margin-bottom: 10mm;
+    }
+
+    .letter-date {
+      font-size: 0.85rem;
+      color: var(--scaffold-gray);
+      margin-bottom: 10mm;
+    }
+
+    .letter-subject {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 6mm;
+    }
+
+    .letter-greeting, .letter-closing {
+      font-size: 0.9rem;
+      margin-bottom: 4mm;
+    }
+
+    .letter-signature {
+      margin-top: 12mm;
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+
+    /* ================================================================
+       UTILITY CLASSES
+       ================================================================ */
+    .mt-2 { margin-top: var(--sp-2); }
+    .mt-4 { margin-top: var(--sp-4); }
+    .mt-6 { margin-top: var(--sp-6); }
+    .mt-8 { margin-top: var(--sp-8); }
+    .mb-2 { margin-bottom: var(--sp-2); }
+    .mb-4 { margin-bottom: var(--sp-4); }
+    .mb-6 { margin-bottom: var(--sp-6); }
+    .mb-8 { margin-bottom: var(--sp-8); }
+    .text-center { text-align: center; }
+    .text-right { text-align: right; }
+    .w-full { width: 100%; }
+    .font-mono { font-family: var(--font-code); }
+
+    /* ================================================================
+       DARK SECTION
+       ================================================================ */
+    .dark-section {
+      background: var(--deep-forge);
+      color: var(--blueprint-white);
+      padding: var(--sp-16) 0;
+    }
+    .dark-section h2, .dark-section h3 { color: var(--blueprint-white); }
+    .dark-section p { color: var(--scaffold-gray); }
+    .dark-section .section-title { color: var(--warm-gold); }
+
+    /* ================================================================
+       PAGE BREAK HINT (for PDF export)
+       ================================================================ */
+    @media print {
+      .page { box-shadow: none; margin: 0; page-break-after: always; }
+      .no-print { display: none; }
+    }
+
+    /* ================================================================
+       SHOWCASE SPACING
+       ================================================================ */
+    .showcase { margin-bottom: var(--sp-8); }
+    .showcase > h3 { margin-bottom: var(--sp-4); }
+    .showcase-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--sp-4);
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ================================================================
+     HERO
+     ================================================================ -->
+<section class="hero">
+
+  <!-- ===== HERO BACKGROUND ILLUSTRATION ===== -->
+  <svg class="hero-illustration" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+
+    <!-- Blueprint grid -->
+    <defs>
+      <pattern id="heroGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+        <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#FAFAF9" stroke-width="0.5"/>
+      </pattern>
+    </defs>
+    <rect width="1200" height="400" fill="url(#heroGrid)"/>
+
+    <!-- === LEFT CLUSTER: Isometric buildings === -->
+
+    <!-- Building 1 — tall tower -->
+    <g transform="translate(120,180)">
+      <polygon points="0,-100 50,-75 50,25 0,50 -50,25 -50,-75" fill="none" stroke="#D97706" stroke-width="3"/>
+      <line x1="0" y1="-100" x2="0" y2="0" stroke="#D97706" stroke-width="2"/>
+      <line x1="50" y1="-75" x2="0" y2="0" stroke="#D97706" stroke-width="2"/>
+      <line x1="-50" y1="-75" x2="0" y2="0" stroke="#D97706" stroke-width="2"/>
+      <polygon points="0,-100 50,-75 0,0 -50,-75" fill="#D97706" opacity="0.25"/>
+      <!-- windows left face -->
+      <rect x="-35" y="-55" width="8" height="6" fill="#D97706" fill-opacity="0.45" stroke="#D97706" stroke-width="1"/>
+      <rect x="-22" y="-55" width="8" height="6" fill="#D97706" fill-opacity="0.45" stroke="#D97706" stroke-width="1"/>
+      <rect x="-35" y="-42" width="8" height="6" fill="#D97706" fill-opacity="0.45" stroke="#D97706" stroke-width="1"/>
+      <rect x="-22" y="-42" width="8" height="6" fill="#D97706" fill-opacity="0.45" stroke="#D97706" stroke-width="1"/>
+      <rect x="-35" y="-29" width="8" height="6" fill="#D97706" fill-opacity="0.45" stroke="#D97706" stroke-width="1"/>
+      <rect x="-22" y="-29" width="8" height="6" fill="#D97706" fill-opacity="0.45" stroke="#D97706" stroke-width="1"/>
+      <rect x="-35" y="-16" width="8" height="6" fill="#D97706" fill-opacity="0.45" stroke="#D97706" stroke-width="1"/>
+      <rect x="-22" y="-16" width="8" height="6" fill="#D97706" fill-opacity="0.45" stroke="#D97706" stroke-width="1"/>
+    </g>
+
+    <!-- Building 2 — medium -->
+    <g transform="translate(210,220)">
+      <polygon points="0,-60 40,-40 40,20 0,40 -40,20 -40,-40" fill="none" stroke="#F59E0B" stroke-width="2.8"/>
+      <line x1="0" y1="-60" x2="0" y2="0" stroke="#F59E0B" stroke-width="2"/>
+      <line x1="40" y1="-40" x2="0" y2="0" stroke="#F59E0B" stroke-width="2"/>
+      <line x1="-40" y1="-40" x2="0" y2="0" stroke="#F59E0B" stroke-width="2"/>
+      <polygon points="0,-60 40,-40 0,0 -40,-40" fill="#F59E0B" opacity="0.22"/>
+      <rect x="-25" y="-25" width="7" height="5" fill="#F59E0B" fill-opacity="0.4" stroke="#F59E0B" stroke-width="1"/>
+      <rect x="-14" y="-25" width="7" height="5" fill="#F59E0B" fill-opacity="0.4" stroke="#F59E0B" stroke-width="1"/>
+      <rect x="-25" y="-14" width="7" height="5" fill="#F59E0B" fill-opacity="0.4" stroke="#F59E0B" stroke-width="1"/>
+      <rect x="-14" y="-14" width="7" height="5" fill="#F59E0B" fill-opacity="0.4" stroke="#F59E0B" stroke-width="1"/>
+    </g>
+
+    <!-- Building 3 — small block -->
+    <g transform="translate(60,260)">
+      <polygon points="0,-30 30,-15 30,15 0,30 -30,15 -30,-15" fill="none" stroke="#D97706" stroke-width="2.2"/>
+      <polygon points="0,-30 30,-15 0,0 -30,-15" fill="#D97706" opacity="0.2"/>
+    </g>
+
+    <!-- === CENTER-LEFT: Code brackets + code === -->
+
+    <g transform="translate(350,100)" font-family="JetBrains Mono, monospace" font-size="80" fill="#D97706">
+      <text x="0" y="0" opacity="0.7">{</text>
+      <text x="140" y="0" opacity="0.7">}</text>
+    </g>
+
+    <!-- Code lines -->
+    <g transform="translate(400,75)" stroke="#FAFAF9" stroke-width="2.2" opacity="0.6">
+      <line x1="0" y1="0" x2="55" y2="0"/>
+      <line x1="8" y1="12" x2="42" y2="12"/>
+      <line x1="8" y1="24" x2="60" y2="24"/>
+      <line x1="8" y1="36" x2="35" y2="36"/>
+      <line x1="0" y1="48" x2="50" y2="48"/>
+    </g>
+
+    <!-- === CENTER-RIGHT: BIM cube === -->
+
+    <g transform="translate(650,120)">
+      <!-- back face -->
+      <rect x="18" y="-18" width="70" height="70" fill="none" stroke="#FAFAF9" stroke-width="1.2" opacity="0.45"/>
+      <!-- front face -->
+      <rect x="0" y="0" width="70" height="70" fill="none" stroke="#D97706" stroke-width="2.5"/>
+      <!-- connecting lines -->
+      <line x1="0" y1="0" x2="18" y2="-18" stroke="#FAFAF9" stroke-width="1.2" opacity="0.6"/>
+      <line x1="70" y1="0" x2="88" y2="-18" stroke="#FAFAF9" stroke-width="1.2" opacity="0.6"/>
+      <line x1="70" y1="70" x2="88" y2="52" stroke="#FAFAF9" stroke-width="1.2" opacity="0.6"/>
+      <line x1="0" y1="70" x2="18" y2="52" stroke="#FAFAF9" stroke-width="1.2" opacity="0.6"/>
+      <!-- top face fill -->
+      <polygon points="0,0 18,-18 88,-18 70,0" fill="#D97706" opacity="0.12"/>
+      <!-- BIM label -->
+      <text x="14" y="45" font-family="JetBrains Mono, monospace" font-size="20" fill="#D97706" font-weight="bold">BIM</text>
+    </g>
+
+    <!-- === RIGHT CLUSTER: Structural elements === -->
+
+    <!-- I-profile (large) -->
+    <g transform="translate(850,130)">
+      <path d="M-25,0 L25,0 L25,5 L10,5 L10,45 L25,45 L25,50 L-25,50 L-25,45 L-10,45 L-10,5 L-25,5 Z" fill="#F59E0B" fill-opacity="0.2" stroke="#F59E0B" stroke-width="2"/>
+    </g>
+
+    <!-- Second I-profile rotated -->
+    <g transform="translate(920,160) rotate(90)">
+      <path d="M-18,0 L18,0 L18,4 L7,4 L7,36 L18,36 L18,40 L-18,40 L-18,36 L-7,36 L-7,4 L-18,4 Z" fill="#D97706" fill-opacity="0.15" stroke="#D97706" stroke-width="1.5"/>
+    </g>
+
+    <!-- Truss/triangle structure -->
+    <g transform="translate(960,110)">
+      <polygon points="0,-50 60,0 -60,0" fill="none" stroke="#F59E0B" stroke-width="2"/>
+      <line x1="0" y1="-50" x2="0" y2="0" stroke="#F59E0B" stroke-width="1.2"/>
+      <line x1="-30" y1="-25" x2="30" y2="-25" stroke="#F59E0B" stroke-width="1"/>
+      <polygon points="0,-50 60,0 -60,0" fill="#F59E0B" opacity="0.06"/>
+    </g>
+
+    <!-- === FAR RIGHT: More isometric blocks === -->
+
+    <g transform="translate(1080,200)">
+      <polygon points="0,-45 35,-25 35,15 0,35 -35,15 -35,-25" fill="none" stroke="#D97706" stroke-width="2.5"/>
+      <line x1="0" y1="-45" x2="0" y2="0" stroke="#D97706" stroke-width="1.5"/>
+      <line x1="35" y1="-25" x2="0" y2="0" stroke="#D97706" stroke-width="1.5"/>
+      <polygon points="0,-45 35,-25 0,0 -35,-25" fill="#D97706" opacity="0.2"/>
+    </g>
+
+    <g transform="translate(1140,250)">
+      <polygon points="0,-25 20,-12 20,12 0,25 -20,12 -20,-12" fill="none" stroke="#F59E0B" stroke-width="2"/>
+      <polygon points="0,-25 20,-12 0,0 -20,-12" fill="#F59E0B" opacity="0.15"/>
+    </g>
+
+    <!-- === NETWORK CONNECTIONS === -->
+    <circle cx="120" cy="180" r="5" fill="#D97706"/>
+    <circle cx="210" cy="220" r="5" fill="#F59E0B"/>
+    <circle cx="60" cy="260" r="4" fill="#D97706"/>
+    <circle cx="420" cy="120" r="4" fill="#D97706"/>
+    <circle cx="685" cy="155" r="5" fill="#D97706"/>
+    <circle cx="850" cy="155" r="4" fill="#F59E0B"/>
+    <circle cx="960" cy="110" r="4" fill="#F59E0B"/>
+    <circle cx="1080" cy="200" r="4" fill="#D97706"/>
+
+    <line x1="125" y1="182" x2="205" y2="218" stroke="#D97706" stroke-width="1" stroke-dasharray="5,4"/>
+    <line x1="65" y1="258" x2="115" y2="185" stroke="#D97706" stroke-width="1" stroke-dasharray="5,4"/>
+    <line x1="215" y1="218" x2="416" y2="122" stroke="#F59E0B" stroke-width="1" stroke-dasharray="5,4"/>
+    <line x1="424" y1="120" x2="680" y2="155" stroke="#D97706" stroke-width="1" stroke-dasharray="5,4"/>
+    <line x1="690" y1="155" x2="845" y2="155" stroke="#F59E0B" stroke-width="1" stroke-dasharray="5,4"/>
+    <line x1="855" y1="153" x2="955" y2="113" stroke="#F59E0B" stroke-width="1" stroke-dasharray="5,4"/>
+    <line x1="965" y1="112" x2="1075" y2="198" stroke="#D97706" stroke-width="1" stroke-dasharray="5,4"/>
+
+    <!-- === SKYLINE at bottom === -->
+    <g transform="translate(0,310)" opacity="0.4">
+      <path d="M0,90 L0,60 L20,60 L20,40 L35,40 L35,55 L50,55 L50,25 L55,25 L55,15 L60,15 L65,15 L65,25 L80,25 L80,45 L100,45 L100,20 L108,20 L108,10 L118,10 L118,5 L128,5 L128,10 L138,10 L138,20 L145,20 L145,45 L165,45 L165,30 L180,30 L180,45 L200,45 L200,15 L205,15 L205,8 L210,8 L210,15 L220,15 L220,45 L240,45 L240,55 L260,55 L260,40 L275,40 L275,55 L300,55 L300,35 L310,30 L320,35 L320,55 L345,55 L345,45 L365,45 L365,35 L380,35 L380,45 L400,45 L400,25 L410,25 L410,15 L420,15 L420,25 L435,25 L435,45 L460,45 L460,55 L485,55 L485,40 L500,40 L500,55 L525,55 L525,30 L535,30 L535,20 L545,20 L545,30 L560,30 L560,50 L580,50 L580,35 L600,35 L600,20 L610,20 L610,10 L620,10 L620,20 L630,20 L630,35 L650,35 L650,50 L680,50 L680,40 L700,40 L700,55 L730,55 L730,35 L740,35 L740,25 L750,25 L750,35 L765,35 L765,55 L790,55 L790,45 L810,45 L810,30 L820,30 L820,20 L830,20 L830,30 L845,30 L845,45 L870,45 L870,55 L900,55 L900,40 L920,40 L920,25 L930,25 L930,15 L940,15 L940,25 L955,25 L955,40 L980,40 L980,55 L1010,55 L1010,45 L1030,45 L1030,30 L1045,30 L1045,45 L1070,45 L1070,55 L1100,55 L1100,40 L1120,40 L1120,50 L1150,50 L1150,55 L1200,55 L1200,90 Z" fill="#FAFAF9"/>
+    </g>
+
+  </svg>
+
+  <div class="container">
+    <p class="section-title" style="color: var(--warm-gold);">OpenAEC Foundation — Style Guide v0.2</p>
+    <h1>Build <span>free.</span> Build <span>together.</span></h1>
+    <p class="tagline">
+      Free and open-source tools for the built environment.<br>
+      This page documents every visual element in the OpenAEC design system.
+    </p>
+    <div class="showcase-row" style="justify-content:center;">
+      <a href="#colors" class="btn btn-primary btn-lg">Explore palette</a>
+      <a href="#assets" class="btn btn-ghost btn-lg" style="border-color:var(--blueprint-white); color:var(--blueprint-white);">Asset inventory</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     NAVIGATION EXAMPLE
+     ================================================================ -->
+<section class="no-print">
+  <div class="section-title container mt-8">01 — Navigation</div>
+
+  <nav class="navbar">
+    <a href="#" class="navbar-brand">Open<span>AEC</span></a>
+    <ul class="navbar-links">
+      <li><a href="#" class="active">Projects</a></li>
+      <li><a href="#">Documentation</a></li>
+      <li><a href="#">Community</a></li>
+      <li><a href="#">GitHub</a></li>
+    </ul>
+    <a href="#" class="btn btn-primary btn-sm">Get started</a>
+  </nav>
+
+  <div class="container" style="display:flex; margin-top:var(--sp-6);">
+    <aside class="sidebar" style="flex-shrink:0;">
+      <div class="sidebar-section">
+        <div class="sidebar-heading">Getting started</div>
+        <a href="#" class="sidebar-link active">Introduction</a>
+        <a href="#" class="sidebar-link">Installation</a>
+        <a href="#" class="sidebar-link">Quick start</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-heading">Components</div>
+        <a href="#" class="sidebar-link">Buttons</a>
+        <a href="#" class="sidebar-link">Forms</a>
+        <a href="#" class="sidebar-link">Tables</a>
+        <a href="#" class="sidebar-link">Cards</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-heading">API Reference</div>
+        <a href="#" class="sidebar-link">IFC Parser</a>
+        <a href="#" class="sidebar-link">Geometry Engine</a>
+        <a href="#" class="sidebar-link">Report Builder</a>
+      </div>
+    </aside>
+    <div style="flex:1; padding:var(--sp-6); padding-top:0;">
+      <p class="text-sm text-muted">Sidebar + content layout preview</p>
+    </div>
+  </div>
+</section>
+
+
+<div class="container">
+
+<!-- ================================================================
+     COLORS
+     ================================================================ -->
+<section class="section" id="colors">
+  <div class="section-title">02 — Colors</div>
+  <h2 class="mb-6">Color palette</h2>
+
+  <h4 class="mb-4">Primary</h4>
+  <div class="grid-4 mb-8">
+    <div class="swatch">
+      <div class="swatch-color" style="background:#D97706;">
+        <span style="color:white;font-family:var(--font-code);font-size:0.7rem;">#D97706</span>
+      </div>
+      <div class="swatch-info"><div class="name">Construction Amber</div><div class="hex">rgb(217, 119, 6)</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#36363E;">
+        <span style="color:white;font-family:var(--font-code);font-size:0.7rem;">#36363E</span>
+      </div>
+      <div class="swatch-info"><div class="name">Deep Forge</div><div class="hex">rgb(34, 34, 40)</div></div>
+    </div>
+  </div>
+
+  <h4 class="mb-4">Secondary</h4>
+  <div class="grid-4 mb-8">
+    <div class="swatch">
+      <div class="swatch-color" style="background:#EA580C;">
+        <span style="color:white;font-family:var(--font-code);font-size:0.7rem;">#EA580C</span>
+      </div>
+      <div class="swatch-info"><div class="name">Signal Orange</div><div class="hex">rgb(234, 88, 12)</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#F59E0B;">
+        <span style="color:white;font-family:var(--font-code);font-size:0.7rem;">#F59E0B</span>
+      </div>
+      <div class="swatch-info"><div class="name">Warm Gold</div><div class="hex">rgb(245, 158, 11)</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#A1A1AA;">
+        <span style="color:white;font-family:var(--font-code);font-size:0.7rem;">#A1A1AA</span>
+      </div>
+      <div class="swatch-info"><div class="name">Scaffold Gray</div><div class="hex">rgb(161, 161, 170)</div></div>
+    </div>
+  </div>
+
+  <h4 class="mb-4">Backgrounds</h4>
+  <div class="grid-4 mb-8">
+    <div class="swatch">
+      <div class="swatch-color" style="background:#FAFAF9; border:1px solid #E7E5E4;">
+        <span style="color:#36363E;font-family:var(--font-code);font-size:0.7rem;">#FAFAF9</span>
+      </div>
+      <div class="swatch-info"><div class="name">Blueprint White</div><div class="hex">rgb(250, 250, 249)</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#F5F5F4; border:1px solid #E7E5E4;">
+        <span style="color:#36363E;font-family:var(--font-code);font-size:0.7rem;">#F5F5F4</span>
+      </div>
+      <div class="swatch-info"><div class="name">Concrete</div><div class="hex">rgb(245, 245, 244)</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#2A2A32;">
+        <span style="color:white;font-family:var(--font-code);font-size:0.7rem;">#2A2A32</span>
+      </div>
+      <div class="swatch-info"><div class="name">Night Build</div><div class="hex">rgb(42, 42, 50)</div></div>
+    </div>
+  </div>
+
+  <h4 class="mb-4">Semantic</h4>
+  <div class="grid-4">
+    <div class="swatch">
+      <div class="swatch-color" style="background:#16A34A;"><span style="color:white;font-family:var(--font-code);font-size:0.7rem;">#16A34A</span></div>
+      <div class="swatch-info"><div class="name">Success</div><div class="hex">Passed checks, confirmations</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#DC2626;"><span style="color:white;font-family:var(--font-code);font-size:0.7rem;">#DC2626</span></div>
+      <div class="swatch-info"><div class="name">Error</div><div class="hex">Failures, destructive actions</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#F59E0B;"><span style="color:white;font-family:var(--font-code);font-size:0.7rem;">#F59E0B</span></div>
+      <div class="swatch-info"><div class="name">Warning</div><div class="hex">Caution, attention needed</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#2563EB;"><span style="color:white;font-family:var(--font-code);font-size:0.7rem;">#2563EB</span></div>
+      <div class="swatch-info"><div class="name">Info</div><div class="hex">Informational, neutral callout</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     TYPOGRAPHY
+     ================================================================ -->
+<section class="section" id="typography">
+  <div class="section-title">03 — Typography</div>
+  <h2 class="mb-8">Type scale &amp; specimens</h2>
+
+  <div class="showcase">
+    <h3>Headings — Space Grotesk</h3>
+    <div style="margin-top:var(--sp-4);">
+      <h1>H1 — Build free. Build together.</h1>
+      <h2 class="mt-4">H2 — Open-source tools for the built environment</h2>
+      <h3 class="mt-4">H3 — IFC4 export with full property sets</h3>
+      <h4 class="mt-4">H4 — Structural analysis module</h4>
+      <h5 class="mt-4">H5 — Configuration reference</h5>
+      <h6 class="mt-4">H6 — Footnotes and small headers</h6>
+    </div>
+  </div>
+
+  <div class="showcase">
+    <h3>Body text — Inter</h3>
+    <p class="mt-4">
+      The built environment belongs to everyone. OpenAEC Foundation develops and maintains
+      free, open-source software for architecture, engineering, and construction — so that knowledge
+      and tools are shared, not locked away. Every line of code we write is available for inspection,
+      modification, and redistribution.
+    </p>
+    <p>
+      <strong>Bold text for emphasis.</strong> Regular text continues here.
+      <em>Italic text for titles or foreign terms.</em> Mix of
+      <a href="#">links with amber color</a> and inline <code>code snippets</code> within body copy.
+    </p>
+    <p class="text-sm text-muted">
+      Small muted text — used for captions, timestamps, and secondary information.
+    </p>
+  </div>
+
+  <div class="showcase">
+    <h3>Code — JetBrains Mono</h3>
+    <pre><code><span class="keyword">import</span> { parseIFC } <span class="keyword">from</span> <span class="string">"@openaec/ifc-parser"</span>;
+
+<span class="comment">// Load and parse an IFC file</span>
+<span class="keyword">const</span> <span class="function">model</span> = <span class="keyword">await</span> <span class="function">parseIFC</span>(<span class="string">"building.ifc"</span>);
+
+<span class="keyword">for</span> (<span class="keyword">const</span> wall <span class="keyword">of</span> model.<span class="function">getAll</span>(<span class="string">"IfcWall"</span>)) {
+  console.<span class="function">log</span>(wall.name, wall.<span class="function">getPropertySet</span>(<span class="string">"Pset_WallCommon"</span>));
+}</code></pre>
+  </div>
+
+  <div class="showcase">
+    <h3>Blockquote</h3>
+    <blockquote>
+      "Every day that AEC runs on closed software is a day too many.
+      We build the tools we wish existed."
+    </blockquote>
+  </div>
+
+  <div class="showcase">
+    <h3>Lists</h3>
+    <div class="grid-2">
+      <div>
+        <h4 class="mb-2">Unordered</h4>
+        <ul class="list">
+          <li>IFC4 and IFC4x3 support</li>
+          <li>Full property set preservation</li>
+          <li>Geometry tessellation engine</li>
+          <li>Cross-platform CLI tool</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="mb-2">Checklist</h4>
+        <ul class="checklist">
+          <li class="checked">Parse IFC STEP files</li>
+          <li class="checked">Extract geometry</li>
+          <li>Export to glTF</li>
+          <li>Merge models</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     BUTTONS
+     ================================================================ -->
+<section class="section" id="buttons">
+  <div class="section-title">04 — Buttons</div>
+  <h2 class="mb-8">Button variants &amp; sizes</h2>
+
+  <div class="showcase">
+    <h3>Variants</h3>
+    <div class="showcase-row mt-4">
+      <button class="btn btn-primary">Primary</button>
+      <button class="btn btn-secondary">Secondary</button>
+      <button class="btn btn-ghost">Ghost</button>
+      <button class="btn btn-dark">Dark</button>
+      <button class="btn btn-primary" disabled>Disabled</button>
+    </div>
+  </div>
+
+  <div class="showcase">
+    <h3>Sizes</h3>
+    <div class="showcase-row mt-4">
+      <button class="btn btn-primary btn-sm">Small</button>
+      <button class="btn btn-primary">Default</button>
+      <button class="btn btn-primary btn-lg">Large</button>
+    </div>
+  </div>
+
+  <div class="showcase">
+    <h3>With icons (text placeholders)</h3>
+    <div class="showcase-row mt-4">
+      <button class="btn btn-primary">&darr; Download</button>
+      <button class="btn btn-secondary">&plus; New project</button>
+      <button class="btn btn-ghost">&rarr; View on GitHub</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     FORMS
+     ================================================================ -->
+<section class="section" id="forms">
+  <div class="section-title">05 — Forms</div>
+  <h2 class="mb-8">Form elements</h2>
+
+  <div style="max-width:500px;">
+    <div class="form-group">
+      <label class="form-label">Project name</label>
+      <input type="text" class="form-input" placeholder="e.g. Residential Tower A" value="Residential Tower A">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">IFC schema version</label>
+      <select class="form-select">
+        <option>IFC4</option>
+        <option>IFC4x3</option>
+        <option>IFC2x3</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Description</label>
+      <textarea class="form-textarea" placeholder="Brief project description..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Email (with error)</label>
+      <input type="email" class="form-input is-error" value="invalid-email">
+      <p class="form-hint" style="color:var(--error);">Please enter a valid email address.</p>
+    </div>
+
+    <div class="form-group">
+      <label class="form-checkbox">
+        <input type="checkbox" checked>
+        <span>Include property sets in export</span>
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label class="form-checkbox">
+        <input type="checkbox">
+        <span>Generate geometry preview</span>
+      </label>
+    </div>
+
+    <div class="showcase-row">
+      <button class="btn btn-primary">Save project</button>
+      <button class="btn btn-secondary">Cancel</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     CARDS
+     ================================================================ -->
+<section class="section" id="cards">
+  <div class="section-title">06 — Cards</div>
+  <h2 class="mb-8">Card variants</h2>
+
+  <div class="grid-3 mb-8">
+    <div class="card">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="badge badge-green">Stable</span>
+      </div>
+      <div class="card-title">IFC Parser</div>
+      <p class="card-description">Parse IFC2x3 and IFC4 STEP files into a traversable object model. Lightweight, zero dependencies.</p>
+      <div class="mt-4">
+        <a href="#" class="btn btn-ghost btn-sm">&rarr; Documentation</a>
+      </div>
+    </div>
+
+    <div class="card card-featured">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="badge badge-amber">Featured</span>
+      </div>
+      <div class="card-title">Report Builder</div>
+      <p class="card-description">Generate engineering reports from JSON data. Supports calculations, unity checks, tables, and images.</p>
+      <div class="mt-4">
+        <a href="#" class="btn btn-primary btn-sm">&darr; Get started</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="badge badge-blue">Beta</span>
+      </div>
+      <div class="card-title">Geometry Engine</div>
+      <p class="card-description">Tessellate and transform BRep geometry. Export to glTF, OBJ, or STL for visualization.</p>
+      <div class="mt-4">
+        <a href="#" class="btn btn-ghost btn-sm">&rarr; Documentation</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card card-dark">
+      <div class="card-title">Contribution stats</div>
+      <p class="card-description">42 contributors &middot; 1,280 commits &middot; 98% test coverage</p>
+      <div class="progress-bar mt-4" style="width:200px;">
+        <div class="progress-fill success" style="width:98%;"></div>
+      </div>
+    </div>
+
+    <div class="card card-dark">
+      <div class="card-title">Build status</div>
+      <p class="card-description">All checks passed on main branch.</p>
+      <div class="showcase-row mt-4">
+        <span class="badge badge-green">Build passing</span>
+        <span class="badge badge-green">Tests passing</span>
+        <span class="badge badge-gray">v2.4.1</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     TABLES
+     ================================================================ -->
+<section class="section" id="tables">
+  <div class="section-title">07 — Tables</div>
+  <h2 class="mb-8">Data tables</h2>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Element</th>
+          <th>Profile</th>
+          <th>Length (mm)</th>
+          <th>Unity check</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>B-101</code></td>
+          <td>HEA 300</td>
+          <td>6,000</td>
+          <td>
+            <div style="display:flex;align-items:center;gap:var(--sp-2);">
+              <div class="progress-bar" style="width:80px;"><div class="progress-fill" style="width:72%;"></div></div>
+              <span class="text-sm">0.72</span>
+            </div>
+          </td>
+          <td><span class="badge badge-green">OK</span></td>
+        </tr>
+        <tr>
+          <td><code>B-102</code></td>
+          <td>HEA 240</td>
+          <td>5,400</td>
+          <td>
+            <div style="display:flex;align-items:center;gap:var(--sp-2);">
+              <div class="progress-bar" style="width:80px;"><div class="progress-fill" style="width:88%;"></div></div>
+              <span class="text-sm">0.88</span>
+            </div>
+          </td>
+          <td><span class="badge badge-amber">Review</span></td>
+        </tr>
+        <tr>
+          <td><code>C-201</code></td>
+          <td>HEB 260</td>
+          <td>3,600</td>
+          <td>
+            <div style="display:flex;align-items:center;gap:var(--sp-2);">
+              <div class="progress-bar" style="width:80px;"><div class="progress-fill danger" style="width:105%;"></div></div>
+              <span class="text-sm" style="color:var(--error);">1.05</span>
+            </div>
+          </td>
+          <td><span class="badge badge-red">Fail</span></td>
+        </tr>
+        <tr>
+          <td><code>C-202</code></td>
+          <td>HEB 300</td>
+          <td>3,600</td>
+          <td>
+            <div style="display:flex;align-items:center;gap:var(--sp-2);">
+              <div class="progress-bar" style="width:80px;"><div class="progress-fill" style="width:54%;"></div></div>
+              <span class="text-sm">0.54</span>
+            </div>
+          </td>
+          <td><span class="badge badge-green">OK</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     BADGES & TAGS
+     ================================================================ -->
+<section class="section" id="badges">
+  <div class="section-title">08 — Badges &amp; Tags</div>
+  <h2 class="mb-8">Status indicators</h2>
+
+  <div class="showcase">
+    <h3>Badges</h3>
+    <div class="showcase-row mt-4">
+      <span class="badge badge-amber">In progress</span>
+      <span class="badge badge-green">Stable</span>
+      <span class="badge badge-red">Critical</span>
+      <span class="badge badge-blue">Beta</span>
+      <span class="badge badge-gray">Archived</span>
+    </div>
+  </div>
+
+  <div class="showcase">
+    <h3>Tags</h3>
+    <div class="showcase-row mt-4">
+      <span class="tag">IFC4</span>
+      <span class="tag">BIM</span>
+      <span class="tag">Structural</span>
+      <span class="tag">Open Source</span>
+      <span class="tag">Python</span>
+      <span class="tag">TypeScript</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     ALERTS
+     ================================================================ -->
+<section class="section" id="alerts">
+  <div class="section-title">09 — Alerts</div>
+  <h2 class="mb-8">Notification blocks</h2>
+
+  <div class="alert alert-info">
+    <div class="alert-title">Information</div>
+    IFC4x3 support is available in version 2.4 and later. Update your dependency to access the new entity types.
+  </div>
+
+  <div class="alert alert-success">
+    <div class="alert-title">Success</div>
+    All 47 structural elements passed the unity check. Report generated successfully.
+  </div>
+
+  <div class="alert alert-warning">
+    <div class="alert-title">Warning</div>
+    Element B-102 has a unity check of 0.88. Consider reviewing the load assumptions or upgrading the profile.
+  </div>
+
+  <div class="alert alert-error">
+    <div class="alert-title">Error</div>
+    Element C-201 exceeds the unity check limit (1.05 > 1.00). This element does not meet the structural requirements.
+  </div>
+</section>
+
+
+<!-- ================================================================
+     PROGRESS BARS
+     ================================================================ -->
+<section class="section" id="progress">
+  <div class="section-title">10 — Progress</div>
+  <h2 class="mb-8">Progress indicators</h2>
+
+  <div style="max-width:400px;">
+    <div class="mb-6">
+      <div class="flex items-center" style="justify-content:space-between;">
+        <span class="text-sm">Model parsing</span>
+        <span class="text-sm text-muted">100%</span>
+      </div>
+      <div class="progress-bar mt-2"><div class="progress-fill success" style="width:100%;"></div></div>
+    </div>
+    <div class="mb-6">
+      <div class="flex items-center" style="justify-content:space-between;">
+        <span class="text-sm">Geometry export</span>
+        <span class="text-sm text-muted">64%</span>
+      </div>
+      <div class="progress-bar mt-2"><div class="progress-fill" style="width:64%;"></div></div>
+    </div>
+    <div class="mb-6">
+      <div class="flex items-center" style="justify-content:space-between;">
+        <span class="text-sm">Capacity exceeded</span>
+        <span class="text-sm" style="color:var(--error);">105%</span>
+      </div>
+      <div class="progress-bar mt-2"><div class="progress-fill danger" style="width:100%;"></div></div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /.container -->
+
+
+<!-- ================================================================
+     DARK SECTION EXAMPLE
+     ================================================================ -->
+<section class="dark-section" id="dark">
+  <div class="container">
+    <div class="section-title">11 — Dark sections</div>
+    <h2 class="mb-4" style="color:var(--blueprint-white);">Own your tools.</h2>
+    <p style="max-width:60ch;">
+      Every line of code is open. Every decision is public. No vendor lock-in,
+      no subscription, no permission needed. Fork it, improve it, share it.
+    </p>
+    <div class="showcase-row mt-6">
+      <a href="#" class="btn btn-primary">Start contributing</a>
+      <a href="#" class="btn btn-ghost" style="border-color:var(--scaffold-gray);color:var(--scaffold-gray);">Read the docs</a>
+    </div>
+
+    <div class="grid-3 mt-8">
+      <div class="card card-dark">
+        <div class="card-title" style="color:var(--warm-gold);">12</div>
+        <p>Open-source projects</p>
+      </div>
+      <div class="card card-dark">
+        <div class="card-title" style="color:var(--warm-gold);">42</div>
+        <p>Contributors worldwide</p>
+      </div>
+      <div class="card card-dark">
+        <div class="card-title" style="color:var(--warm-gold);">100%</div>
+        <p>Free and open-source</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="container">
+
+<!-- ================================================================
+     PRINT: REPORT PAGE
+     ================================================================ -->
+<section class="section" id="print">
+  <div class="section-title">12 — Print: Report</div>
+  <h2 class="mb-8">A4 report page</h2>
+</section>
+</div>
+
+<div class="page">
+
+  <!-- ===== HEADER BANNER ===== -->
+  <div class="page-header-banner">
+
+    <!-- Background illustration: isometric buildings + code + BIM grid -->
+    <svg class="page-header-illustration" viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMid slice">
+      <!-- Blueprint grid -->
+      <defs>
+        <pattern id="rptGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#FAFAF9" stroke-width="0.6"/>
+        </pattern>
+      </defs>
+      <rect width="520" height="200" fill="url(#rptGrid)"/>
+
+      <!-- Isometric building block 1 -->
+      <g transform="translate(60,110)">
+        <polygon points="0,-40 40,-20 40,20 0,40 -40,20 -40,-20" fill="none" stroke="#D97706" stroke-width="2.5"/>
+        <line x1="0" y1="-40" x2="0" y2="0" stroke="#D97706" stroke-width="1.8"/>
+        <line x1="40" y1="-20" x2="0" y2="0" stroke="#D97706" stroke-width="1.8"/>
+        <line x1="-40" y1="-20" x2="0" y2="0" stroke="#D97706" stroke-width="1.8"/>
+        <!-- subtle fill on top face -->
+        <polygon points="0,-40 40,-20 0,0 -40,-20" fill="#D97706" opacity="0.15"/>
+      </g>
+
+      <!-- Isometric building block 2 (taller) -->
+      <g transform="translate(150,80)">
+        <polygon points="0,-60 35,-40 35,20 0,40 -35,20 -35,-40" fill="none" stroke="#F59E0B" stroke-width="2.5"/>
+        <line x1="0" y1="-60" x2="0" y2="0" stroke="#F59E0B" stroke-width="1.8"/>
+        <line x1="35" y1="-40" x2="0" y2="0" stroke="#F59E0B" stroke-width="1.8"/>
+        <line x1="-35" y1="-40" x2="0" y2="0" stroke="#F59E0B" stroke-width="1.8"/>
+        <!-- subtle fill on top face -->
+        <polygon points="0,-60 35,-40 0,0 -35,-40" fill="#F59E0B" opacity="0.12"/>
+        <!-- windows -->
+        <rect x="-20" y="-30" width="8" height="6" fill="#F59E0B" fill-opacity="0.2" stroke="#F59E0B" stroke-width="1.2"/>
+        <rect x="-8" y="-30" width="8" height="6" fill="#F59E0B" fill-opacity="0.2" stroke="#F59E0B" stroke-width="1.2"/>
+        <rect x="-20" y="-18" width="8" height="6" fill="#F59E0B" fill-opacity="0.2" stroke="#F59E0B" stroke-width="1.2"/>
+        <rect x="-8" y="-18" width="8" height="6" fill="#F59E0B" fill-opacity="0.2" stroke="#F59E0B" stroke-width="1.2"/>
+        <rect x="-20" y="-6" width="8" height="6" fill="#F59E0B" fill-opacity="0.2" stroke="#F59E0B" stroke-width="1.2"/>
+        <rect x="-8" y="-6" width="8" height="6" fill="#F59E0B" fill-opacity="0.2" stroke="#F59E0B" stroke-width="1.2"/>
+      </g>
+
+      <!-- Isometric building block 3 (small, bridging) -->
+      <g transform="translate(105,135)">
+        <polygon points="0,-25 25,-12 25,12 0,25 -25,12 -25,-12" fill="none" stroke="#D97706" stroke-width="1.8"/>
+        <polygon points="0,-25 25,-12 0,0 -25,-12" fill="#D97706" opacity="0.1"/>
+      </g>
+
+      <!-- Code brackets (bigger, bolder) -->
+      <g transform="translate(240,60)" font-family="JetBrains Mono, monospace" font-size="64" fill="#D97706" opacity="0.9">
+        <text x="0" y="0">{</text>
+        <text x="100" y="0">}</text>
+      </g>
+
+      <!-- Code lines inside brackets (more visible) -->
+      <g transform="translate(278,38)" stroke="#FAFAF9" stroke-width="2" opacity="0.7">
+        <line x1="0" y1="0" x2="45" y2="0"/>
+        <line x1="6" y1="10" x2="36" y2="10"/>
+        <line x1="6" y1="20" x2="50" y2="20"/>
+        <line x1="6" y1="30" x2="28" y2="30"/>
+        <line x1="0" y1="40" x2="40" y2="40"/>
+      </g>
+
+      <!-- BIM cube (3D wireframe, bigger) -->
+      <g transform="translate(370,50)">
+        <!-- back face -->
+        <rect x="14" y="-14" width="55" height="55" fill="none" stroke="#FAFAF9" stroke-width="1.2" opacity="0.5"/>
+        <!-- front face -->
+        <rect x="0" y="0" width="55" height="55" fill="none" stroke="#D97706" stroke-width="2"/>
+        <!-- connecting lines -->
+        <line x1="0" y1="0" x2="14" y2="-14" stroke="#FAFAF9" stroke-width="1.2" opacity="0.7"/>
+        <line x1="55" y1="0" x2="69" y2="-14" stroke="#FAFAF9" stroke-width="1.2" opacity="0.7"/>
+        <line x1="55" y1="55" x2="69" y2="41" stroke="#FAFAF9" stroke-width="1.2" opacity="0.7"/>
+        <line x1="0" y1="55" x2="14" y2="41" stroke="#FAFAF9" stroke-width="1.2" opacity="0.7"/>
+        <!-- fill on top face -->
+        <polygon points="0,0 14,-14 69,-14 55,0" fill="#D97706" opacity="0.12"/>
+        <!-- BIM label -->
+        <text x="10" y="35" font-family="JetBrains Mono, monospace" font-size="15" fill="#D97706" font-weight="bold">BIM</text>
+      </g>
+
+      <!-- Structural beam cross-section (I-profile, bigger) -->
+      <g transform="translate(470,70)">
+        <path d="M-20,0 L20,0 L20,4 L8,4 L8,36 L20,36 L20,40 L-20,40 L-20,36 L-8,36 L-8,4 L-20,4 Z" fill="#F59E0B" fill-opacity="0.2" stroke="#F59E0B" stroke-width="1.8"/>
+      </g>
+
+      <!-- Skyline silhouette at bottom (more opaque, taller buildings) -->
+      <g transform="translate(0,140)" opacity="0.5">
+        <path d="M0,60 L0,40 L15,40 L15,25 L25,25 L25,35 L40,35 L40,15 L45,15 L45,8 L50,8 L50,15 L60,15 L60,28 L75,28 L75,10 L80,10 L80,0 L90,0 L90,3 L95,3 L95,0 L105,0 L105,10 L110,10 L110,28 L125,28 L125,18 L140,18 L140,28 L155,28 L155,8 L160,8 L160,3 L165,3 L165,8 L170,8 L170,28 L185,28 L185,35 L200,35 L200,25 L210,25 L210,35 L230,35 L230,20 L238,15 L246,20 L246,35 L265,35 L265,30 L280,30 L280,22 L295,22 L295,30 L310,30 L310,20 L325,20 L325,10 L330,10 L330,5 L335,5 L335,10 L345,10 L345,20 L360,20 L360,30 L380,30 L380,25 L400,25 L400,35 L420,35 L420,28 L440,28 L440,18 L450,18 L450,28 L465,28 L465,35 L490,35 L490,30 L520,30 L520,60 Z" fill="#FAFAF9"/>
+      </g>
+
+      <!-- Node/connection dots (bigger) -->
+      <circle cx="60" cy="110" r="4.5" fill="#D97706"/>
+      <circle cx="150" cy="80" r="4.5" fill="#F59E0B"/>
+      <circle cx="105" cy="135" r="3.5" fill="#D97706"/>
+      <circle cx="370" cy="50" r="4" fill="#D97706"/>
+      <circle cx="470" cy="90" r="3.5" fill="#F59E0B"/>
+      <line x1="65" y1="108" x2="100" y2="133" stroke="#D97706" stroke-width="1" stroke-dasharray="4,3"/>
+      <line x1="110" y1="133" x2="145" y2="83" stroke="#D97706" stroke-width="1" stroke-dasharray="4,3"/>
+      <line x1="155" y1="80" x2="365" y2="53" stroke="#F59E0B" stroke-width="1" stroke-dasharray="4,3"/>
+      <line x1="375" y1="52" x2="465" y2="87" stroke="#F59E0B" stroke-width="1" stroke-dasharray="4,3"/>
+    </svg>
+
+    <div class="page-header-left">
+      <div class="page-header-logo">Open<span>AEC</span> Foundation</div>
+      <div class="page-header-tagline">Free and open-source tools for the built environment</div>
+    </div>
+
+    <div class="page-header-meta">
+      <strong>Project</strong>: RES-2026-001<br>
+      <strong>Date</strong>: 2026-03-01<br>
+      <strong>Version</strong>: 1.0<br>
+      <strong>Status</strong>: Final
+    </div>
+  </div>
+
+  <!-- ===== CONTENT ===== -->
+  <div class="page-content">
+    <h2 class="page-title">Structural assessment report</h2>
+    <p class="page-subtitle">Residential Tower A — Steel frame analysis</p>
+
+    <div class="page-body">
+      <h3>1. Introduction</h3>
+      <p>
+        This report presents the structural assessment of the steel frame for the Residential Tower A
+        project. The analysis covers all primary load-bearing elements including beams, columns, and
+        connections. All calculations are performed in accordance with Eurocode 3 (NEN-EN 1993-1-1)
+        and the Dutch National Annex.
+      </p>
+
+      <h3>2. Design loads</h3>
+      <p>
+        The following load combinations have been considered in the analysis. Permanent loads include
+        self-weight of the structure and floor finishing. Variable loads include imposed loads according
+        to NEN-EN 1991-1-1 category A (residential).
+      </p>
+
+      <div class="table-wrapper" style="margin-top:4mm;">
+        <table>
+          <thead>
+            <tr>
+              <th>Load case</th>
+              <th>Type</th>
+              <th>Value (kN/m&sup2;)</th>
+              <th>Factor (ULS)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>LC1</td><td>Self-weight</td><td>3.50</td><td>1.35</td></tr>
+            <tr><td>LC2</td><td>Floor finishing</td><td>1.50</td><td>1.35</td></tr>
+            <tr><td>LC3</td><td>Imposed load</td><td>1.75</td><td>1.50</td></tr>
+            <tr><td>LC4</td><td>Wind (dominant)</td><td>0.60</td><td>1.50</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>3. Unity checks — summary</h3>
+      <p>
+        All primary elements have been checked for bending, shear, and combined loading. The results
+        are summarized below. Elements with a unity check above 0.85 are flagged for review.
+      </p>
+
+      <div class="alert alert-success" style="margin-top:4mm;">
+        <div class="alert-title">Result</div>
+        46 of 47 elements satisfy the structural requirements (UC &le; 1.00).
+      </div>
+
+      <div class="alert alert-error">
+        <div class="alert-title">Action required</div>
+        Element C-201 (HEB 260) exceeds the limit with UC = 1.05. Recommend upgrading to HEB 300.
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <div class="page-footer">
+    <div class="page-footer-brand">Open<em>AEC</em></div>
+
+    <div class="page-footer-icons">
+      <!-- Building icon -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="#A1A1AA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4" y="2" width="16" height="20" rx="1"/><line x1="9" y1="6" x2="9" y2="6.01"/><line x1="15" y1="6" x2="15" y2="6.01"/><line x1="9" y1="10" x2="9" y2="10.01"/><line x1="15" y1="10" x2="15" y2="10.01"/><line x1="9" y1="14" x2="9" y2="14.01"/><line x1="15" y1="14" x2="15" y2="14.01"/><path d="M10 22V18h4v4"/>
+      </svg>
+      <!-- Code icon -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="#A1A1AA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/>
+      </svg>
+      <!-- Cube/BIM icon -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="#A1A1AA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27,6.96 12,12.01 20.73,6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>
+      </svg>
+      <!-- Open-source / branch icon -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="#A1A1AA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9v1a2 2 0 01-2 2H8a2 2 0 01-2-2V9"/><line x1="12" y1="12" x2="12" y2="15"/>
+      </svg>
+    </div>
+
+    <div class="page-footer-right">
+      Structural Assessment &mdash; RES-2026-001<br>
+      <span class="page-footer-pagenum">Page 1 / 4</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ================================================================
+     PRINT: LETTER PAGE
+     ================================================================ -->
+<div class="container">
+  <section class="section">
+    <div class="section-title">13 — Print: Letter</div>
+    <h2 class="mb-8">A4 letter / correspondence</h2>
+  </section>
+</div>
+
+<div class="page">
+
+  <!-- ===== HEADER BANNER (Letter variant — slimmer) ===== -->
+  <div class="page-header-banner" style="min-height:30mm; padding:7mm 12mm;">
+
+    <!-- Background illustration: lighter, more abstract for letter -->
+    <svg class="page-header-illustration" viewBox="0 0 400 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMid slice">
+      <defs>
+        <pattern id="ltrGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+          <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#FAFAF9" stroke-width="0.3"/>
+        </pattern>
+      </defs>
+      <rect width="400" height="140" fill="url(#ltrGrid)"/>
+
+      <!-- Abstract building outlines -->
+      <g transform="translate(80,30)" opacity="0.6">
+        <rect x="0" y="20" width="25" height="60" fill="none" stroke="#D97706" stroke-width="1"/>
+        <rect x="30" y="0" width="20" height="80" fill="none" stroke="#F59E0B" stroke-width="1"/>
+        <rect x="55" y="35" width="30" height="45" fill="none" stroke="#D97706" stroke-width="0.8"/>
+        <rect x="90" y="10" width="18" height="70" fill="none" stroke="#F59E0B" stroke-width="0.8"/>
+        <!-- small windows -->
+        <rect x="4" y="28" width="5" height="4" fill="none" stroke="#D97706" stroke-width="0.5"/>
+        <rect x="12" y="28" width="5" height="4" fill="none" stroke="#D97706" stroke-width="0.5"/>
+        <rect x="4" y="38" width="5" height="4" fill="none" stroke="#D97706" stroke-width="0.5"/>
+        <rect x="12" y="38" width="5" height="4" fill="none" stroke="#D97706" stroke-width="0.5"/>
+        <rect x="34" y="10" width="4" height="4" fill="none" stroke="#F59E0B" stroke-width="0.5"/>
+        <rect x="42" y="10" width="4" height="4" fill="none" stroke="#F59E0B" stroke-width="0.5"/>
+        <rect x="34" y="20" width="4" height="4" fill="none" stroke="#F59E0B" stroke-width="0.5"/>
+        <rect x="42" y="20" width="4" height="4" fill="none" stroke="#F59E0B" stroke-width="0.5"/>
+      </g>
+
+      <!-- Code bracket accent -->
+      <g transform="translate(230,25)" font-family="JetBrains Mono, monospace" font-size="36" fill="#D97706" opacity="0.4">
+        <text x="0" y="0">{</text>
+        <text x="55" y="0">}</text>
+      </g>
+
+      <!-- Abstract connection nodes -->
+      <circle cx="310" cy="40" r="2" fill="#D97706" opacity="0.5"/>
+      <circle cx="340" cy="60" r="2" fill="#F59E0B" opacity="0.5"/>
+      <circle cx="360" cy="35" r="2" fill="#D97706" opacity="0.5"/>
+      <line x1="312" y1="41" x2="338" y2="59" stroke="#D97706" stroke-width="0.5" stroke-dasharray="2,2" opacity="0.4"/>
+      <line x1="342" y1="59" x2="358" y2="37" stroke="#F59E0B" stroke-width="0.5" stroke-dasharray="2,2" opacity="0.4"/>
+    </svg>
+
+    <div class="page-header-left">
+      <div class="page-header-logo">Open<span>AEC</span> Foundation</div>
+      <div class="page-header-tagline">
+        Stichting OpenAEC Foundation &middot; info@openaec.org &middot; openaec.org
+      </div>
+    </div>
+
+    <div class="page-header-meta">
+      1 March 2026
+    </div>
+  </div>
+
+  <!-- ===== CONTENT ===== -->
+  <div class="page-content">
+    <div class="page-body">
+      <div class="letter-address">
+        Municipality of Amsterdam<br>
+        Department of Urban Development<br>
+        Amstel 1<br>
+        1011 PN Amsterdam
+      </div>
+
+      <div class="letter-subject">Re: Open-source tooling for building permit assessment</div>
+
+      <div class="letter-greeting">Dear Sir/Madam,</div>
+
+      <p>
+        Thank you for your inquiry regarding the OpenAEC Foundation's tools for automated building
+        permit assessment. We are pleased to share our approach to open-source compliance checking
+        against the Dutch Building Decree (Bouwbesluit 2012).
+      </p>
+
+      <p>
+        Our rule engine processes IFC building models and validates them against a configurable set
+        of regulatory requirements. The system is designed to be transparent: every check is traceable
+        to a specific article in the regulation, and all source code is publicly auditable. This
+        ensures that the assessment process is reproducible and verifiable by any party.
+      </p>
+
+      <p>
+        We would welcome the opportunity to present a demonstration of the toolset and discuss
+        potential collaboration. The foundation operates on a non-profit basis, and our mission is to
+        make professional AEC tools accessible to everyone — including government bodies.
+      </p>
+
+      <p>
+        We look forward to your response.
+      </p>
+
+      <div class="letter-closing">Kind regards,</div>
+
+      <div class="letter-signature">
+        <strong>The OpenAEC Foundation</strong><br>
+        Board of Directors<br>
+        info@openaec.org
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <div class="page-footer">
+    <div class="page-footer-brand">Open<em>AEC</em></div>
+
+    <div class="page-footer-icons">
+      <!-- Building icon -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="#A1A1AA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4" y="2" width="16" height="20" rx="1"/><line x1="9" y1="6" x2="9" y2="6.01"/><line x1="15" y1="6" x2="15" y2="6.01"/><line x1="9" y1="10" x2="9" y2="10.01"/><line x1="15" y1="10" x2="15" y2="10.01"/><line x1="9" y1="14" x2="9" y2="14.01"/><line x1="15" y1="14" x2="15" y2="14.01"/><path d="M10 22V18h4v4"/>
+      </svg>
+      <!-- Code icon -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="#A1A1AA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/>
+      </svg>
+      <!-- Cube/BIM icon -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="#A1A1AA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27,6.96 12,12.01 20.73,6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>
+      </svg>
+      <!-- Open-source / branch icon -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="#A1A1AA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9v1a2 2 0 01-2 2H8a2 2 0 01-2-2V9"/><line x1="12" y1="12" x2="12" y2="15"/>
+      </svg>
+    </div>
+
+    <div class="page-footer-right">
+      Stichting OpenAEC Foundation<br>
+      <span style="font-family:var(--font-code);">KvK: pending &middot; openaec.org</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ================================================================
+     DESIGN TOKENS REFERENCE
+     ================================================================ -->
+<div class="container">
+  <section class="section" id="tokens">
+    <div class="section-title">14 — Design tokens (CSS)</div>
+    <h2 class="mb-6">Copy-paste reference</h2>
+
+    <pre><code><span class="comment">/* === OpenAEC Design Tokens === */</span>
+
+<span class="comment">/* Primary */</span>
+<span class="keyword">--amber:</span>           <span class="string">#D97706</span>;
+<span class="keyword">--deep-forge:</span>      <span class="string">#36363E</span>;
+
+<span class="comment">/* Secondary */</span>
+<span class="keyword">--signal-orange:</span>   <span class="string">#EA580C</span>;
+<span class="keyword">--warm-gold:</span>       <span class="string">#F59E0B</span>;
+<span class="keyword">--scaffold-gray:</span>   <span class="string">#A1A1AA</span>;
+
+<span class="comment">/* Backgrounds */</span>
+<span class="keyword">--blueprint-white:</span> <span class="string">#FAFAF9</span>;
+<span class="keyword">--concrete:</span>        <span class="string">#F5F5F4</span>;
+<span class="keyword">--night-build:</span>     <span class="string">#2A2A32</span>;
+
+<span class="comment">/* Typography */</span>
+<span class="keyword">--font-heading:</span>    <span class="string">"Space Grotesk"</span>, system-ui, sans-serif;
+<span class="keyword">--font-body:</span>       <span class="string">"Inter"</span>, system-ui, sans-serif;
+<span class="keyword">--font-code:</span>       <span class="string">"JetBrains Mono"</span>, monospace;
+
+<span class="comment">/* Spacing (4px base) */</span>
+<span class="keyword">--sp-1:</span> 0.25rem;  <span class="keyword">--sp-2:</span> 0.5rem;  <span class="keyword">--sp-4:</span> 1rem;
+<span class="keyword">--sp-6:</span> 1.5rem;   <span class="keyword">--sp-8:</span> 2rem;   <span class="keyword">--sp-12:</span> 3rem;
+
+<span class="comment">/* Border radius */</span>
+<span class="keyword">--radius-sm:</span>   4px;
+<span class="keyword">--radius-md:</span>   8px;
+<span class="keyword">--radius-lg:</span>   12px;
+<span class="keyword">--radius-full:</span> 9999px;</code></pre>
+  </section>
+
+
+  <!-- ================================================================
+       ASSET INVENTORY
+       ================================================================ -->
+  <section class="section" id="assets">
+    <div class="section-title">15 — Asset Inventory</div>
+    <h2 class="mb-4">Brand assets &amp; usage guide</h2>
+    <p class="text-muted mb-8">Every exported asset with its intended purpose. Use this as a visual lookup when building OpenAEC artifacts.</p>
+
+
+    <!-- === LOGO ASSETS === -->
+    <h3 class="mb-4">Logo</h3>
+    <p class="mb-6">The symbol is an <strong>isometric open building block</strong> — a 3D hexagonal cube with one face removed. It combines "open source" (the opening) with "construction" (the isometric form). The full lockup adds the "OpenAEC" wordmark + tagline.</p>
+
+    <div class="grid-3 mb-8">
+
+      <!-- Logo: amber on dark -->
+      <div class="card" style="padding:0; overflow:hidden;">
+        <div style="background:var(--deep-forge); padding:var(--sp-6); display:flex; align-items:center; justify-content:center; min-height:120px;">
+          <img src="assets/logo/png/openaec-logo-amber-on-dark-1x.png" alt="Logo amber on dark" style="max-width:100%; height:auto;">
+        </div>
+        <div style="padding:var(--sp-4);">
+          <div style="font-weight:700; font-size:0.875rem; margin-bottom:var(--sp-1);">logo-amber-on-dark</div>
+          <div style="font-size:0.75rem; color:var(--scaffold-gray); margin-bottom:var(--sp-2);">Full lockup: amber symbol + amber "AEC" + white "Open" + tagline</div>
+          <div><span class="badge badge-amber">Primary</span></div>
+          <p style="font-size:0.75rem; margin-top:var(--sp-2); margin-bottom:0;">Dark headers, hero sections, dark-mode navbars, social media on dark backgrounds</p>
+        </div>
+      </div>
+
+      <!-- Logo: dark on light -->
+      <div class="card" style="padding:0; overflow:hidden;">
+        <div style="background:var(--blueprint-white); border:1px solid #E7E5E4; padding:var(--sp-6); display:flex; align-items:center; justify-content:center; min-height:120px;">
+          <img src="assets/logo/png/openaec-logo-dark-on-light-1x.png" alt="Logo dark on light" style="max-width:100%; height:auto;">
+        </div>
+        <div style="padding:var(--sp-4);">
+          <div style="font-weight:700; font-size:0.875rem; margin-bottom:var(--sp-1);">logo-dark-on-light</div>
+          <div style="font-size:0.75rem; color:var(--scaffold-gray); margin-bottom:var(--sp-2);">Full lockup: dark symbol + dark "Open" + amber "AEC"</div>
+          <div><span class="badge badge-gray">Light mode</span></div>
+          <p style="font-size:0.75rem; margin-top:var(--sp-2); margin-bottom:0;">Light headers, print on white paper, light-mode navigation, presentations</p>
+        </div>
+      </div>
+
+      <!-- Logo: white on dark -->
+      <div class="card" style="padding:0; overflow:hidden;">
+        <div style="background:var(--deep-forge); padding:var(--sp-6); display:flex; align-items:center; justify-content:center; min-height:120px;">
+          <img src="assets/logo/png/openaec-logo-white-on-dark-1x.png" alt="Logo white on dark" style="max-width:100%; height:auto;">
+        </div>
+        <div style="padding:var(--sp-4);">
+          <div style="font-weight:700; font-size:0.875rem; margin-bottom:var(--sp-1);">logo-white-on-dark</div>
+          <div style="font-size:0.75rem; color:var(--scaffold-gray); margin-bottom:var(--sp-2);">Full lockup: white symbol + white text, monochrome</div>
+          <div><span class="badge badge-gray">Monochrome</span></div>
+          <p style="font-size:0.75rem; margin-top:var(--sp-2); margin-bottom:0;">Grayscale print, monochrome contexts, when amber is unavailable</p>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="mb-4">Symbol only (icon)</h4>
+    <div class="grid-4 mb-8">
+      <div class="card" style="padding:0; overflow:hidden;">
+        <div style="background:var(--deep-forge); padding:var(--sp-4); display:flex; align-items:center; justify-content:center; min-height:100px;">
+          <img src="assets/logo/png/openaec-symbol-amber-on-dark-1x.png" alt="Symbol amber on dark" style="max-width:80px; height:auto;">
+        </div>
+        <div style="padding:var(--sp-3);">
+          <div style="font-weight:600; font-size:0.8rem;">symbol-amber-on-dark</div>
+          <p style="font-size:0.7rem; color:var(--scaffold-gray); margin:0;">Favicon, app icon on dark bg</p>
+        </div>
+      </div>
+
+      <div class="card" style="padding:0; overflow:hidden;">
+        <div style="background:var(--blueprint-white); border:1px solid #E7E5E4; padding:var(--sp-4); display:flex; align-items:center; justify-content:center; min-height:100px;">
+          <img src="assets/logo/png/openaec-symbol-dark-on-light-1x.png" alt="Symbol dark on light" style="max-width:80px; height:auto;">
+        </div>
+        <div style="padding:var(--sp-3);">
+          <div style="font-weight:600; font-size:0.8rem;">symbol-dark-on-light</div>
+          <p style="font-size:0.7rem; color:var(--scaffold-gray); margin:0;">Favicon, app icon on light bg</p>
+        </div>
+      </div>
+
+      <div class="card" style="padding:0; overflow:hidden;">
+        <div style="background:var(--deep-forge); padding:var(--sp-4); display:flex; align-items:center; justify-content:center; min-height:100px;">
+          <img src="assets/logo/png/openaec-symbol-white-on-dark-1x.png" alt="Symbol white on dark" style="max-width:80px; height:auto;">
+        </div>
+        <div style="padding:var(--sp-3);">
+          <div style="font-weight:600; font-size:0.8rem;">symbol-white-on-dark</div>
+          <p style="font-size:0.7rem; color:var(--scaffold-gray); margin:0;">Monochrome icon, loading</p>
+        </div>
+      </div>
+
+      <div class="card" style="padding:0; overflow:hidden;">
+        <div style="background: repeating-conic-gradient(#E7E5E4 0% 25%, white 0% 50%) 50% / 16px 16px; padding:var(--sp-4); display:flex; align-items:center; justify-content:center; min-height:100px;">
+          <img src="assets/logo/png/openaec-symbol-transparent-1x.png" alt="Symbol transparent" style="max-width:80px; height:auto;">
+        </div>
+        <div style="padding:var(--sp-3);">
+          <div style="font-weight:600; font-size:0.8rem;">symbol-transparent</div>
+          <p style="font-size:0.7rem; color:var(--scaffold-gray); margin:0;">Overlay, watermark, GitHub avatar</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scale & format reference -->
+    <div class="grid-2 mb-8">
+      <div>
+        <h4 class="mb-2">Scale variants (PNG)</h4>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>Suffix</th><th>Resolution</th><th>Use</th></tr></thead>
+            <tbody>
+              <tr><td><code>-1x</code></td><td>72 DPI</td><td>Standard web, email, documents</td></tr>
+              <tr><td><code>-2x</code></td><td>144 DPI</td><td>Retina / HiDPI screens</td></tr>
+              <tr><td><code>-3x</code></td><td>216 DPI</td><td>Extra high-DPI, large displays</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <h4 class="mb-2">Format guidance</h4>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>Format</th><th>Location</th><th>Use</th></tr></thead>
+            <tbody>
+              <tr><td><code>SVG</code></td><td><code>logo/svg/</code></td><td>Web (best quality), editing, resizing</td></tr>
+              <tr><td><code>PNG</code></td><td><code>logo/png/</code></td><td>Email, social media, presentations</td></tr>
+              <tr><td><code>PDF</code></td><td><code>logo/pdf/</code></td><td>Print production, vector output</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- === ILLUSTRATIONS === -->
+    <h3 class="mb-4 mt-8">Illustrations</h3>
+    <p class="mb-4">All illustrations share the same visual language: amber/gold stroke elements on a blueprint grid, connected by dashed network lines. They contain these recurring motifs:</p>
+    <div class="flex flex-wrap gap-4 mb-6">
+      <span class="tag">Isometric buildings</span>
+      <span class="tag">Code brackets { }</span>
+      <span class="tag">BIM cube</span>
+      <span class="tag">I-profile</span>
+      <span class="tag">Truss triangle</span>
+      <span class="tag">Blueprint grid</span>
+      <span class="tag">City skyline</span>
+      <span class="tag">Network nodes</span>
+    </div>
+
+    <!-- Hero banner dark -->
+    <div class="card mb-6" style="padding:0; overflow:hidden;">
+      <div style="background:var(--deep-forge); padding:var(--sp-4);">
+        <img src="assets/illustrations/png/hero-banner-dark-1x.png" alt="Hero banner dark" style="width:100%; height:auto; display:block;">
+      </div>
+      <div style="padding:var(--sp-4); display:flex; gap:var(--sp-6); align-items:flex-start; flex-wrap:wrap;">
+        <div style="flex:1; min-width:200px;">
+          <div style="font-weight:700; font-size:0.95rem; margin-bottom:var(--sp-1);">hero-banner-dark</div>
+          <div style="font-size:0.75rem; color:var(--scaffold-gray);">1200 &times; 400px &mdash; High density, all elements spread across full width</div>
+        </div>
+        <div style="flex:1; min-width:200px;">
+          <div style="font-size:0.75rem; font-weight:600; margin-bottom:var(--sp-1);">Content</div>
+          <p style="font-size:0.75rem; margin:0;">Full panoramic composition on dark background: isometric buildings (left), code brackets (center-top), BIM cube (center-right), I-profile, truss, small blocks (right), skyline along bottom</p>
+        </div>
+        <div style="flex:1; min-width:200px;">
+          <div style="font-size:0.75rem; font-weight:600; margin-bottom:var(--sp-1);">Use for</div>
+          <p style="font-size:0.75rem; margin:0;"><span class="badge badge-amber">30% opacity</span> Website hero sections, full-width banners, landing pages, README headers. Place behind centered text.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero banner transparent -->
+    <div class="card mb-6" style="padding:0; overflow:hidden;">
+      <div style="background: repeating-conic-gradient(#E7E5E4 0% 25%, white 0% 50%) 50% / 16px 16px; padding:var(--sp-4);">
+        <img src="assets/illustrations/png/hero-banner-transparent-1x.png" alt="Hero banner transparent" style="width:100%; height:auto; display:block;">
+      </div>
+      <div style="padding:var(--sp-4); display:flex; gap:var(--sp-6); align-items:flex-start; flex-wrap:wrap;">
+        <div style="flex:1; min-width:200px;">
+          <div style="font-weight:700; font-size:0.95rem; margin-bottom:var(--sp-1);">hero-banner-transparent</div>
+          <div style="font-size:0.75rem; color:var(--scaffold-gray);">1200 &times; 400px &mdash; Same composition, transparent background</div>
+        </div>
+        <div style="flex:1; min-width:200px;">
+          <div style="font-size:0.75rem; font-weight:600; margin-bottom:var(--sp-1);">Content</div>
+          <p style="font-size:0.75rem; margin:0;">Identical elements to hero-banner-dark but no solid background &mdash; amber/gold strokes only on transparent canvas</p>
+        </div>
+        <div style="flex:1; min-width:200px;">
+          <div style="font-size:0.75rem; font-weight:600; margin-bottom:var(--sp-1);">Use for</div>
+          <p style="font-size:0.75rem; margin:0;"><span class="badge badge-gray">20% opacity</span> Overlay on any custom background. Light-mode hero sections, or when the background color differs from Deep Forge.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Report header dark -->
+    <div class="card mb-6" style="padding:0; overflow:hidden;">
+      <div style="background:var(--deep-forge); padding:var(--sp-4); display:flex; justify-content:center;">
+        <img src="assets/illustrations/png/report-header-dark-1x.png" alt="Report header dark" style="max-width:520px; width:100%; height:auto; display:block;">
+      </div>
+      <div style="padding:var(--sp-4); display:flex; gap:var(--sp-6); align-items:flex-start; flex-wrap:wrap;">
+        <div style="flex:1; min-width:200px;">
+          <div style="font-weight:700; font-size:0.95rem; margin-bottom:var(--sp-1);">report-header-dark</div>
+          <div style="font-size:0.75rem; color:var(--scaffold-gray);">520 &times; 200px &mdash; Medium density, right-aligned cluster</div>
+        </div>
+        <div style="flex:1; min-width:200px;">
+          <div style="font-size:0.75rem; font-weight:600; margin-bottom:var(--sp-1);">Content</div>
+          <p style="font-size:0.75rem; margin:0;">Compact cluster: large isometric building (left), medium building (center), code brackets, BIM cube, I-profile (right), skyline at bottom</p>
+        </div>
+        <div style="flex:1; min-width:200px;">
+          <div style="font-size:0.75rem; font-weight:600; margin-bottom:var(--sp-1);">Use for</div>
+          <p style="font-size:0.75rem; margin:0;"><span class="badge badge-amber">35% opacity</span> A4 report header banners (38mm height). Place in the right portion of the header behind metadata text.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Letter header dark -->
+    <div class="card mb-6" style="padding:0; overflow:hidden;">
+      <div style="background:var(--deep-forge); padding:var(--sp-4); display:flex; justify-content:center;">
+        <img src="assets/illustrations/png/letter-header-dark-1x.png" alt="Letter header dark" style="max-width:400px; width:100%; height:auto; display:block;">
+      </div>
+      <div style="padding:var(--sp-4); display:flex; gap:var(--sp-6); align-items:flex-start; flex-wrap:wrap;">
+        <div style="flex:1; min-width:200px;">
+          <div style="font-weight:700; font-size:0.95rem; margin-bottom:var(--sp-1);">letter-header-dark</div>
+          <div style="font-size:0.75rem; color:var(--scaffold-gray);">400 &times; 120px &mdash; Low density, subtle &amp; abstract</div>
+        </div>
+        <div style="flex:1; min-width:200px;">
+          <div style="font-size:0.75rem; font-weight:600; margin-bottom:var(--sp-1);">Content</div>
+          <p style="font-size:0.75rem; margin:0;">Minimal composition: a few flat building outlines in amber strokes. Very sparse &mdash; no code brackets, no BIM cube, no skyline.</p>
+        </div>
+        <div style="flex:1; min-width:200px;">
+          <div style="font-size:0.75rem; font-weight:600; margin-bottom:var(--sp-1);">Use for</div>
+          <p style="font-size:0.75rem; margin:0;"><span class="badge badge-gray">30% opacity</span> A4 letter/memo header banners (30mm). Deliberately understated for a professional, clean look.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Background patterns side by side -->
+    <div class="grid-2 mb-8">
+      <!-- Background pattern dark -->
+      <div class="card" style="padding:0; overflow:hidden;">
+        <div style="background:var(--deep-forge); padding:var(--sp-4); display:flex; justify-content:center;">
+          <img src="assets/illustrations/png/background-pattern-dark-1x.png" alt="Background pattern dark" style="max-width:300px; width:100%; height:auto; display:block;">
+        </div>
+        <div style="padding:var(--sp-4);">
+          <div style="font-weight:700; font-size:0.95rem; margin-bottom:var(--sp-1);">background-pattern-dark</div>
+          <div style="font-size:0.75rem; color:var(--scaffold-gray); margin-bottom:var(--sp-2);">600 &times; 600px &mdash; Medium density, square format</div>
+          <p style="font-size:0.75rem; margin-bottom:var(--sp-1);">All elements widely spaced across a large area. Building blocks, code brackets, BIM cube, I-profile, truss, skyline.</p>
+          <p style="font-size:0.75rem; margin:0;"><span class="badge badge-amber">25% opacity</span> Full-page backgrounds, splash screens, presentation slides</p>
+        </div>
+      </div>
+
+      <!-- Background pattern tileable -->
+      <div class="card" style="padding:0; overflow:hidden;">
+        <div style="background:var(--deep-forge); padding:var(--sp-4); display:flex; justify-content:center;">
+          <img src="assets/illustrations/png/background-pattern-tileable-dark-1x.png" alt="Background pattern tileable dark" style="max-width:300px; width:100%; height:auto; display:block;">
+        </div>
+        <div style="padding:var(--sp-4);">
+          <div style="font-weight:700; font-size:0.95rem; margin-bottom:var(--sp-1);">background-pattern-tileable-dark</div>
+          <div style="font-size:0.75rem; color:var(--scaffold-gray); margin-bottom:var(--sp-2);">300 &times; 300px &mdash; Low density, seamlessly tileable</div>
+          <p style="font-size:0.75rem; margin-bottom:var(--sp-1);">Sparse scattered elements. Edges connect when tiles repeat to form a continuous pattern.</p>
+          <p style="font-size:0.75rem; margin:0;"><span class="badge badge-gray">20% opacity</span> CSS <code>background-repeat</code>, large scrolling surfaces, desktop wallpaper</p>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- === COLOR PALETTE REFERENCE === -->
+    <h3 class="mb-4 mt-8">Color palette reference</h3>
+    <div class="card mb-8" style="padding:0; overflow:hidden;">
+      <div style="background:var(--blueprint-white); padding:var(--sp-4);">
+        <img src="assets/colors/color-palette.png" alt="Color palette" style="width:100%; height:auto; display:block;">
+      </div>
+      <div style="padding:var(--sp-4);">
+        <div style="font-weight:700; font-size:0.95rem; margin-bottom:var(--sp-1);">color-palette.svg / .png / .pdf</div>
+        <p style="font-size:0.75rem; margin:0; color:var(--scaffold-gray);">Visual reference of all 11 brand colors as labeled swatches grouped by category. For presentations, style guide pages, and onboarding docs. Not for production &mdash; use CSS tokens instead. Print reference: <code>cmyk-reference.md</code></p>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- === DECISION TABLE === -->
+    <h3 class="mb-4 mt-8">Decision table &mdash; which asset to use</h3>
+    <p class="text-muted mb-4">Quick lookup: for each context, the recommended logo variant, illustration, and opacity.</p>
+
+    <div class="table-wrapper mb-8">
+      <table>
+        <thead>
+          <tr>
+            <th>Context</th>
+            <th>Logo variant</th>
+            <th>Illustration</th>
+            <th>Opacity</th>
+            <th>Scale</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Website hero (dark)</strong></td>
+            <td><code>logo-amber-on-dark</code> in navbar</td>
+            <td><code>hero-banner-dark</code></td>
+            <td>30%</td>
+            <td>SVG or 2x PNG</td>
+          </tr>
+          <tr>
+            <td><strong>Website hero (light)</strong></td>
+            <td><code>logo-dark-on-light</code> in navbar</td>
+            <td><code>hero-banner-transparent</code></td>
+            <td>20%</td>
+            <td>SVG or 2x PNG</td>
+          </tr>
+          <tr>
+            <td><strong>A4 report header</strong></td>
+            <td><code>logo-amber-on-dark</code> (left)</td>
+            <td><code>report-header-dark</code> (right)</td>
+            <td>35%</td>
+            <td>2x or 3x PNG</td>
+          </tr>
+          <tr>
+            <td><strong>A4 letter header</strong></td>
+            <td><code>logo-amber-on-dark</code> (left)</td>
+            <td><code>letter-header-dark</code> (right)</td>
+            <td>30%</td>
+            <td>2x or 3x PNG</td>
+          </tr>
+          <tr>
+            <td><strong>GitHub profile / avatar</strong></td>
+            <td><code>symbol-transparent</code></td>
+            <td>&mdash;</td>
+            <td>&mdash;</td>
+            <td>1x PNG (&ge;200px)</td>
+          </tr>
+          <tr>
+            <td><strong>GitHub social preview</strong></td>
+            <td><code>logo-amber-on-dark</code></td>
+            <td><code>hero-banner-dark</code></td>
+            <td>40%</td>
+            <td>1280&times;640px composite</td>
+          </tr>
+          <tr>
+            <td><strong>Favicon / browser tab</strong></td>
+            <td><code>symbol-transparent</code></td>
+            <td>&mdash;</td>
+            <td>&mdash;</td>
+            <td>SVG or 1x PNG</td>
+          </tr>
+          <tr>
+            <td><strong>Email header</strong></td>
+            <td><code>logo-amber-on-dark</code></td>
+            <td>&mdash; (keep light)</td>
+            <td>&mdash;</td>
+            <td>2x PNG</td>
+          </tr>
+          <tr>
+            <td><strong>Desktop app titlebar</strong></td>
+            <td><code>logo-amber-on-dark</code> (small)</td>
+            <td>&mdash;</td>
+            <td>&mdash;</td>
+            <td>SVG</td>
+          </tr>
+          <tr>
+            <td><strong>Desktop app splash</strong></td>
+            <td><code>logo-amber-on-dark</code> (centered)</td>
+            <td><code>background-pattern-dark</code></td>
+            <td>25%</td>
+            <td>SVG</td>
+          </tr>
+          <tr>
+            <td><strong>Presentation slide bg</strong></td>
+            <td><code>logo-amber-on-dark</code> (corner)</td>
+            <td><code>background-pattern-dark</code></td>
+            <td>20%</td>
+            <td>3x PNG</td>
+          </tr>
+          <tr>
+            <td><strong>Repeating web background</strong></td>
+            <td>&mdash;</td>
+            <td><code>background-pattern-tileable-dark</code></td>
+            <td>20%</td>
+            <td>SVG (CSS repeat)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- File structure reference -->
+    <h4 class="mb-4">File structure</h4>
+    <pre><code><span class="comment">/* Asset directory layout */</span>
+
+brandbook/assets/
+├── logo/
+│   ├── svg/          <span class="comment">← Master vector sources (7 files)</span>
+│   ├── png/          <span class="comment">← Raster exports: 1x / 2x / 3x (21 files)</span>
+│   └── pdf/          <span class="comment">← Print-ready vector (7 files)</span>
+├── illustrations/
+│   ├── svg/          <span class="comment">← Master vector sources (6 files)</span>
+│   └── png/          <span class="comment">← Raster exports: 1x / 2x / 3x (18 files)</span>
+├── colors/
+│   ├── color-palette.svg / .png / .pdf
+│   └── cmyk-reference.md
+└── export_assets.py  <span class="comment">← Regenerate all PNG/PDF from SVG masters</span></code></pre>
+
+  </section>
+
+
+  <!-- ================================================================
+       FOOTER
+       ================================================================ -->
+  <footer style="text-align:center; padding:var(--sp-12) 0; color:var(--scaffold-gray); font-size:0.8rem;">
+    <p>OpenAEC Foundation &mdash; Style Guide v0.2 &mdash; March 2026</p>
+    <p class="mt-2">Build free. Build together.</p>
+  </footer>
+
+</div><!-- /.container -->
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <!--
+    OpenAEC Tileable Dark Background Pattern
+    Usage: background-image: url('background-pattern-tileable-dark.svg');
+           background-repeat: repeat;
+           background-size: 300px 300px;
+    Edges connect seamlessly when tiled.
+  -->
+  <rect width="300" height="300" fill="#2A2A32"/>
+
+  <!-- Blueprint grid (always tiles seamlessly at 30px intervals) -->
+  <defs>
+    <pattern id="tileGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#FAFAF9" stroke-width="0.4" opacity="0.08"/>
+    </pattern>
+  </defs>
+  <rect width="300" height="300" fill="url(#tileGrid)"/>
+
+  <!-- Isometric block — center -->
+  <g transform="translate(150,130)" opacity="0.10">
+    <polygon points="0,-35 28,-18 28,12 0,30 -28,12 -28,-18" fill="none" stroke="#D97706" stroke-width="1.8"/>
+    <line x1="0" y1="-35" x2="0" y2="0" stroke="#D97706" stroke-width="1"/>
+    <line x1="28" y1="-18" x2="0" y2="0" stroke="#D97706" stroke-width="1"/>
+    <line x1="-28" y1="-18" x2="0" y2="0" stroke="#D97706" stroke-width="1"/>
+    <polygon points="0,-35 28,-18 0,0 -28,-18" fill="#D97706" opacity="0.12"/>
+    <rect x="-16" y="-12" width="5" height="4" fill="#D97706" fill-opacity="0.2" stroke="#D97706" stroke-width="0.5"/>
+    <rect x="-7" y="-12" width="5" height="4" fill="#D97706" fill-opacity="0.2" stroke="#D97706" stroke-width="0.5"/>
+  </g>
+
+  <!-- Small block — offset -->
+  <g transform="translate(60,200)" opacity="0.08">
+    <polygon points="0,-18 18,-8 18,8 0,18 -18,8 -18,-8" fill="none" stroke="#F59E0B" stroke-width="1.2"/>
+    <polygon points="0,-18 18,-8 0,0 -18,-8" fill="#F59E0B" opacity="0.1"/>
+  </g>
+
+  <!-- Code brackets — subtle -->
+  <g transform="translate(210,60)" font-family="'JetBrains Mono', monospace" font-size="28" fill="#D97706" opacity="0.06">
+    <text x="0" y="0">{</text>
+    <text x="38" y="0">}</text>
+  </g>
+
+  <!-- Code lines -->
+  <g transform="translate(222,46)" stroke="#FAFAF9" stroke-width="1" opacity="0.04">
+    <line x1="0" y1="0" x2="18" y2="0"/>
+    <line x1="3" y1="6" x2="14" y2="6"/>
+    <line x1="0" y1="12" x2="16" y2="12"/>
+  </g>
+
+  <!-- Network nodes + connections -->
+  <g opacity="0.12">
+    <circle cx="150" cy="130" r="2.5" fill="#D97706"/>
+    <circle cx="60" cy="200" r="2" fill="#F59E0B"/>
+    <circle cx="230" cy="70" r="2" fill="#D97706"/>
+    <circle cx="250" cy="240" r="2" fill="#F59E0B"/>
+
+    <line x1="152" y1="132" x2="63" y2="198" stroke="#D97706" stroke-width="0.6" stroke-dasharray="3,3"/>
+    <line x1="152" y1="128" x2="228" y2="72" stroke="#D97706" stroke-width="0.6" stroke-dasharray="3,3"/>
+    <line x1="153" y1="133" x2="248" y2="238" stroke="#F59E0B" stroke-width="0.6" stroke-dasharray="3,3"/>
+  </g>
+
+  <!-- I-profile — small accent -->
+  <g transform="translate(250,240)" opacity="0.07">
+    <path d="M-10,0 L10,0 L10,2 L4,2 L4,16 L10,16 L10,18 L-10,18 L-10,16 L-4,16 L-4,2 L-10,2 Z" fill="#F59E0B" fill-opacity="0.15" stroke="#F59E0B" stroke-width="1"/>
+  </g>
+</svg>

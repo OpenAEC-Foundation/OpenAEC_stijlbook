@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" width="800" height="520">
+  <title>OpenAEC Foundation — Color Palette</title>
+  <style>
+    text { font-family: 'Inter', system-ui, sans-serif; }
+    .label { font-size: 13px; font-weight: 700; }
+    .hex { font-size: 11px; font-family: 'JetBrains Mono', monospace; opacity: 0.7; }
+    .section { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; fill: #A1A1AA; }
+  </style>
+
+  <rect width="800" height="520" fill="#FAFAF9"/>
+
+  <!-- Title -->
+  <text x="30" y="36" font-size="20" font-weight="700" font-family="'Space Grotesk', system-ui, sans-serif" fill="#36363E">OpenAEC Color Palette</text>
+
+  <!-- PRIMARY -->
+  <text x="30" y="75" class="section">Primary</text>
+
+  <rect x="30" y="85" width="160" height="100" rx="8" fill="#D97706"/>
+  <text x="45" y="160" class="label" fill="#fff">Construction Amber</text>
+  <text x="45" y="175" class="hex" fill="#fff">#D97706</text>
+
+  <rect x="210" y="85" width="160" height="100" rx="8" fill="#36363E"/>
+  <text x="225" y="160" class="label" fill="#fff">Deep Forge</text>
+  <text x="225" y="175" class="hex" fill="#fff">#36363E</text>
+
+  <!-- SECONDARY -->
+  <text x="30" y="220" class="section">Secondary</text>
+
+  <rect x="30" y="230" width="160" height="100" rx="8" fill="#EA580C"/>
+  <text x="45" y="305" class="label" fill="#fff">Signal Orange</text>
+  <text x="45" y="320" class="hex" fill="#fff">#EA580C</text>
+
+  <rect x="210" y="230" width="160" height="100" rx="8" fill="#F59E0B"/>
+  <text x="225" y="305" class="label" fill="#fff">Warm Gold</text>
+  <text x="225" y="320" class="hex" fill="#fff">#F59E0B</text>
+
+  <rect x="390" y="230" width="160" height="100" rx="8" fill="#A1A1AA"/>
+  <text x="405" y="305" class="label" fill="#fff">Scaffold Gray</text>
+  <text x="405" y="320" class="hex" fill="#fff">#A1A1AA</text>
+
+  <!-- BACKGROUNDS -->
+  <text x="30" y="365" class="section">Backgrounds</text>
+
+  <rect x="30" y="375" width="160" height="100" rx="8" fill="#FAFAF9" stroke="#E7E5E4" stroke-width="1"/>
+  <text x="45" y="450" class="label" fill="#36363E">Blueprint White</text>
+  <text x="45" y="465" class="hex" fill="#57534E">#FAFAF9</text>
+
+  <rect x="210" y="375" width="160" height="100" rx="8" fill="#F5F5F4" stroke="#E7E5E4" stroke-width="1"/>
+  <text x="225" y="450" class="label" fill="#36363E">Concrete</text>
+  <text x="225" y="465" class="hex" fill="#57534E">#F5F5F4</text>
+
+  <rect x="390" y="375" width="160" height="100" rx="8" fill="#2A2A32"/>
+  <text x="405" y="450" class="label" fill="#fff">Night Build</text>
+  <text x="405" y="465" class="hex" fill="#fff">#2A2A32</text>
+
+  <!-- SEMANTIC -->
+  <text x="580" y="75" class="section">Semantic</text>
+
+  <rect x="580" y="85" width="90" height="70" rx="8" fill="#16A34A"/>
+  <text x="590" y="135" class="label" fill="#fff" font-size="11">Success</text>
+  <text x="590" y="148" class="hex" fill="#fff" font-size="9">#16A34A</text>
+
+  <rect x="690" y="85" width="90" height="70" rx="8" fill="#DC2626"/>
+  <text x="700" y="135" class="label" fill="#fff" font-size="11">Error</text>
+  <text x="700" y="148" class="hex" fill="#fff" font-size="9">#DC2626</text>
+
+  <rect x="580" y="170" width="90" height="70" rx="8" fill="#F59E0B"/>
+  <text x="590" y="220" class="label" fill="#fff" font-size="11">Warning</text>
+  <text x="590" y="233" class="hex" fill="#fff" font-size="9">#F59E0B</text>
+
+  <rect x="690" y="170" width="90" height="70" rx="8" fill="#2563EB"/>
+  <text x="700" y="220" class="label" fill="#fff" font-size="11">Info</text>
+  <text x="700" y="233" class="hex" fill="#fff" font-size="9">#2563EB</text>
+
+  <!-- GRADIENT -->
+  <text x="580" y="280" class="section">Accent gradient</text>
+  <defs>
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="40%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#EA580C"/>
+    </linearGradient>
+  </defs>
+  <rect x="580" y="290" width="200" height="30" rx="6" fill="url(#amberGrad)"/>
+  <text x="590" y="336" class="hex" fill="#57534E" font-size="9">#D97706 → #F59E0B → #EA580C</text>
+</svg>

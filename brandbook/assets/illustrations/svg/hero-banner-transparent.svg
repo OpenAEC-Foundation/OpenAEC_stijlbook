@@ -1,0 +1,127 @@
+<svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <!--
+    OpenAEC Hero Banner — Transparent background
+    Overlay on any dark background (#2A2A32 or #36363E recommended)
+    Use with opacity: 0.30 on the <img> or CSS
+  -->
+
+  <!-- Blueprint grid -->
+  <defs>
+    <pattern id="heroGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#FAFAF9" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="400" fill="url(#heroGrid)"/>
+
+  <!-- LEFT CLUSTER: Isometric buildings -->
+  <g transform="translate(120,180)">
+    <polygon points="0,-100 50,-75 50,25 0,50 -50,25 -50,-75" fill="none" stroke="#D97706" stroke-width="2.5"/>
+    <line x1="0" y1="-100" x2="0" y2="0" stroke="#D97706" stroke-width="1.5"/>
+    <line x1="50" y1="-75" x2="0" y2="0" stroke="#D97706" stroke-width="1.5"/>
+    <line x1="-50" y1="-75" x2="0" y2="0" stroke="#D97706" stroke-width="1.5"/>
+    <polygon points="0,-100 50,-75 0,0 -50,-75" fill="#D97706" opacity="0.15"/>
+    <rect x="-35" y="-55" width="8" height="6" fill="#D97706" fill-opacity="0.25" stroke="#D97706" stroke-width="0.8"/>
+    <rect x="-22" y="-55" width="8" height="6" fill="#D97706" fill-opacity="0.25" stroke="#D97706" stroke-width="0.8"/>
+    <rect x="-35" y="-42" width="8" height="6" fill="#D97706" fill-opacity="0.25" stroke="#D97706" stroke-width="0.8"/>
+    <rect x="-22" y="-42" width="8" height="6" fill="#D97706" fill-opacity="0.25" stroke="#D97706" stroke-width="0.8"/>
+    <rect x="-35" y="-29" width="8" height="6" fill="#D97706" fill-opacity="0.25" stroke="#D97706" stroke-width="0.8"/>
+    <rect x="-22" y="-29" width="8" height="6" fill="#D97706" fill-opacity="0.25" stroke="#D97706" stroke-width="0.8"/>
+    <rect x="-35" y="-16" width="8" height="6" fill="#D97706" fill-opacity="0.25" stroke="#D97706" stroke-width="0.8"/>
+    <rect x="-22" y="-16" width="8" height="6" fill="#D97706" fill-opacity="0.25" stroke="#D97706" stroke-width="0.8"/>
+  </g>
+
+  <g transform="translate(210,220)">
+    <polygon points="0,-60 40,-40 40,20 0,40 -40,20 -40,-40" fill="none" stroke="#F59E0B" stroke-width="2.2"/>
+    <line x1="0" y1="-60" x2="0" y2="0" stroke="#F59E0B" stroke-width="1.5"/>
+    <line x1="40" y1="-40" x2="0" y2="0" stroke="#F59E0B" stroke-width="1.5"/>
+    <line x1="-40" y1="-40" x2="0" y2="0" stroke="#F59E0B" stroke-width="1.5"/>
+    <polygon points="0,-60 40,-40 0,0 -40,-40" fill="#F59E0B" opacity="0.12"/>
+    <rect x="-25" y="-25" width="7" height="5" fill="#F59E0B" fill-opacity="0.2" stroke="#F59E0B" stroke-width="0.8"/>
+    <rect x="-14" y="-25" width="7" height="5" fill="#F59E0B" fill-opacity="0.2" stroke="#F59E0B" stroke-width="0.8"/>
+    <rect x="-25" y="-14" width="7" height="5" fill="#F59E0B" fill-opacity="0.2" stroke="#F59E0B" stroke-width="0.8"/>
+    <rect x="-14" y="-14" width="7" height="5" fill="#F59E0B" fill-opacity="0.2" stroke="#F59E0B" stroke-width="0.8"/>
+  </g>
+
+  <g transform="translate(60,260)">
+    <polygon points="0,-30 30,-15 30,15 0,30 -30,15 -30,-15" fill="none" stroke="#D97706" stroke-width="1.8"/>
+    <polygon points="0,-30 30,-15 0,0 -30,-15" fill="#D97706" opacity="0.1"/>
+  </g>
+
+  <!-- CENTER-LEFT: Code brackets + code -->
+  <g transform="translate(350,100)" font-family="'JetBrains Mono', monospace" font-size="80" fill="#D97706">
+    <text x="0" y="0" opacity="0.7">{</text>
+    <text x="140" y="0" opacity="0.7">}</text>
+  </g>
+
+  <g transform="translate(400,75)" stroke="#FAFAF9" stroke-width="2.2" opacity="0.6">
+    <line x1="0" y1="0" x2="55" y2="0"/>
+    <line x1="8" y1="12" x2="42" y2="12"/>
+    <line x1="8" y1="24" x2="60" y2="24"/>
+    <line x1="8" y1="36" x2="35" y2="36"/>
+    <line x1="0" y1="48" x2="50" y2="48"/>
+  </g>
+
+  <!-- CENTER-RIGHT: BIM cube -->
+  <g transform="translate(650,120)">
+    <rect x="18" y="-18" width="70" height="70" fill="none" stroke="#FAFAF9" stroke-width="1.2" opacity="0.45"/>
+    <rect x="0" y="0" width="70" height="70" fill="none" stroke="#D97706" stroke-width="2.5"/>
+    <line x1="0" y1="0" x2="18" y2="-18" stroke="#FAFAF9" stroke-width="1.2" opacity="0.6"/>
+    <line x1="70" y1="0" x2="88" y2="-18" stroke="#FAFAF9" stroke-width="1.2" opacity="0.6"/>
+    <line x1="70" y1="70" x2="88" y2="52" stroke="#FAFAF9" stroke-width="1.2" opacity="0.6"/>
+    <line x1="0" y1="70" x2="18" y2="52" stroke="#FAFAF9" stroke-width="1.2" opacity="0.6"/>
+    <polygon points="0,0 18,-18 88,-18 70,0" fill="#D97706" opacity="0.12"/>
+    <text x="14" y="45" font-family="'JetBrains Mono', monospace" font-size="20" fill="#D97706" font-weight="bold">BIM</text>
+  </g>
+
+  <!-- RIGHT CLUSTER: Structural elements -->
+  <g transform="translate(850,130)">
+    <path d="M-25,0 L25,0 L25,5 L10,5 L10,45 L25,45 L25,50 L-25,50 L-25,45 L-10,45 L-10,5 L-25,5 Z" fill="#F59E0B" fill-opacity="0.2" stroke="#F59E0B" stroke-width="2"/>
+  </g>
+
+  <g transform="translate(920,160) rotate(90)">
+    <path d="M-18,0 L18,0 L18,4 L7,4 L7,36 L18,36 L18,40 L-18,40 L-18,36 L-7,36 L-7,4 L-18,4 Z" fill="#D97706" fill-opacity="0.15" stroke="#D97706" stroke-width="1.5"/>
+  </g>
+
+  <g transform="translate(960,110)">
+    <polygon points="0,-50 60,0 -60,0" fill="none" stroke="#F59E0B" stroke-width="2"/>
+    <line x1="0" y1="-50" x2="0" y2="0" stroke="#F59E0B" stroke-width="1.2"/>
+    <line x1="-30" y1="-25" x2="30" y2="-25" stroke="#F59E0B" stroke-width="1"/>
+    <polygon points="0,-50 60,0 -60,0" fill="#F59E0B" opacity="0.06"/>
+  </g>
+
+  <!-- FAR RIGHT: More isometric blocks -->
+  <g transform="translate(1080,200)">
+    <polygon points="0,-45 35,-25 35,15 0,35 -35,15 -35,-25" fill="none" stroke="#D97706" stroke-width="2"/>
+    <line x1="0" y1="-45" x2="0" y2="0" stroke="#D97706" stroke-width="1.2"/>
+    <line x1="35" y1="-25" x2="0" y2="0" stroke="#D97706" stroke-width="1.2"/>
+    <polygon points="0,-45 35,-25 0,0 -35,-25" fill="#D97706" opacity="0.1"/>
+  </g>
+
+  <g transform="translate(1140,250)">
+    <polygon points="0,-25 20,-12 20,12 0,25 -20,12 -20,-12" fill="none" stroke="#F59E0B" stroke-width="1.5"/>
+    <polygon points="0,-25 20,-12 0,0 -20,-12" fill="#F59E0B" opacity="0.08"/>
+  </g>
+
+  <!-- NETWORK CONNECTIONS -->
+  <circle cx="120" cy="180" r="5" fill="#D97706"/>
+  <circle cx="210" cy="220" r="5" fill="#F59E0B"/>
+  <circle cx="60" cy="260" r="4" fill="#D97706"/>
+  <circle cx="420" cy="120" r="4" fill="#D97706"/>
+  <circle cx="685" cy="155" r="5" fill="#D97706"/>
+  <circle cx="850" cy="155" r="4" fill="#F59E0B"/>
+  <circle cx="960" cy="110" r="4" fill="#F59E0B"/>
+  <circle cx="1080" cy="200" r="4" fill="#D97706"/>
+
+  <line x1="125" y1="182" x2="205" y2="218" stroke="#D97706" stroke-width="1" stroke-dasharray="5,4"/>
+  <line x1="65" y1="258" x2="115" y2="185" stroke="#D97706" stroke-width="1" stroke-dasharray="5,4"/>
+  <line x1="215" y1="218" x2="416" y2="122" stroke="#F59E0B" stroke-width="1" stroke-dasharray="5,4"/>
+  <line x1="424" y1="120" x2="680" y2="155" stroke="#D97706" stroke-width="1" stroke-dasharray="5,4"/>
+  <line x1="690" y1="155" x2="845" y2="155" stroke="#F59E0B" stroke-width="1" stroke-dasharray="5,4"/>
+  <line x1="855" y1="153" x2="955" y2="113" stroke="#F59E0B" stroke-width="1" stroke-dasharray="5,4"/>
+  <line x1="965" y1="112" x2="1075" y2="198" stroke="#D97706" stroke-width="1" stroke-dasharray="5,4"/>
+
+  <!-- SKYLINE at bottom -->
+  <g transform="translate(0,310)" opacity="0.4">
+    <path d="M0,90 L0,60 L20,60 L20,40 L35,40 L35,55 L50,55 L50,25 L55,25 L55,15 L60,15 L65,15 L65,25 L80,25 L80,45 L100,45 L100,20 L108,20 L108,10 L118,10 L118,5 L128,5 L128,10 L138,10 L138,20 L145,20 L145,45 L165,45 L165,30 L180,30 L180,45 L200,45 L200,15 L205,15 L205,8 L210,8 L210,15 L220,15 L220,45 L240,45 L240,55 L260,55 L260,40 L275,40 L275,55 L300,55 L300,35 L310,30 L320,35 L320,55 L345,55 L345,45 L365,45 L365,35 L380,35 L380,45 L400,45 L400,25 L410,25 L410,15 L420,15 L420,25 L435,25 L435,45 L460,45 L460,55 L485,55 L485,40 L500,40 L500,55 L525,55 L525,30 L535,30 L535,20 L545,20 L545,30 L560,30 L560,50 L580,50 L580,35 L600,35 L600,20 L610,20 L610,10 L620,10 L620,20 L630,20 L630,35 L650,35 L650,50 L680,50 L680,40 L700,40 L700,55 L730,55 L730,35 L740,35 L740,25 L750,25 L750,35 L765,35 L765,55 L790,55 L790,45 L810,45 L810,30 L820,30 L820,20 L830,20 L830,30 L845,30 L845,45 L870,45 L870,55 L900,55 L900,40 L920,40 L920,25 L930,25 L930,15 L940,15 L940,25 L955,25 L955,40 L980,40 L980,55 L1010,55 L1010,45 L1030,45 L1030,30 L1045,30 L1045,45 L1070,45 L1070,55 L1100,55 L1100,40 L1120,40 L1120,50 L1150,50 L1150,55 L1200,55 L1200,90 Z" fill="#FAFAF9"/>
+  </g>
+</svg>
