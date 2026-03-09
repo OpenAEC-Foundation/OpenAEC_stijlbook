@@ -990,6 +990,1426 @@
       align-items: center;
       gap: var(--sp-4);
     }
+
+    /* ================================================================
+       LAYOUT PREVIEWS
+       ================================================================ */
+    .layout-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--sp-6);
+    }
+    @media (max-width: 768px) {
+      .layout-grid { grid-template-columns: 1fr; }
+    }
+
+    .layout-card {
+      border: 1px solid #E7E5E4;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: white;
+      transition: box-shadow 0.15s, border-color 0.15s;
+    }
+    .layout-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: #D6D3D1;
+    }
+
+    .layout-card-header {
+      padding: var(--sp-4) var(--sp-5);
+      border-bottom: 1px solid #E7E5E4;
+    }
+    .layout-card-header h4 {
+      font-size: 1rem;
+      margin-bottom: 2px;
+    }
+    .layout-card-header p {
+      font-size: 0.75rem;
+      color: var(--scaffold-gray);
+      margin: 0;
+    }
+
+    .layout-preview {
+      padding: var(--sp-4);
+      background: var(--concrete);
+      min-height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Miniature frame: simulates a browser/app window */
+    .mini-frame {
+      width: 100%;
+      max-width: 420px;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      font-size: 0;
+      line-height: 0;
+    }
+    .mini-frame-bar {
+      background: #E7E5E4;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      gap: 4px;
+    }
+    .mini-frame-bar .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #D6D3D1;
+    }
+    .mini-frame-bar .url-bar {
+      flex: 1;
+      height: 10px;
+      background: white;
+      border-radius: 3px;
+      margin-left: 8px;
+    }
+    .mini-frame-content {
+      background: var(--blueprint-white);
+      position: relative;
+    }
+
+    /* Desktop frame variant */
+    .mini-frame-desktop .mini-frame-bar {
+      background: var(--deep-forge);
+      height: 16px;
+    }
+    .mini-frame-desktop .mini-frame-bar .dot { background: #57534E; }
+    .mini-frame-desktop .mini-frame-bar .dot:first-child { background: var(--error); }
+    .mini-frame-desktop .mini-frame-bar .dot:nth-child(2) { background: var(--warm-gold); }
+    .mini-frame-desktop .mini-frame-bar .dot:nth-child(3) { background: var(--success); }
+
+    /* Miniature building blocks */
+    .m-navbar {
+      background: var(--deep-forge);
+      height: 18px;
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      justify-content: space-between;
+    }
+    .m-navbar .m-logo {
+      font-family: var(--font-heading);
+      font-size: 6px;
+      font-weight: 700;
+      color: white;
+      line-height: 1;
+    }
+    .m-navbar .m-logo span { color: var(--amber); }
+    .m-navbar .m-links {
+      display: flex;
+      gap: 4px;
+    }
+    .m-navbar .m-link-dot {
+      width: 12px;
+      height: 3px;
+      background: #57534E;
+      border-radius: 1px;
+    }
+    .m-navbar .m-cta {
+      width: 18px;
+      height: 7px;
+      background: var(--amber);
+      border-radius: 2px;
+    }
+
+    .m-hero {
+      background: var(--night-build);
+      padding: 14px 12px;
+      text-align: center;
+    }
+    .m-hero .m-label {
+      width: 30px;
+      height: 2px;
+      background: var(--warm-gold);
+      border-radius: 1px;
+      margin: 0 auto 4px;
+    }
+    .m-hero .m-heading {
+      font-family: var(--font-heading);
+      font-size: 7px;
+      font-weight: 700;
+      color: white;
+      line-height: 1.2;
+      margin-bottom: 3px;
+    }
+    .m-hero .m-heading span { color: var(--amber); }
+    .m-hero .m-tagline {
+      width: 60%;
+      height: 2px;
+      background: #57534E;
+      border-radius: 1px;
+      margin: 0 auto 6px;
+    }
+    .m-hero .m-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+    }
+    .m-hero .m-btn-primary {
+      width: 24px;
+      height: 7px;
+      background: var(--amber);
+      border-radius: 2px;
+    }
+    .m-hero .m-btn-ghost {
+      width: 24px;
+      height: 7px;
+      border: 1px solid var(--amber);
+      border-radius: 2px;
+    }
+
+    .m-section {
+      padding: 8px 12px;
+    }
+    .m-section-dark {
+      background: var(--deep-forge);
+      padding: 8px 12px;
+    }
+    .m-section-alt {
+      background: var(--concrete);
+      padding: 8px 12px;
+    }
+
+    .m-grid {
+      display: grid;
+      gap: 4px;
+    }
+    .m-grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .m-grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .m-grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+    .m-card {
+      background: white;
+      border: 1px solid #E7E5E4;
+      border-radius: 3px;
+      padding: 4px;
+    }
+    .m-card-dark {
+      background: var(--deep-forge);
+      border: 1px solid #27272A;
+      border-radius: 3px;
+      padding: 4px;
+    }
+
+    .m-line {
+      height: 2px;
+      background: #D6D3D1;
+      border-radius: 1px;
+      margin-bottom: 2px;
+    }
+    .m-line-dark {
+      height: 2px;
+      background: #57534E;
+      border-radius: 1px;
+      margin-bottom: 2px;
+    }
+    .m-line-amber {
+      height: 2px;
+      background: var(--amber);
+      border-radius: 1px;
+      margin-bottom: 2px;
+    }
+    .m-line-short {
+      width: 40%;
+    }
+    .m-line-medium {
+      width: 65%;
+    }
+
+    .m-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .m-sidebar {
+      width: 55px;
+      min-width: 55px;
+      background: var(--concrete);
+      border-right: 1px solid #E7E5E4;
+      padding: 6px 4px;
+      flex-shrink: 0;
+    }
+    .m-sidebar-dark {
+      background: var(--deep-forge);
+      border-right-color: #27272A;
+    }
+
+    .m-sidebar .m-nav-item {
+      height: 5px;
+      background: #D6D3D1;
+      border-radius: 2px;
+      margin-bottom: 3px;
+    }
+    .m-sidebar .m-nav-item.active {
+      background: var(--amber);
+    }
+    .m-sidebar .m-nav-heading {
+      height: 2px;
+      width: 25px;
+      background: #A1A1AA;
+      border-radius: 1px;
+      margin-bottom: 4px;
+      margin-top: 4px;
+    }
+
+    .m-topbar {
+      height: 16px;
+      background: var(--deep-forge);
+      border-bottom: 1px solid #27272A;
+      display: flex;
+      align-items: center;
+      padding: 0 6px;
+      justify-content: space-between;
+    }
+    .m-topbar .m-icon {
+      width: 6px;
+      height: 6px;
+      background: #57534E;
+      border-radius: 2px;
+    }
+    .m-topbar .m-search {
+      width: 50px;
+      height: 7px;
+      background: #27272A;
+      border-radius: 3px;
+    }
+
+    .m-toolbar {
+      height: 12px;
+      background: var(--concrete);
+      border-bottom: 1px solid #E7E5E4;
+      display: flex;
+      align-items: center;
+      padding: 0 4px;
+      gap: 2px;
+    }
+    .m-toolbar .m-tool {
+      width: 8px;
+      height: 8px;
+      background: #E7E5E4;
+      border-radius: 2px;
+    }
+    .m-toolbar .m-tool.active {
+      background: var(--amber);
+    }
+    .m-toolbar .m-sep {
+      width: 1px;
+      height: 8px;
+      background: #E7E5E4;
+      margin: 0 1px;
+    }
+
+    .m-statusbar {
+      height: 10px;
+      background: var(--deep-forge);
+      border-top: 1px solid #27272A;
+      display: flex;
+      align-items: center;
+      padding: 0 6px;
+      gap: 4px;
+    }
+    .m-statusbar .m-status-item {
+      height: 2px;
+      width: 16px;
+      background: #57534E;
+      border-radius: 1px;
+    }
+
+    .m-content {
+      flex: 1;
+      padding: 6px 8px;
+      background: var(--blueprint-white);
+    }
+
+    .m-footer {
+      background: var(--deep-forge);
+      height: 20px;
+      border-top: 2px solid;
+      border-image: linear-gradient(90deg, #D97706 0%, #F59E0B 40%, #EA580C 100%) 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 8px;
+    }
+    .m-footer .m-line-dark {
+      margin: 0;
+      width: 40px;
+    }
+
+    .m-kpi-card {
+      background: white;
+      border: 1px solid #E7E5E4;
+      border-radius: 3px;
+      padding: 4px 5px;
+      text-align: center;
+    }
+    .m-kpi-value {
+      font-family: var(--font-heading);
+      font-size: 8px;
+      font-weight: 700;
+      color: var(--amber);
+      line-height: 1;
+    }
+    .m-kpi-label {
+      height: 2px;
+      width: 60%;
+      background: #D6D3D1;
+      border-radius: 1px;
+      margin: 2px auto 0;
+    }
+
+    .m-table-row {
+      display: flex;
+      gap: 3px;
+      padding: 2px 0;
+      border-bottom: 1px solid #F5F5F4;
+      align-items: center;
+    }
+    .m-table-row:last-child { border-bottom: none; }
+    .m-table-header {
+      background: var(--concrete);
+      border-bottom: 1px solid #E7E5E4;
+      padding: 2px 4px;
+      border-radius: 3px 3px 0 0;
+    }
+    .m-table-header .m-line {
+      background: #57534E;
+      height: 2px;
+      margin: 0;
+    }
+    .m-table-cell {
+      flex: 1;
+      height: 2px;
+      background: #D6D3D1;
+      border-radius: 1px;
+    }
+    .m-table-check {
+      width: 5px;
+      height: 5px;
+      border: 1px solid #D6D3D1;
+      border-radius: 1px;
+      flex-shrink: 0;
+    }
+
+    .m-breadcrumb {
+      display: flex;
+      gap: 2px;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+    .m-breadcrumb .m-crumb {
+      height: 2px;
+      width: 14px;
+      background: #A1A1AA;
+      border-radius: 1px;
+    }
+    .m-breadcrumb .m-crumb-sep {
+      font-size: 4px;
+      color: #A1A1AA;
+      line-height: 1;
+    }
+
+    .m-form-field {
+      margin-bottom: 4px;
+    }
+    .m-form-label {
+      height: 2px;
+      width: 25px;
+      background: var(--deep-forge);
+      border-radius: 1px;
+      margin-bottom: 2px;
+    }
+    .m-form-input {
+      height: 8px;
+      background: white;
+      border: 1px solid #D6D3D1;
+      border-radius: 2px;
+    }
+
+    .m-action-bar {
+      display: flex;
+      justify-content: flex-end;
+      gap: 3px;
+      padding: 4px 0;
+      border-top: 1px solid #E7E5E4;
+      margin-top: 4px;
+    }
+    .m-action-btn {
+      width: 20px;
+      height: 7px;
+      border-radius: 2px;
+    }
+
+    .m-toc {
+      width: 40px;
+      min-width: 40px;
+      border-left: 1px solid #E7E5E4;
+      padding: 6px 4px;
+      flex-shrink: 0;
+    }
+    .m-toc .m-toc-item {
+      height: 2px;
+      background: #D6D3D1;
+      border-radius: 1px;
+      margin-bottom: 3px;
+    }
+    .m-toc .m-toc-item.active {
+      background: var(--amber);
+    }
+    .m-toc .m-toc-heading {
+      height: 2px;
+      width: 24px;
+      background: #A1A1AA;
+      border-radius: 1px;
+      margin-bottom: 4px;
+    }
+
+    /* Modal overlay */
+    .m-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .m-modal {
+      width: 65%;
+      background: white;
+      border-radius: 4px;
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+    .m-modal-header {
+      padding: 4px 6px;
+      border-bottom: 1px solid #E7E5E4;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .m-modal-body {
+      padding: 6px;
+    }
+    .m-modal-footer {
+      padding: 4px 6px;
+      border-top: 1px solid #E7E5E4;
+      display: flex;
+      justify-content: flex-end;
+      gap: 3px;
+    }
+
+    /* Grid demo */
+    .grid-demo {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 4px;
+      margin-bottom: var(--sp-4);
+    }
+    .grid-demo-col {
+      background: var(--amber);
+      opacity: 0.15;
+      height: 32px;
+      border-radius: 3px;
+    }
+    .grid-demo-col.filled {
+      opacity: 0.8;
+    }
+    .grid-demo-span {
+      border-radius: 3px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-code);
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: white;
+    }
+
+    .m-pagination {
+      display: flex;
+      justify-content: center;
+      gap: 2px;
+      padding: 4px 0;
+    }
+    .m-page-btn {
+      width: 7px;
+      height: 7px;
+      border: 1px solid #E7E5E4;
+      border-radius: 2px;
+      background: white;
+    }
+    .m-page-btn.active {
+      background: var(--amber);
+      border-color: var(--amber);
+    }
+
+    .m-inspector {
+      width: 60px;
+      min-width: 60px;
+      background: var(--concrete);
+      border-left: 1px solid #E7E5E4;
+      padding: 4px;
+      flex-shrink: 0;
+    }
+    .m-inspector .m-prop-row {
+      display: flex;
+      gap: 2px;
+      margin-bottom: 2px;
+      align-items: center;
+    }
+    .m-inspector .m-prop-label {
+      width: 16px;
+      height: 2px;
+      background: #A1A1AA;
+      border-radius: 1px;
+      flex-shrink: 0;
+    }
+    .m-inspector .m-prop-value {
+      flex: 1;
+      height: 5px;
+      background: white;
+      border: 1px solid #E7E5E4;
+      border-radius: 1px;
+    }
+    .m-inspector .m-section-head {
+      height: 2px;
+      width: 30px;
+      background: #57534E;
+      border-radius: 1px;
+      margin: 4px 0 3px;
+    }
+
+    .m-canvas-element {
+      width: 36px;
+      height: 28px;
+      border: 2px solid var(--amber);
+      border-radius: 2px;
+      background: rgba(217,119,6,0.08);
+      position: absolute;
+      top: 50%;
+      left: 45%;
+      transform: translate(-50%, -50%);
+    }
+    .m-canvas-element::after {
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      border: 1px dashed var(--amber);
+      border-radius: 3px;
+      opacity: 0.4;
+    }
+
+    .m-settings-nav {
+      width: 44px;
+      min-width: 44px;
+      border-right: 1px solid #E7E5E4;
+      padding: 4px;
+      flex-shrink: 0;
+    }
+    .m-settings-nav .m-nav-item {
+      height: 4px;
+      background: #D6D3D1;
+      border-radius: 2px;
+      margin-bottom: 3px;
+    }
+    .m-settings-nav .m-nav-item.active {
+      border-right: 2px solid var(--amber);
+      background: transparent;
+    }
+
+    .m-team-card {
+      background: white;
+      border: 1px solid #E7E5E4;
+      border-radius: 3px;
+      padding: 4px;
+      text-align: center;
+    }
+    .m-avatar {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #D6D3D1;
+      margin: 0 auto 2px;
+    }
+
+    .m-post-card {
+      background: white;
+      border: 1px solid #E7E5E4;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .m-post-image {
+      height: 18px;
+      background: linear-gradient(135deg, #E7E5E4 0%, #D6D3D1 100%);
+    }
+    .m-post-body {
+      padding: 3px 4px;
+    }
+
+    .layout-ref {
+      font-family: var(--font-code);
+      font-size: 0.65rem;
+      color: var(--scaffold-gray);
+      margin-top: var(--sp-2);
+    }
+
+    /* Clickable layout cards */
+    .layout-card[data-preview] {
+      cursor: pointer;
+    }
+    .layout-card[data-preview] .layout-card-header h4::after {
+      content: " ↗";
+      font-size: 0.75rem;
+      color: var(--scaffold-gray);
+      transition: color 0.15s;
+    }
+    .layout-card[data-preview]:hover .layout-card-header h4::after {
+      color: var(--amber);
+    }
+
+    /* Layout lightbox */
+    .layout-lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+      overflow-y: auto;
+      padding: var(--sp-8) var(--sp-4);
+      animation: fade-in 0.15s ease;
+    }
+    .layout-lightbox.open { display: flex; justify-content: center; align-items: flex-start; }
+    .layout-lightbox-inner {
+      width: 100%;
+      max-width: 1100px;
+      background: white;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+      overflow: hidden;
+      animation: scale-in 0.2s ease;
+    }
+    .layout-lightbox-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--sp-3) var(--sp-5);
+      border-bottom: 1px solid #E7E5E4;
+      background: var(--concrete);
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    .layout-lightbox-bar h3 { font-size: 1rem; margin: 0; }
+    .layout-lightbox-bar .lb-ref {
+      font-family: var(--font-code);
+      font-size: 0.7rem;
+      color: var(--scaffold-gray);
+    }
+    .layout-lightbox-close {
+      width: 32px;
+      height: 32px;
+      border: none;
+      background: transparent;
+      color: var(--scaffold-gray);
+      font-size: 1.25rem;
+      cursor: pointer;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.1s;
+    }
+    .layout-lightbox-close:hover { background: #E7E5E4; color: var(--deep-forge); }
+    .layout-lightbox-body {
+      overflow: hidden;
+    }
+
+    /* Full-size preview components */
+    .fp-navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 24px;
+      background: var(--deep-forge);
+      border-bottom: 1px solid #27272A;
+    }
+    .fp-brand {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: white;
+      text-decoration: none;
+    }
+    .fp-brand span { color: var(--amber); }
+    .fp-nav-links { display: flex; gap: 20px; align-items: center; }
+    .fp-nav-link {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--scaffold-gray);
+      text-decoration: none;
+    }
+    .fp-nav-link.active { color: var(--amber); }
+
+    .fp-hero {
+      background: var(--night-build);
+      padding: 48px 24px;
+      text-align: center;
+    }
+    .fp-section-label {
+      font-family: var(--font-code);
+      font-weight: 500;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--warm-gold);
+      margin-bottom: 8px;
+    }
+    .fp-hero h1 {
+      font-size: 2rem;
+      color: white;
+      margin-bottom: 8px;
+    }
+    .fp-hero h1 span { color: var(--amber); }
+    .fp-hero .fp-tagline {
+      font-size: 0.9rem;
+      color: var(--scaffold-gray);
+      margin-bottom: 20px;
+      max-width: 45ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .fp-btn-row { display: flex; gap: 8px; justify-content: center; }
+
+    .fp-section { padding: 32px 24px; }
+    .fp-section-dark { padding: 32px 24px; background: var(--deep-forge); }
+    .fp-section-alt { padding: 32px 24px; background: var(--concrete); }
+    .fp-section-max { max-width: 960px; margin: 0 auto; }
+
+    .fp-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .fp-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+    .fp-feature-card { text-align: center; padding: 16px; }
+    .fp-feature-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(217,119,6,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 8px;
+      color: var(--amber);
+      font-size: 0.9rem;
+    }
+    .fp-feature-card h4 { font-size: 0.85rem; margin-bottom: 4px; }
+    .fp-feature-card p { font-size: 0.75rem; color: var(--scaffold-gray); margin: 0; max-width: 30ch; margin: 0 auto; }
+
+    .fp-stat { text-align: center; }
+    .fp-stat-value {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.75rem;
+      color: var(--amber);
+      line-height: 1;
+    }
+    .fp-stat-label {
+      font-size: 0.7rem;
+      color: var(--scaffold-gray);
+      margin-top: 4px;
+    }
+
+    .fp-cta-section {
+      background: var(--night-build);
+      padding: 40px 24px;
+      text-align: center;
+    }
+    .fp-cta-section h2 { font-size: 1.4rem; color: white; margin-bottom: 12px; }
+
+    .fp-footer {
+      background: var(--deep-forge);
+      border-top: 3px solid;
+      border-image: linear-gradient(90deg, #D97706 0%, #F59E0B 40%, #EA580C 100%) 1;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .fp-footer-brand { font-family: var(--font-heading); font-weight: 700; font-size: 0.8rem; color: white; }
+    .fp-footer-brand span { color: var(--amber); }
+    .fp-footer-links { display: flex; gap: 16px; }
+    .fp-footer-link { font-size: 0.7rem; color: var(--scaffold-gray); text-decoration: none; }
+    .fp-footer-legal { font-size: 0.65rem; color: #57534E; }
+
+    /* Docs preview */
+    .fp-docs-layout { display: flex; min-height: 400px; }
+    .fp-sidebar {
+      width: 200px;
+      background: var(--blueprint-white);
+      border-right: 1px solid #E7E5E4;
+      padding: 16px 12px;
+      flex-shrink: 0;
+    }
+    .fp-sidebar-heading {
+      font-family: var(--font-code);
+      font-size: 0.55rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--scaffold-gray);
+      margin-bottom: 8px;
+      margin-top: 12px;
+    }
+    .fp-sidebar-heading:first-child { margin-top: 0; }
+    .fp-sidebar-link {
+      display: block;
+      padding: 4px 8px;
+      font-size: 0.75rem;
+      color: #57534E;
+      text-decoration: none;
+      border-radius: 3px;
+      margin-bottom: 1px;
+    }
+    .fp-sidebar-link:hover { background: #E7E5E4; }
+    .fp-sidebar-link.active { background: var(--amber); color: white; }
+
+    .fp-doc-content {
+      flex: 1;
+      padding: 20px 28px;
+      max-width: 640px;
+    }
+    .fp-breadcrumb {
+      font-size: 0.7rem;
+      color: var(--scaffold-gray);
+      margin-bottom: 12px;
+    }
+    .fp-breadcrumb strong { color: var(--deep-forge); }
+    .fp-doc-content h1 { font-size: 1.6rem; margin-bottom: 8px; }
+    .fp-doc-content h2 {
+      font-size: 1.2rem;
+      margin-top: 24px;
+      padding-top: 12px;
+      border-top: 1px solid #E7E5E4;
+      margin-bottom: 8px;
+    }
+    .fp-doc-content p { font-size: 0.8rem; color: #57534E; line-height: 1.7; }
+
+    .fp-toc {
+      width: 160px;
+      border-left: 1px solid #E7E5E4;
+      padding: 16px 12px;
+      flex-shrink: 0;
+    }
+    .fp-toc-heading {
+      font-family: var(--font-code);
+      font-size: 0.55rem;
+      text-transform: uppercase;
+      color: var(--scaffold-gray);
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    .fp-toc-link {
+      display: block;
+      font-size: 0.7rem;
+      color: #57534E;
+      text-decoration: none;
+      padding: 2px 0;
+      line-height: 1.6;
+    }
+    .fp-toc-link.active { color: var(--amber); font-weight: 500; border-left: 2px solid var(--amber); padding-left: 8px; margin-left: -1px; }
+
+    /* Blog preview */
+    .fp-featured-post {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 0;
+      border: 1px solid #E7E5E4;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .fp-featured-image {
+      background: linear-gradient(135deg, #E7E5E4 0%, #D6D3D1 50%, #E7E5E4 100%);
+      min-height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--scaffold-gray);
+      font-size: 0.7rem;
+    }
+    .fp-featured-content { padding: 20px; }
+    .fp-featured-content h3 { font-size: 1.1rem; margin-bottom: 6px; }
+    .fp-featured-content p { font-size: 0.8rem; color: var(--scaffold-gray); margin-bottom: 8px; }
+    .fp-post-meta { font-size: 0.65rem; color: #A1A1AA; }
+
+    .fp-post-card {
+      border: 1px solid #E7E5E4;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: box-shadow 0.15s;
+    }
+    .fp-post-card:hover { box-shadow: var(--shadow-md); }
+    .fp-post-image {
+      height: 100px;
+      background: linear-gradient(135deg, #E7E5E4 0%, #D6D3D1 100%);
+    }
+    .fp-post-body { padding: 12px; }
+    .fp-post-body h4 { font-size: 0.85rem; margin-bottom: 4px; }
+    .fp-post-body p { font-size: 0.72rem; color: var(--scaffold-gray); margin-bottom: 6px; line-height: 1.5; }
+
+    .fp-pagination {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      margin-top: 20px;
+    }
+    .fp-page-btn {
+      width: 28px;
+      height: 28px;
+      border: 1px solid #E7E5E4;
+      border-radius: var(--radius-sm);
+      background: white;
+      font-size: 0.7rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #57534E;
+    }
+    .fp-page-btn.active { background: var(--amber); color: white; border-color: var(--amber); }
+
+    /* Team preview */
+    .fp-team-card {
+      background: white;
+      border: 1px solid #E7E5E4;
+      border-radius: var(--radius-md);
+      padding: 16px;
+      text-align: center;
+    }
+    .fp-team-card:hover { box-shadow: var(--shadow-md); }
+    .fp-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #D6D3D1;
+      margin: 0 auto 8px;
+    }
+    .fp-team-card h4 { font-size: 0.85rem; margin-bottom: 2px; }
+    .fp-team-card p { font-size: 0.72rem; color: var(--scaffold-gray); margin: 0; }
+
+    /* Filter tags */
+    .fp-tag-row { display: flex; gap: 6px; margin-top: 8px; }
+    .fp-filter-tag {
+      font-size: 0.65rem;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      border: 1px solid #E7E5E4;
+      color: #57534E;
+      background: white;
+    }
+    .fp-filter-tag.active { background: var(--amber); color: white; border-color: var(--amber); }
+
+    @keyframes scale-in {
+      from { opacity: 0; transform: scale(0.97); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* ================================================================
+       FULL-PREVIEW: APP SHELL (web tools + desktop tools)
+       ================================================================ */
+    .fp-app-shell { display: flex; flex-direction: column; min-height: 480px; }
+    .fp-topbar {
+      height: 44px;
+      background: var(--deep-forge);
+      border-bottom: 1px solid #27272A;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .fp-topbar-hamburger {
+      width: 20px; height: 14px;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .fp-topbar-hamburger span { display: block; height: 2px; background: var(--scaffold-gray); border-radius: 1px; }
+    .fp-topbar-search {
+      flex: 1; max-width: 260px;
+      height: 28px; background: #27272A; border-radius: var(--radius-md);
+      display: flex; align-items: center; padding: 0 10px;
+      font-size: 0.7rem; color: #57534E;
+    }
+    .fp-topbar-right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+    .fp-topbar-icon { width: 20px; height: 20px; background: #27272A; border-radius: var(--radius-sm); }
+    .fp-topbar-avatar { width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--amber); background: #57534E; }
+
+    .fp-app-body { display: flex; flex: 1; }
+
+    .fp-app-sidebar {
+      width: 200px; flex-shrink: 0;
+      background: var(--concrete);
+      border-right: 1px solid #E7E5E4;
+      padding: 12px 8px;
+    }
+    .fp-app-sidebar-heading {
+      font-family: var(--font-code); font-size: 0.55rem; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 0.1em; color: var(--scaffold-gray);
+      margin: 12px 0 6px; padding: 0 8px;
+    }
+    .fp-app-sidebar-heading:first-child { margin-top: 0; }
+    .fp-app-nav-item {
+      display: flex; align-items: center; gap: 8px;
+      padding: 6px 8px; border-radius: var(--radius-sm);
+      font-size: 0.75rem; color: #57534E; text-decoration: none; margin-bottom: 1px;
+    }
+    .fp-app-nav-item:hover { background: #E7E5E4; }
+    .fp-app-nav-item.active { background: var(--amber); color: white; }
+    .fp-app-nav-icon { width: 16px; height: 16px; background: currentColor; border-radius: 3px; opacity: 0.3; flex-shrink: 0; }
+    .fp-app-nav-item.active .fp-app-nav-icon { opacity: 0.5; }
+
+    .fp-app-content { flex: 1; padding: 20px 24px; background: var(--blueprint-white); overflow: auto; }
+
+    .fp-page-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 20px;
+    }
+    .fp-page-header h1 { font-size: 1.4rem; margin: 0; }
+    .fp-page-header p { font-size: 0.75rem; color: var(--scaffold-gray); margin: 2px 0 0; }
+
+    /* KPI cards */
+    .fp-kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+    .fp-kpi-card {
+      background: white; border: 1px solid #E7E5E4; border-radius: var(--radius-md);
+      padding: 14px 16px;
+    }
+    .fp-kpi-label { font-size: 0.65rem; font-weight: 500; text-transform: uppercase; color: var(--scaffold-gray); margin-bottom: 4px; }
+    .fp-kpi-value { font-family: var(--font-heading); font-weight: 700; font-size: 1.5rem; color: var(--deep-forge); }
+    .fp-kpi-trend { font-size: 0.7rem; font-weight: 500; margin-top: 2px; }
+    .fp-kpi-trend.up { color: var(--success); }
+    .fp-kpi-trend.down { color: var(--error); }
+
+    /* Data panels */
+    .fp-data-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 12px; }
+    .fp-panel {
+      background: white; border: 1px solid #E7E5E4; border-radius: var(--radius-lg);
+      padding: 16px;
+    }
+    .fp-panel-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 12px;
+    }
+    .fp-panel-header h3 { font-size: 0.9rem; margin: 0; }
+
+    .fp-chart-placeholder {
+      height: 120px; border-radius: var(--radius-md);
+      background: linear-gradient(0deg, rgba(217,119,6,0.08) 0%, transparent 100%);
+      border-bottom: 2px solid var(--amber);
+      position: relative;
+    }
+    .fp-chart-placeholder::before {
+      content: ""; position: absolute; bottom: 0; left: 10%; right: 10%;
+      height: 60%; border-left: 1px dashed #E7E5E4; border-right: 1px dashed #E7E5E4;
+    }
+
+    .fp-activity-item {
+      display: flex; gap: 8px; padding: 8px 0;
+      border-bottom: 1px solid #F5F5F4; align-items: flex-start;
+    }
+    .fp-activity-item:last-child { border-bottom: none; }
+    .fp-activity-avatar { width: 24px; height: 24px; border-radius: 50%; background: #D6D3D1; flex-shrink: 0; }
+    .fp-activity-text { font-size: 0.75rem; color: #57534E; line-height: 1.5; }
+    .fp-activity-time { font-size: 0.65rem; color: var(--scaffold-gray); }
+
+    /* Table fullsize */
+    .fp-table-toolbar {
+      background: white; border: 1px solid #E7E5E4;
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      padding: 10px 14px; display: flex; align-items: center; gap: 8px;
+    }
+    .fp-table-search {
+      width: 200px; height: 30px; border: 1.5px solid #D6D3D1;
+      border-radius: var(--radius-md); padding: 0 10px;
+      font-size: 0.75rem; font-family: var(--font-body);
+      background: white; color: var(--deep-forge);
+    }
+    .fp-table-search::placeholder { color: var(--scaffold-gray); }
+    .fp-filter-btn {
+      height: 30px; padding: 0 12px; border: 1.5px solid #D6D3D1;
+      border-radius: var(--radius-md); background: transparent;
+      font-size: 0.72rem; font-weight: 500; color: #57534E; cursor: pointer;
+    }
+    .fp-table-wrapper {
+      border: 1px solid #E7E5E4; border-top: none;
+      border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+      overflow: hidden;
+    }
+    .fp-bulk-bar {
+      background: var(--deep-forge); border-radius: var(--radius-md);
+      padding: 8px 14px; margin-top: 10px;
+      display: flex; align-items: center; gap: 10px; color: white;
+    }
+    .fp-bulk-bar span { font-size: 0.75rem; font-weight: 600; }
+    .fp-bulk-btn {
+      height: 26px; padding: 0 10px; border: 1px solid #57534E;
+      border-radius: var(--radius-sm); background: transparent;
+      font-size: 0.7rem; color: white; cursor: pointer;
+    }
+    .fp-table-check {
+      width: 16px; height: 16px; border: 2px solid #D6D3D1;
+      border-radius: var(--radius-sm); display: inline-block; vertical-align: middle;
+    }
+    .fp-table-check.checked { background: var(--amber); border-color: var(--amber); }
+
+    /* Form sections */
+    .fp-form-section {
+      background: white; border: 1px solid #E7E5E4; border-radius: var(--radius-lg);
+      padding: 20px; margin-bottom: 16px;
+    }
+    .fp-form-section-title {
+      font-family: var(--font-heading); font-weight: 700; font-size: 1rem;
+      padding-bottom: 10px; border-bottom: 1px solid #E7E5E4; margin-bottom: 16px;
+    }
+    .fp-form-grid {
+      display: grid; grid-template-columns: 140px 1fr; gap: 8px 16px; align-items: center;
+    }
+    .fp-form-grid .form-label { font-size: 0.8rem; margin: 0; padding-top: 2px; }
+
+    .fp-action-bar {
+      display: flex; justify-content: space-between;
+      padding: 12px 0; border-top: 1px solid #E7E5E4; margin-top: 16px;
+    }
+
+    /* Settings nav */
+    .fp-settings-layout { display: flex; min-height: 360px; }
+    .fp-settings-nav {
+      width: 170px; flex-shrink: 0;
+      border-right: 1px solid #E7E5E4; padding: 0 16px 0 0;
+    }
+    .fp-settings-link {
+      display: block; padding: 6px 10px; font-size: 0.8rem;
+      color: #57534E; text-decoration: none; border-radius: var(--radius-sm);
+      margin-bottom: 2px;
+    }
+    .fp-settings-link:hover { background: var(--concrete); }
+    .fp-settings-link.active { color: var(--amber); font-weight: 500; border-right: 2px solid var(--amber); }
+    .fp-settings-content { flex: 1; padding: 0 0 0 24px; max-width: 520px; }
+    .fp-settings-content h2 { font-size: 1.2rem; margin-bottom: 4px; }
+    .fp-settings-content > p { font-size: 0.8rem; color: var(--scaffold-gray); margin-bottom: 16px; }
+
+    .fp-danger-zone {
+      border: 2px solid var(--error); border-radius: var(--radius-lg);
+      padding: 16px; margin-top: 24px;
+    }
+    .fp-danger-zone h3 { color: var(--error); font-size: 1rem; margin-bottom: 4px; }
+    .fp-danger-zone p { font-size: 0.8rem; color: var(--scaffold-gray); margin-bottom: 10px; }
+
+    /* Desktop shell */
+    .fp-desktop-shell {
+      display: grid;
+      grid-template-rows: 28px 36px 1fr 22px;
+      grid-template-columns: 200px 1fr;
+      min-height: 480px;
+    }
+    .fp-titlebar {
+      grid-column: 1 / -1;
+      background: var(--deep-forge); border-bottom: 1px solid #27272A;
+      display: flex; align-items: center; padding: 0 10px; gap: 8px;
+    }
+    .fp-titlebar-brand {
+      font-family: var(--font-heading); font-weight: 700; font-size: 0.7rem; color: white;
+    }
+    .fp-titlebar-brand span { color: var(--amber); }
+    .fp-titlebar-file { font-size: 0.65rem; color: #57534E; flex: 1; text-align: center; }
+    .fp-win-controls { display: flex; gap: 6px; }
+    .fp-win-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+    .fp-desktop-toolbar {
+      grid-column: 1 / -1;
+      background: var(--concrete); border-bottom: 1px solid #E7E5E4;
+      display: flex; align-items: center; padding: 0 8px; gap: 3px;
+    }
+    .fp-tool-btn {
+      width: 28px; height: 28px; border-radius: var(--radius-sm);
+      background: transparent; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--deep-forge); font-size: 0.8rem;
+    }
+    .fp-tool-btn:hover { background: #E7E5E4; }
+    .fp-tool-btn.active { background: var(--amber); color: white; }
+    .fp-tool-sep { width: 1px; height: 20px; background: #E7E5E4; margin: 0 3px; }
+
+    .fp-desktop-sidebar {
+      background: var(--concrete); border-right: 1px solid #E7E5E4;
+      padding: 8px; overflow-y: auto;
+    }
+    .fp-tree-heading {
+      font-family: var(--font-code); font-size: 0.55rem; font-weight: 500;
+      text-transform: uppercase; color: var(--scaffold-gray); letter-spacing: 0.08em;
+      margin: 8px 0 4px; padding: 0 4px;
+    }
+    .fp-tree-heading:first-child { margin-top: 0; }
+    .fp-tree-node {
+      display: flex; align-items: center; gap: 4px;
+      padding: 3px 6px; border-radius: 3px;
+      font-size: 0.72rem; color: #57534E; margin-bottom: 1px; cursor: default;
+    }
+    .fp-tree-node:hover { background: #E7E5E4; }
+    .fp-tree-node.active { background: var(--amber); color: white; }
+    .fp-tree-node .arrow { font-size: 0.5rem; width: 10px; text-align: center; color: var(--scaffold-gray); }
+    .fp-tree-node.active .arrow { color: rgba(255,255,255,0.7); }
+    .fp-tree-indent { padding-left: 14px; }
+
+    .fp-canvas {
+      background: var(--blueprint-white); position: relative; overflow: hidden;
+    }
+    .fp-canvas-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(#E7E5E4 1px, transparent 1px),
+                        linear-gradient(90deg, #E7E5E4 1px, transparent 1px);
+      background-size: 24px 24px; opacity: 0.5;
+    }
+    .fp-canvas-element-lg {
+      width: 120px; height: 80px;
+      border: 2px solid var(--amber); border-radius: var(--radius-sm);
+      background: rgba(217,119,6,0.06);
+      position: absolute; top: 50%; left: 45%; transform: translate(-50%,-50%);
+    }
+    .fp-canvas-element-lg::before {
+      content: ""; position: absolute; inset: -6px;
+      border: 1px dashed var(--amber); border-radius: 6px; opacity: 0.4;
+    }
+    .fp-canvas-handle {
+      width: 6px; height: 6px; background: var(--amber); border: 1px solid white;
+      position: absolute; border-radius: 1px;
+    }
+    .fp-canvas-unselected {
+      width: 80px; height: 60px;
+      border: 1px solid #D6D3D1; border-radius: var(--radius-sm);
+      position: absolute;
+    }
+
+    .fp-desktop-statusbar {
+      grid-column: 1 / -1;
+      background: var(--deep-forge); border-top: 1px solid #27272A;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 10px; font-family: var(--font-code); font-size: 0.6rem; color: var(--scaffold-gray);
+    }
+    .fp-status-group { display: flex; gap: 12px; align-items: center; }
+    .fp-status-dot { width: 6px; height: 6px; border-radius: 50%; }
+
+    /* Inspector panel */
+    .fp-inspector {
+      width: 240px; flex-shrink: 0;
+      background: var(--concrete); border-left: 1px solid #E7E5E4;
+      padding: 0; overflow-y: auto;
+    }
+    .fp-inspector-tabs {
+      display: flex; border-bottom: 1px solid #E7E5E4;
+    }
+    .fp-inspector-tab {
+      padding: 8px 14px; font-size: 0.72rem; font-weight: 500;
+      color: var(--scaffold-gray); border-bottom: 2px solid transparent; cursor: pointer;
+    }
+    .fp-inspector-tab.active { color: var(--amber); border-bottom-color: var(--amber); }
+    .fp-inspector-section { padding: 10px 12px; }
+    .fp-inspector-section-head {
+      font-size: 0.6rem; font-weight: 600; text-transform: uppercase;
+      color: var(--scaffold-gray); letter-spacing: 0.05em; margin-bottom: 8px;
+    }
+    .fp-prop-row {
+      display: grid; grid-template-columns: 70px 1fr;
+      gap: 4px; margin-bottom: 4px; align-items: center;
+    }
+    .fp-prop-label { font-size: 0.7rem; color: var(--scaffold-gray); }
+    .fp-prop-input {
+      height: 24px; border: 1px solid transparent; border-radius: 3px;
+      padding: 0 6px; font-size: 0.7rem; font-family: var(--font-body);
+      background: transparent; color: var(--deep-forge);
+    }
+    .fp-prop-input:hover { border-color: #E7E5E4; }
+    .fp-prop-input:focus { border-color: var(--amber); background: white; outline: none; }
+    .fp-prop-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+    .fp-prop-pair-label { font-size: 0.6rem; color: var(--scaffold-gray); margin-bottom: 2px; }
+    .fp-prop-swatch {
+      width: 20px; height: 20px; border-radius: var(--radius-sm);
+      border: 1px solid #E7E5E4; display: inline-block; vertical-align: middle;
+    }
+
+    /* Modal full preview */
+    .fp-modal-scene { position: relative; min-height: 440px; background: var(--blueprint-white); }
+    .fp-modal-app-bg { opacity: 0.3; }
+    .fp-modal-app-bg .fp-app-shell { min-height: 440px; }
+    .fp-modal-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.45);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .fp-modal-dialog {
+      background: white; border-radius: var(--radius-lg);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+      overflow: hidden;
+    }
+    .fp-modal-dialog.sm { width: 340px; }
+    .fp-modal-dialog.md { width: 460px; }
+    .fp-modal-dialog-header {
+      padding: 14px 18px; border-bottom: 1px solid #E7E5E4;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .fp-modal-dialog-header h3 { font-size: 1rem; margin: 0; }
+    .fp-modal-dialog-close {
+      width: 28px; height: 28px; border: none; background: transparent;
+      font-size: 1.1rem; color: var(--scaffold-gray); cursor: pointer;
+      border-radius: var(--radius-sm);
+    }
+    .fp-modal-dialog-close:hover { background: var(--concrete); }
+    .fp-modal-dialog-body { padding: 18px; }
+    .fp-modal-dialog-body p { font-size: 0.8rem; color: #57534E; }
+    .fp-modal-dialog-footer {
+      padding: 12px 18px; border-top: 1px solid #E7E5E4;
+      display: flex; justify-content: flex-end; gap: 8px;
+    }
+
+    /* Toolbar full preview */
+    .fp-toolbar-demo { padding: 24px; }
+    .fp-toolbar-label {
+      font-family: var(--font-code); font-size: 0.65rem; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--scaffold-gray); margin-bottom: 8px;
+    }
+    .fp-toolbar-h {
+      display: flex; align-items: center; gap: 4px;
+      padding: 6px 10px; border-radius: var(--radius-md);
+      margin-bottom: 24px;
+    }
+    .fp-toolbar-v {
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+      padding: 8px; border-radius: var(--radius-md); width: 44px;
+    }
+    .fp-toolbar-v .fp-tool-sep { width: 28px; height: 1px; margin: 2px 0; }
+    .fp-tb-icon {
+      width: 30px; height: 30px; border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; cursor: default;
+    }
+    .fp-tb-icon:hover { background: #E7E5E4; }
+    .fp-tb-icon.active { background: var(--amber); color: white; }
+    .fp-tb-dropdown {
+      height: 30px; padding: 0 10px; border: 1px solid #D6D3D1; border-radius: var(--radius-sm);
+      font-size: 0.7rem; color: #57534E; display: flex; align-items: center; gap: 4px;
+    }
   </style>
 </head>
 
@@ -2539,14 +3959,2043 @@ brandbook/assets/
 
 
   <!-- ================================================================
+       LAYOUTS
+       ================================================================ -->
+  <section class="section" id="layouts">
+    <div class="section-title">07 — Layouts</div>
+    <h2 class="mb-4">Layout templates</h2>
+    <p class="text-muted mb-8">Visual previews of standard layouts. Full specifications in <code>LAYOUTS.md</code>.</p>
+
+    <!-- Grid foundations -->
+    <div class="showcase">
+      <h3>Grid system</h3>
+      <p class="text-sm text-muted mb-4">12 columns, 1200px max container, 24px gutter.</p>
+
+      <div class="grid-demo">
+        <div class="grid-demo-col filled"></div>
+        <div class="grid-demo-col filled"></div>
+        <div class="grid-demo-col filled"></div>
+        <div class="grid-demo-col filled"></div>
+        <div class="grid-demo-col filled"></div>
+        <div class="grid-demo-col filled"></div>
+        <div class="grid-demo-col filled"></div>
+        <div class="grid-demo-col filled"></div>
+        <div class="grid-demo-col filled"></div>
+        <div class="grid-demo-col filled"></div>
+        <div class="grid-demo-col filled"></div>
+        <div class="grid-demo-col filled"></div>
+      </div>
+
+      <div class="grid-demo">
+        <div class="grid-demo-span" style="grid-column:span 4;background:var(--amber);">span-4</div>
+        <div class="grid-demo-span" style="grid-column:span 8;background:var(--warm-gold);">span-8</div>
+      </div>
+
+      <div class="grid-demo">
+        <div class="grid-demo-span" style="grid-column:span 6;background:var(--amber);">span-6</div>
+        <div class="grid-demo-span" style="grid-column:span 6;background:var(--warm-gold);">span-6</div>
+      </div>
+
+      <div class="grid-demo">
+        <div class="grid-demo-span" style="grid-column:span 3;background:var(--amber);">3</div>
+        <div class="grid-demo-span" style="grid-column:span 3;background:var(--warm-gold);">3</div>
+        <div class="grid-demo-span" style="grid-column:span 3;background:var(--amber);">3</div>
+        <div class="grid-demo-span" style="grid-column:span 3;background:var(--warm-gold);">3</div>
+      </div>
+
+      <!-- Breakpoints -->
+      <div class="table-wrapper mt-6">
+        <table>
+          <thead>
+            <tr><th>Breakpoint</th><th>Width</th><th>Container</th><th>Columns</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>sm</code></td><td>&ge; 640px</td><td>100% &minus; 32px</td><td>4</td></tr>
+            <tr><td><code>md</code></td><td>&ge; 768px</td><td>720px</td><td>8</td></tr>
+            <tr><td><code>lg</code></td><td>&ge; 1024px</td><td>960px</td><td>12</td></tr>
+            <tr><td><code>xl</code></td><td>&ge; 1280px</td><td>1200px</td><td>12</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- ======= WEBSITE LAYOUTS ======= -->
+    <h3 class="mt-8 mb-6">Website layouts</h3>
+
+    <div class="layout-grid">
+
+      <!-- Landing page -->
+      <div class="layout-card" data-preview="landing">
+        <div class="layout-card-header">
+          <h4>Landing page</h4>
+          <p>Hero + feature grid + stats + CTA</p>
+        </div>
+        <div class="layout-preview">
+          <div class="mini-frame">
+            <div class="mini-frame-bar">
+              <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+              <div class="url-bar"></div>
+            </div>
+            <div class="mini-frame-content">
+              <!-- Navbar -->
+              <div class="m-navbar">
+                <div class="m-logo">Open<span>AEC</span></div>
+                <div class="m-links">
+                  <div class="m-link-dot"></div>
+                  <div class="m-link-dot"></div>
+                  <div class="m-link-dot"></div>
+                  <div class="m-cta"></div>
+                </div>
+              </div>
+              <!-- Hero -->
+              <div class="m-hero">
+                <div class="m-label"></div>
+                <div class="m-heading">Build free. Build <span>together.</span></div>
+                <div class="m-tagline"></div>
+                <div class="m-buttons">
+                  <div class="m-btn-primary"></div>
+                  <div class="m-btn-ghost"></div>
+                </div>
+              </div>
+              <!-- Features -->
+              <div class="m-section">
+                <div class="m-grid m-grid-3">
+                  <div class="m-card" style="padding:3px;">
+                    <div class="m-dot" style="background:var(--amber);margin:0 auto 2px;"></div>
+                    <div class="m-line m-line-short" style="margin:0 auto 1px;"></div>
+                    <div class="m-line" style="margin:0;"></div>
+                  </div>
+                  <div class="m-card" style="padding:3px;">
+                    <div class="m-dot" style="background:var(--amber);margin:0 auto 2px;"></div>
+                    <div class="m-line m-line-short" style="margin:0 auto 1px;"></div>
+                    <div class="m-line" style="margin:0;"></div>
+                  </div>
+                  <div class="m-card" style="padding:3px;">
+                    <div class="m-dot" style="background:var(--amber);margin:0 auto 2px;"></div>
+                    <div class="m-line m-line-short" style="margin:0 auto 1px;"></div>
+                    <div class="m-line" style="margin:0;"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- Stats -->
+              <div class="m-section-dark" style="padding:6px 12px;">
+                <div class="m-grid m-grid-4" style="gap:3px;">
+                  <div style="text-align:center;">
+                    <div class="m-kpi-value">150+</div>
+                    <div class="m-kpi-label"></div>
+                  </div>
+                  <div style="text-align:center;">
+                    <div class="m-kpi-value">50+</div>
+                    <div class="m-kpi-label"></div>
+                  </div>
+                  <div style="text-align:center;">
+                    <div class="m-kpi-value">12</div>
+                    <div class="m-kpi-label"></div>
+                  </div>
+                  <div style="text-align:center;">
+                    <div class="m-kpi-value">99%</div>
+                    <div class="m-kpi-label"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- Footer -->
+              <div class="m-footer">
+                <div class="m-line-dark"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="layout-card-header" style="border-top:1px solid #E7E5E4;border-bottom:0;">
+          <p class="layout-ref">LAYOUTS.md &sect; 1.1</p>
+        </div>
+      </div>
+
+      <!-- Documentation -->
+      <div class="layout-card" data-preview="docs">
+        <div class="layout-card-header">
+          <h4>Documentation</h4>
+          <p>Sidebar + content + table of contents</p>
+        </div>
+        <div class="layout-preview">
+          <div class="mini-frame">
+            <div class="mini-frame-bar">
+              <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+              <div class="url-bar"></div>
+            </div>
+            <div class="mini-frame-content">
+              <div class="m-navbar">
+                <div class="m-logo">Open<span>AEC</span></div>
+                <div class="m-links">
+                  <div class="m-link-dot"></div>
+                  <div class="m-link-dot"></div>
+                  <div class="m-cta"></div>
+                </div>
+              </div>
+              <div style="display:flex;min-height:180px;">
+                <!-- Sidebar -->
+                <div class="m-sidebar">
+                  <div class="m-nav-heading"></div>
+                  <div class="m-nav-item active"></div>
+                  <div class="m-nav-item"></div>
+                  <div class="m-nav-item"></div>
+                  <div class="m-nav-heading"></div>
+                  <div class="m-nav-item"></div>
+                  <div class="m-nav-item"></div>
+                  <div class="m-nav-item"></div>
+                  <div class="m-nav-heading"></div>
+                  <div class="m-nav-item"></div>
+                  <div class="m-nav-item"></div>
+                </div>
+                <!-- Content -->
+                <div class="m-content" style="padding:8px 10px;">
+                  <div class="m-breadcrumb">
+                    <div class="m-crumb"></div>
+                    <div class="m-crumb-sep">/</div>
+                    <div class="m-crumb"></div>
+                    <div class="m-crumb-sep">/</div>
+                    <div class="m-crumb" style="background:var(--deep-forge);"></div>
+                  </div>
+                  <div class="m-line-amber m-line-medium" style="height:3px;margin-bottom:4px;"></div>
+                  <div class="m-line" style="width:90%;"></div>
+                  <div class="m-line" style="width:85%;"></div>
+                  <div class="m-line" style="width:70%;"></div>
+                  <div style="height:4px;"></div>
+                  <div class="m-line-amber m-line-short" style="height:2px;margin-bottom:3px;"></div>
+                  <div class="m-line" style="width:95%;"></div>
+                  <div class="m-line" style="width:80%;"></div>
+                  <div class="m-line" style="width:88%;"></div>
+                  <div class="m-line" style="width:60%;"></div>
+                  <div style="height:4px;"></div>
+                  <div class="m-line-amber m-line-short" style="height:2px;margin-bottom:3px;"></div>
+                  <div class="m-line" style="width:90%;"></div>
+                  <div class="m-line" style="width:75%;"></div>
+                </div>
+                <!-- TOC -->
+                <div class="m-toc">
+                  <div class="m-toc-heading"></div>
+                  <div class="m-toc-item active"></div>
+                  <div class="m-toc-item"></div>
+                  <div class="m-toc-item"></div>
+                  <div class="m-toc-item"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="layout-card-header" style="border-top:1px solid #E7E5E4;border-bottom:0;">
+          <p class="layout-ref">LAYOUTS.md &sect; 1.2</p>
+        </div>
+      </div>
+
+      <!-- About / Team -->
+      <div class="layout-card" data-preview="team">
+        <div class="layout-card-header">
+          <h4>About / Team</h4>
+          <p>Header + mission + team grid</p>
+        </div>
+        <div class="layout-preview">
+          <div class="mini-frame">
+            <div class="mini-frame-bar">
+              <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+              <div class="url-bar"></div>
+            </div>
+            <div class="mini-frame-content">
+              <div class="m-navbar">
+                <div class="m-logo">Open<span>AEC</span></div>
+                <div class="m-links">
+                  <div class="m-link-dot"></div>
+                  <div class="m-link-dot"></div>
+                  <div class="m-cta"></div>
+                </div>
+              </div>
+              <!-- Page header -->
+              <div class="m-hero" style="padding:10px 12px;">
+                <div class="m-label"></div>
+                <div class="m-heading">About OpenAEC</div>
+              </div>
+              <!-- Mission 2-col -->
+              <div class="m-section" style="padding:6px 10px;">
+                <div style="display:flex;gap:6px;">
+                  <div style="flex:1;">
+                    <div class="m-line-amber m-line-medium" style="height:2px;margin-bottom:3px;"></div>
+                    <div class="m-line" style="width:95%;"></div>
+                    <div class="m-line" style="width:85%;"></div>
+                    <div class="m-line" style="width:90%;"></div>
+                    <div class="m-line" style="width:70%;"></div>
+                  </div>
+                  <div style="flex:1;background:linear-gradient(135deg,#E7E5E4,#D6D3D1);border-radius:3px;min-height:28px;"></div>
+                </div>
+              </div>
+              <!-- Team grid -->
+              <div class="m-section-alt" style="padding:6px 10px;">
+                <div class="m-line m-line-short" style="height:2px;margin:0 auto 4px;background:var(--deep-forge);"></div>
+                <div class="m-grid m-grid-4" style="gap:3px;">
+                  <div class="m-team-card">
+                    <div class="m-avatar"></div>
+                    <div class="m-line" style="width:70%;margin:0 auto 1px;"></div>
+                    <div class="m-line" style="width:50%;margin:0 auto;background:#A1A1AA;"></div>
+                  </div>
+                  <div class="m-team-card">
+                    <div class="m-avatar"></div>
+                    <div class="m-line" style="width:70%;margin:0 auto 1px;"></div>
+                    <div class="m-line" style="width:50%;margin:0 auto;background:#A1A1AA;"></div>
+                  </div>
+                  <div class="m-team-card">
+                    <div class="m-avatar"></div>
+                    <div class="m-line" style="width:70%;margin:0 auto 1px;"></div>
+                    <div class="m-line" style="width:50%;margin:0 auto;background:#A1A1AA;"></div>
+                  </div>
+                  <div class="m-team-card">
+                    <div class="m-avatar"></div>
+                    <div class="m-line" style="width:70%;margin:0 auto 1px;"></div>
+                    <div class="m-line" style="width:50%;margin:0 auto;background:#A1A1AA;"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="m-footer"><div class="m-line-dark"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="layout-card-header" style="border-top:1px solid #E7E5E4;border-bottom:0;">
+          <p class="layout-ref">LAYOUTS.md &sect; 1.3</p>
+        </div>
+      </div>
+
+      <!-- Blog -->
+      <div class="layout-card" data-preview="blog">
+        <div class="layout-card-header">
+          <h4>Blog / News</h4>
+          <p>Featured post + card grid + pagination</p>
+        </div>
+        <div class="layout-preview">
+          <div class="mini-frame">
+            <div class="mini-frame-bar">
+              <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+              <div class="url-bar"></div>
+            </div>
+            <div class="mini-frame-content">
+              <div class="m-navbar">
+                <div class="m-logo">Open<span>AEC</span></div>
+                <div class="m-links">
+                  <div class="m-link-dot"></div>
+                  <div class="m-link-dot"></div>
+                  <div class="m-cta"></div>
+                </div>
+              </div>
+              <!-- Page header + tags -->
+              <div class="m-section" style="padding:6px 10px 4px;">
+                <div class="m-line-amber" style="height:3px;width:50px;margin-bottom:4px;"></div>
+                <div style="display:flex;gap:2px;">
+                  <div style="width:14px;height:5px;background:var(--amber);border-radius:3px;"></div>
+                  <div style="width:14px;height:5px;border:1px solid #E7E5E4;border-radius:3px;"></div>
+                  <div style="width:14px;height:5px;border:1px solid #E7E5E4;border-radius:3px;"></div>
+                </div>
+              </div>
+              <!-- Featured post -->
+              <div class="m-section" style="padding:4px 10px;">
+                <div style="display:flex;gap:4px;background:white;border:1px solid #E7E5E4;border-radius:3px;overflow:hidden;">
+                  <div style="width:55%;background:linear-gradient(135deg,#E7E5E4,#D6D3D1);min-height:32px;"></div>
+                  <div style="flex:1;padding:4px;">
+                    <div style="width:10px;height:3px;background:#FEF3C7;border-radius:2px;margin-bottom:2px;"></div>
+                    <div class="m-line" style="width:90%;background:var(--deep-forge);"></div>
+                    <div class="m-line" style="width:80%;"></div>
+                    <div class="m-line" style="width:50%;background:#A1A1AA;"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- Post grid -->
+              <div class="m-section" style="padding:4px 10px 6px;">
+                <div class="m-grid m-grid-3" style="gap:4px;">
+                  <div class="m-post-card">
+                    <div class="m-post-image"></div>
+                    <div class="m-post-body">
+                      <div class="m-line" style="width:80%;background:var(--deep-forge);"></div>
+                      <div class="m-line" style="width:90%;"></div>
+                    </div>
+                  </div>
+                  <div class="m-post-card">
+                    <div class="m-post-image"></div>
+                    <div class="m-post-body">
+                      <div class="m-line" style="width:70%;background:var(--deep-forge);"></div>
+                      <div class="m-line" style="width:85%;"></div>
+                    </div>
+                  </div>
+                  <div class="m-post-card">
+                    <div class="m-post-image"></div>
+                    <div class="m-post-body">
+                      <div class="m-line" style="width:75%;background:var(--deep-forge);"></div>
+                      <div class="m-line" style="width:88%;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Pagination -->
+              <div class="m-pagination">
+                <div class="m-page-btn active"></div>
+                <div class="m-page-btn"></div>
+                <div class="m-page-btn"></div>
+              </div>
+              <div class="m-footer"><div class="m-line-dark"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="layout-card-header" style="border-top:1px solid #E7E5E4;border-bottom:0;">
+          <p class="layout-ref">LAYOUTS.md &sect; 1.4</p>
+        </div>
+      </div>
+
+    </div><!-- /layout-grid website -->
+
+    <hr>
+
+    <!-- ======= WEB TOOL LAYOUTS ======= -->
+    <h3 class="mt-8 mb-6">Web-based tool layouts</h3>
+
+    <div class="layout-grid">
+
+      <!-- Dashboard -->
+      <div class="layout-card" data-preview="dashboard">
+        <div class="layout-card-header">
+          <h4>Dashboard</h4>
+          <p>Topbar + sidebar + KPI cards + data area</p>
+        </div>
+        <div class="layout-preview">
+          <div class="mini-frame">
+            <div class="mini-frame-bar">
+              <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+              <div class="url-bar"></div>
+            </div>
+            <div class="mini-frame-content">
+              <div class="m-topbar">
+                <div style="display:flex;align-items:center;gap:4px;">
+                  <div class="m-icon"></div>
+                  <div class="m-logo" style="font-family:var(--font-heading);font-size:5px;font-weight:700;color:white;line-height:1;">Open<span style="color:var(--amber);">AEC</span></div>
+                </div>
+                <div class="m-search"></div>
+                <div style="display:flex;gap:3px;">
+                  <div class="m-icon"></div>
+                  <div class="m-icon" style="border-radius:50%;"></div>
+                </div>
+              </div>
+              <div style="display:flex;min-height:190px;">
+                <div class="m-sidebar m-sidebar-dark" style="background:var(--concrete);border-right-color:#E7E5E4;">
+                  <div class="m-nav-heading"></div>
+                  <div class="m-nav-item active"></div>
+                  <div class="m-nav-item"></div>
+                  <div class="m-nav-item"></div>
+                  <div class="m-nav-heading"></div>
+                  <div class="m-nav-item"></div>
+                  <div class="m-nav-item"></div>
+                </div>
+                <div class="m-content" style="padding:6px 8px;">
+                  <!-- Header -->
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;">
+                    <div class="m-line-amber" style="height:3px;width:50px;margin:0;"></div>
+                    <div style="width:22px;height:7px;background:var(--amber);border-radius:2px;"></div>
+                  </div>
+                  <!-- KPI -->
+                  <div class="m-grid m-grid-4" style="gap:3px;margin-bottom:5px;">
+                    <div class="m-kpi-card">
+                      <div class="m-kpi-value">24</div>
+                      <div class="m-kpi-label"></div>
+                    </div>
+                    <div class="m-kpi-card">
+                      <div class="m-kpi-value">8</div>
+                      <div class="m-kpi-label"></div>
+                    </div>
+                    <div class="m-kpi-card">
+                      <div class="m-kpi-value">95%</div>
+                      <div class="m-kpi-label"></div>
+                    </div>
+                    <div class="m-kpi-card">
+                      <div class="m-kpi-value">3.2k</div>
+                      <div class="m-kpi-label"></div>
+                    </div>
+                  </div>
+                  <!-- Data area -->
+                  <div style="display:flex;gap:4px;">
+                    <div class="m-card" style="flex:2;padding:4px;">
+                      <div class="m-line m-line-short" style="background:var(--deep-forge);margin-bottom:4px;"></div>
+                      <div style="height:50px;background:linear-gradient(0deg,rgba(217,119,6,0.1) 0%,rgba(217,119,6,0.05) 100%);border-bottom:2px solid var(--amber);border-radius:2px;"></div>
+                    </div>
+                    <div class="m-card" style="flex:1;padding:4px;">
+                      <div class="m-line m-line-short" style="background:var(--deep-forge);margin-bottom:3px;"></div>
+                      <div style="display:flex;gap:2px;align-items:center;margin-bottom:3px;">
+                        <div class="m-dot" style="background:#D6D3D1;"></div>
+                        <div class="m-line" style="margin:0;flex:1;"></div>
+                      </div>
+                      <div style="display:flex;gap:2px;align-items:center;margin-bottom:3px;">
+                        <div class="m-dot" style="background:#D6D3D1;"></div>
+                        <div class="m-line" style="margin:0;flex:1;"></div>
+                      </div>
+                      <div style="display:flex;gap:2px;align-items:center;">
+                        <div class="m-dot" style="background:#D6D3D1;"></div>
+                        <div class="m-line" style="margin:0;flex:1;"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="layout-card-header" style="border-top:1px solid #E7E5E4;border-bottom:0;">
+          <p class="layout-ref">LAYOUTS.md &sect; 2.1</p>
+        </div>
+      </div>
+
+      <!-- Data table -->
+      <div class="layout-card" data-preview="datatable">
+        <div class="layout-card-header">
+          <h4>Data table / list</h4>
+          <p>Toolbar + table + bulk actions + pagination</p>
+        </div>
+        <div class="layout-preview">
+          <div class="mini-frame">
+            <div class="mini-frame-bar">
+              <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+              <div class="url-bar"></div>
+            </div>
+            <div class="mini-frame-content">
+              <div class="m-topbar">
+                <div style="display:flex;align-items:center;gap:4px;">
+                  <div class="m-icon"></div>
+                  <div style="font-family:var(--font-heading);font-size:5px;font-weight:700;color:white;line-height:1;">Open<span style="color:var(--amber);">AEC</span></div>
+                </div>
+                <div class="m-search"></div>
+                <div class="m-icon"></div>
+              </div>
+              <div style="display:flex;min-height:190px;">
+                <div class="m-sidebar" style="background:var(--concrete);">
+                  <div class="m-nav-heading"></div>
+                  <div class="m-nav-item"></div>
+                  <div class="m-nav-item active"></div>
+                  <div class="m-nav-item"></div>
+                  <div class="m-nav-heading"></div>
+                  <div class="m-nav-item"></div>
+                </div>
+                <div class="m-content" style="padding:6px 8px;">
+                  <!-- Header -->
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+                    <div class="m-line-amber" style="height:3px;width:40px;margin:0;"></div>
+                    <div style="width:20px;height:7px;background:var(--amber);border-radius:2px;"></div>
+                  </div>
+                  <!-- Toolbar -->
+                  <div style="background:white;border:1px solid #E7E5E4;border-radius:3px 3px 0 0;padding:3px 4px;display:flex;gap:3px;align-items:center;">
+                    <div style="width:40px;height:6px;background:#F5F5F4;border:1px solid #D6D3D1;border-radius:2px;"></div>
+                    <div style="width:18px;height:6px;border:1px solid #D6D3D1;border-radius:2px;"></div>
+                    <div style="flex:1;"></div>
+                    <div style="width:16px;height:6px;border:1px solid #D6D3D1;border-radius:2px;"></div>
+                  </div>
+                  <!-- Table -->
+                  <div style="background:white;border:1px solid #E7E5E4;border-top:0;border-radius:0 0 3px 3px;padding:0 4px;">
+                    <div class="m-table-header" style="border-radius:0;">
+                      <div style="display:flex;gap:3px;">
+                        <div class="m-table-check"></div>
+                        <div class="m-line" style="margin:0;flex:2;background:#57534E;"></div>
+                        <div class="m-line" style="margin:0;flex:1;background:#57534E;"></div>
+                        <div class="m-line" style="margin:0;flex:1;background:#57534E;"></div>
+                      </div>
+                    </div>
+                    <div class="m-table-row">
+                      <div class="m-table-check" style="background:var(--amber);border-color:var(--amber);"></div>
+                      <div class="m-table-cell" style="flex:2;"></div>
+                      <div style="width:6px;height:6px;border-radius:50%;background:var(--success);flex-shrink:0;"></div>
+                      <div class="m-table-cell"></div>
+                    </div>
+                    <div class="m-table-row">
+                      <div class="m-table-check"></div>
+                      <div class="m-table-cell" style="flex:2;"></div>
+                      <div style="width:6px;height:6px;border-radius:50%;background:var(--scaffold-gray);flex-shrink:0;"></div>
+                      <div class="m-table-cell"></div>
+                    </div>
+                    <div class="m-table-row">
+                      <div class="m-table-check"></div>
+                      <div class="m-table-cell" style="flex:2;"></div>
+                      <div style="width:6px;height:6px;border-radius:50%;background:var(--success);flex-shrink:0;"></div>
+                      <div class="m-table-cell"></div>
+                    </div>
+                    <div class="m-table-row" style="border:0;">
+                      <div class="m-table-check"></div>
+                      <div class="m-table-cell" style="flex:2;"></div>
+                      <div style="width:6px;height:6px;border-radius:50%;background:var(--amber);flex-shrink:0;"></div>
+                      <div class="m-table-cell"></div>
+                    </div>
+                  </div>
+                  <!-- Bulk action bar -->
+                  <div style="background:var(--deep-forge);border-radius:3px;padding:2px 4px;margin-top:3px;display:flex;align-items:center;gap:3px;">
+                    <div style="font-family:var(--font-body);font-size:4px;color:white;line-height:1;">1 selected</div>
+                    <div style="flex:1;"></div>
+                    <div style="width:14px;height:5px;border:1px solid #57534E;border-radius:2px;"></div>
+                    <div style="width:14px;height:5px;border:1px solid #57534E;border-radius:2px;"></div>
+                  </div>
+                  <!-- Pagination -->
+                  <div class="m-pagination" style="padding-top:3px;">
+                    <div class="m-page-btn active"></div>
+                    <div class="m-page-btn"></div>
+                    <div class="m-page-btn"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="layout-card-header" style="border-top:1px solid #E7E5E4;border-bottom:0;">
+          <p class="layout-ref">LAYOUTS.md &sect; 2.2</p>
+        </div>
+      </div>
+
+      <!-- Form / Detail -->
+      <div class="layout-card" data-preview="form">
+        <div class="layout-card-header">
+          <h4>Form / detail</h4>
+          <p>Breadcrumb + form sections + action bar</p>
+        </div>
+        <div class="layout-preview">
+          <div class="mini-frame">
+            <div class="mini-frame-bar">
+              <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+              <div class="url-bar"></div>
+            </div>
+            <div class="mini-frame-content">
+              <div class="m-topbar">
+                <div style="display:flex;align-items:center;gap:4px;">
+                  <div class="m-icon"></div>
+                  <div style="font-family:var(--font-heading);font-size:5px;font-weight:700;color:white;line-height:1;">Open<span style="color:var(--amber);">AEC</span></div>
+                </div>
+                <div class="m-search"></div>
+                <div class="m-icon"></div>
+              </div>
+              <div style="display:flex;min-height:190px;">
+                <div class="m-sidebar" style="background:var(--concrete);">
+                  <div class="m-nav-heading"></div>
+                  <div class="m-nav-item"></div>
+                  <div class="m-nav-item active"></div>
+                  <div class="m-nav-item"></div>
+                </div>
+                <div class="m-content" style="padding:6px 8px;">
+                  <!-- Breadcrumb -->
+                  <div class="m-breadcrumb">
+                    <div class="m-crumb"></div>
+                    <div class="m-crumb-sep">/</div>
+                    <div class="m-crumb"></div>
+                    <div class="m-crumb-sep">/</div>
+                    <div class="m-crumb" style="background:var(--deep-forge);"></div>
+                  </div>
+                  <!-- Title -->
+                  <div style="display:flex;align-items:center;gap:4px;margin-bottom:5px;">
+                    <div class="m-line-amber" style="height:3px;width:50px;margin:0;"></div>
+                    <div style="width:14px;height:5px;background:#DCFCE7;border-radius:3px;"></div>
+                  </div>
+                  <!-- Form section 1 -->
+                  <div class="m-card" style="padding:4px 5px;margin-bottom:4px;">
+                    <div class="m-line" style="background:var(--deep-forge);width:45%;margin-bottom:4px;border-bottom:1px solid #E7E5E4;padding-bottom:3px;"></div>
+                    <div class="m-form-field">
+                      <div class="m-form-label"></div>
+                      <div class="m-form-input"></div>
+                    </div>
+                    <div class="m-form-field">
+                      <div class="m-form-label"></div>
+                      <div class="m-form-input"></div>
+                    </div>
+                    <div class="m-form-field" style="margin:0;">
+                      <div class="m-form-label"></div>
+                      <div class="m-form-input" style="height:14px;"></div>
+                    </div>
+                  </div>
+                  <!-- Form section 2 -->
+                  <div class="m-card" style="padding:4px 5px;">
+                    <div class="m-line" style="background:var(--deep-forge);width:35%;margin-bottom:4px;border-bottom:1px solid #E7E5E4;padding-bottom:3px;"></div>
+                    <div class="m-form-field">
+                      <div class="m-form-label"></div>
+                      <div class="m-form-input"></div>
+                    </div>
+                    <div class="m-form-field" style="margin:0;">
+                      <div class="m-form-label"></div>
+                      <div class="m-form-input"></div>
+                    </div>
+                  </div>
+                  <!-- Action bar -->
+                  <div class="m-action-bar">
+                    <div class="m-action-btn" style="border:1px solid #D6D3D1;margin-right:auto;"></div>
+                    <div class="m-action-btn" style="border:1px solid #D6D3D1;"></div>
+                    <div class="m-action-btn" style="background:var(--amber);"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="layout-card-header" style="border-top:1px solid #E7E5E4;border-bottom:0;">
+          <p class="layout-ref">LAYOUTS.md &sect; 2.3</p>
+        </div>
+      </div>
+
+      <!-- Settings -->
+      <div class="layout-card" data-preview="settings">
+        <div class="layout-card-header">
+          <h4>Settings</h4>
+          <p>Settings nav + form content</p>
+        </div>
+        <div class="layout-preview">
+          <div class="mini-frame">
+            <div class="mini-frame-bar">
+              <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+              <div class="url-bar"></div>
+            </div>
+            <div class="mini-frame-content">
+              <div class="m-topbar">
+                <div style="display:flex;align-items:center;gap:4px;">
+                  <div class="m-icon"></div>
+                  <div style="font-family:var(--font-heading);font-size:5px;font-weight:700;color:white;line-height:1;">Open<span style="color:var(--amber);">AEC</span></div>
+                </div>
+                <div class="m-search"></div>
+                <div class="m-icon"></div>
+              </div>
+              <div style="display:flex;min-height:190px;">
+                <div class="m-sidebar" style="background:var(--concrete);">
+                  <div class="m-nav-heading"></div>
+                  <div class="m-nav-item"></div>
+                  <div class="m-nav-item"></div>
+                  <div class="m-nav-item active"></div>
+                </div>
+                <div class="m-content" style="padding:6px 8px;">
+                  <!-- Settings header -->
+                  <div class="m-line-amber" style="height:3px;width:40px;margin-bottom:5px;"></div>
+                  <div style="display:flex;min-height:140px;">
+                    <!-- Settings nav -->
+                    <div class="m-settings-nav">
+                      <div class="m-nav-item active"></div>
+                      <div class="m-nav-item"></div>
+                      <div class="m-nav-item"></div>
+                      <div class="m-nav-item"></div>
+                      <div class="m-nav-item" style="margin-top:8px;"></div>
+                    </div>
+                    <!-- Settings content -->
+                    <div style="flex:1;padding-left:6px;">
+                      <div class="m-line" style="background:var(--deep-forge);width:50%;height:2px;margin-bottom:2px;"></div>
+                      <div class="m-line" style="width:80%;background:#A1A1AA;margin-bottom:5px;"></div>
+                      <div class="m-form-field">
+                        <div class="m-form-label"></div>
+                        <div class="m-form-input"></div>
+                      </div>
+                      <div class="m-form-field">
+                        <div class="m-form-label"></div>
+                        <div class="m-form-input"></div>
+                      </div>
+                      <div class="m-form-field">
+                        <div class="m-form-label"></div>
+                        <div class="m-form-input"></div>
+                      </div>
+                      <div style="width:22px;height:7px;background:var(--amber);border-radius:2px;margin-top:4px;"></div>
+                      <!-- Danger zone -->
+                      <div style="border:1px solid var(--error);border-radius:3px;padding:3px 4px;margin-top:8px;">
+                        <div class="m-line" style="background:var(--error);width:40%;margin-bottom:2px;"></div>
+                        <div class="m-line" style="width:80%;background:#A1A1AA;margin-bottom:3px;"></div>
+                        <div style="width:18px;height:6px;border:1px solid var(--error);border-radius:2px;"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="layout-card-header" style="border-top:1px solid #E7E5E4;border-bottom:0;">
+          <p class="layout-ref">LAYOUTS.md &sect; 2.4</p>
+        </div>
+      </div>
+
+    </div><!-- /layout-grid web tools -->
+
+    <hr>
+
+    <!-- ======= DESKTOP TOOL LAYOUTS ======= -->
+    <h3 class="mt-8 mb-6">Desktop tool layouts</h3>
+
+    <div class="layout-grid">
+
+      <!-- Workspace -->
+      <div class="layout-card" data-preview="workspace">
+        <div class="layout-card-header">
+          <h4>Workspace</h4>
+          <p>Titlebar + toolbar + sidebar + canvas + statusbar</p>
+        </div>
+        <div class="layout-preview">
+          <div class="mini-frame mini-frame-desktop">
+            <div class="mini-frame-bar">
+              <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+            </div>
+            <div class="mini-frame-content">
+              <!-- Titlebar -->
+              <div style="height:12px;background:var(--deep-forge);border-bottom:1px solid #27272A;display:flex;align-items:center;padding:0 6px;justify-content:space-between;">
+                <div style="display:flex;align-items:center;gap:3px;">
+                  <div style="width:6px;height:6px;background:var(--amber);border-radius:1px;"></div>
+                  <div style="font-family:var(--font-heading);font-size:4px;font-weight:700;color:white;line-height:1;">Open<span style="color:var(--amber);">AEC</span></div>
+                </div>
+                <div style="font-family:var(--font-body);font-size:3px;color:#57534E;line-height:1;">project-alpha.oaec</div>
+              </div>
+              <!-- Toolbar -->
+              <div class="m-toolbar">
+                <div class="m-tool active"></div>
+                <div class="m-tool"></div>
+                <div class="m-tool"></div>
+                <div class="m-sep"></div>
+                <div class="m-tool"></div>
+                <div class="m-tool"></div>
+                <div style="flex:1;"></div>
+                <div style="width:20px;height:6px;border:1px solid #D6D3D1;border-radius:2px;font-family:var(--font-code);font-size:3px;text-align:center;line-height:6px;color:#57534E;">100%</div>
+              </div>
+              <!-- Body -->
+              <div style="display:flex;min-height:160px;">
+                <!-- Sidebar with tree -->
+                <div class="m-sidebar" style="padding:4px;">
+                  <div class="m-nav-heading" style="width:20px;"></div>
+                  <div style="margin-left:0;">
+                    <div class="m-nav-item active"></div>
+                    <div style="margin-left:6px;">
+                      <div class="m-nav-item" style="width:80%;"></div>
+                      <div class="m-nav-item" style="width:70%;"></div>
+                    </div>
+                  </div>
+                  <div class="m-nav-heading" style="width:20px;margin-top:6px;"></div>
+                  <div class="m-nav-item" style="width:85%;"></div>
+                  <div class="m-nav-item" style="width:75%;"></div>
+                  <div style="margin-left:6px;">
+                    <div class="m-nav-item" style="width:65%;"></div>
+                  </div>
+                </div>
+                <!-- Canvas -->
+                <div style="flex:1;background:var(--blueprint-white);position:relative;">
+                  <!-- Grid pattern hint -->
+                  <div style="position:absolute;inset:0;background-image:linear-gradient(#E7E5E4 1px,transparent 1px),linear-gradient(90deg,#E7E5E4 1px,transparent 1px);background-size:20px 20px;opacity:0.4;"></div>
+                  <div class="m-canvas-element"></div>
+                </div>
+              </div>
+              <!-- Statusbar -->
+              <div class="m-statusbar">
+                <div class="m-status-item" style="width:24px;"></div>
+                <div style="width:4px;height:4px;border-radius:50%;background:var(--success);"></div>
+                <div class="m-status-item" style="width:12px;"></div>
+                <div style="flex:1;"></div>
+                <div class="m-status-item" style="width:20px;"></div>
+                <div class="m-status-item" style="width:14px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="layout-card-header" style="border-top:1px solid #E7E5E4;border-bottom:0;">
+          <p class="layout-ref">LAYOUTS.md &sect; 3.1</p>
+        </div>
+      </div>
+
+      <!-- Inspector -->
+      <div class="layout-card" data-preview="inspector">
+        <div class="layout-card-header">
+          <h4>Inspector panel</h4>
+          <p>Canvas + properties sidebar</p>
+        </div>
+        <div class="layout-preview">
+          <div class="mini-frame mini-frame-desktop">
+            <div class="mini-frame-bar">
+              <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+            </div>
+            <div class="mini-frame-content">
+              <div style="height:12px;background:var(--deep-forge);border-bottom:1px solid #27272A;display:flex;align-items:center;padding:0 6px;">
+                <div style="display:flex;align-items:center;gap:3px;">
+                  <div style="width:6px;height:6px;background:var(--amber);border-radius:1px;"></div>
+                  <div style="font-family:var(--font-heading);font-size:4px;font-weight:700;color:white;line-height:1;">Open<span style="color:var(--amber);">AEC</span></div>
+                </div>
+              </div>
+              <div class="m-toolbar">
+                <div class="m-tool"></div>
+                <div class="m-tool active"></div>
+                <div class="m-tool"></div>
+                <div class="m-sep"></div>
+                <div class="m-tool"></div>
+              </div>
+              <div style="display:flex;min-height:170px;">
+                <!-- Canvas with selected element -->
+                <div style="flex:1;background:var(--blueprint-white);position:relative;">
+                  <div style="position:absolute;inset:0;background-image:linear-gradient(#E7E5E4 1px,transparent 1px),linear-gradient(90deg,#E7E5E4 1px,transparent 1px);background-size:20px 20px;opacity:0.4;"></div>
+                  <div class="m-canvas-element" style="left:40%;"></div>
+                  <!-- Second element (unselected) -->
+                  <div style="width:24px;height:20px;border:1px solid #D6D3D1;border-radius:2px;position:absolute;top:25%;left:65%;"></div>
+                </div>
+                <!-- Inspector panel -->
+                <div class="m-inspector">
+                  <!-- Tabs -->
+                  <div style="display:flex;gap:1px;border-bottom:1px solid #E7E5E4;margin-bottom:4px;padding-bottom:2px;">
+                    <div style="width:14px;height:2px;background:var(--amber);border-radius:1px;"></div>
+                    <div style="width:14px;height:2px;background:#D6D3D1;border-radius:1px;"></div>
+                  </div>
+                  <!-- Properties section -->
+                  <div class="m-section-head" style="width:26px;"></div>
+                  <div class="m-prop-row">
+                    <div class="m-prop-label"></div>
+                    <div class="m-prop-value"></div>
+                  </div>
+                  <div class="m-prop-row">
+                    <div class="m-prop-label"></div>
+                    <div class="m-prop-value"></div>
+                  </div>
+                  <div style="display:flex;gap:2px;margin-bottom:2px;">
+                    <div style="flex:1;">
+                      <div style="width:6px;height:2px;background:#A1A1AA;border-radius:1px;margin-bottom:1px;"></div>
+                      <div style="height:5px;background:white;border:1px solid #E7E5E4;border-radius:1px;"></div>
+                    </div>
+                    <div style="flex:1;">
+                      <div style="width:6px;height:2px;background:#A1A1AA;border-radius:1px;margin-bottom:1px;"></div>
+                      <div style="height:5px;background:white;border:1px solid #E7E5E4;border-radius:1px;"></div>
+                    </div>
+                  </div>
+                  <div style="display:flex;gap:2px;margin-bottom:2px;">
+                    <div style="flex:1;">
+                      <div style="width:6px;height:2px;background:#A1A1AA;border-radius:1px;margin-bottom:1px;"></div>
+                      <div style="height:5px;background:white;border:1px solid #E7E5E4;border-radius:1px;"></div>
+                    </div>
+                    <div style="flex:1;">
+                      <div style="width:6px;height:2px;background:#A1A1AA;border-radius:1px;margin-bottom:1px;"></div>
+                      <div style="height:5px;background:white;border:1px solid #E7E5E4;border-radius:1px;"></div>
+                    </div>
+                  </div>
+                  <!-- Style section -->
+                  <div class="m-section-head" style="width:20px;"></div>
+                  <div class="m-prop-row">
+                    <div class="m-prop-label"></div>
+                    <div style="width:8px;height:8px;background:var(--amber);border-radius:2px;flex-shrink:0;border:1px solid #E7E5E4;"></div>
+                  </div>
+                  <div class="m-prop-row">
+                    <div class="m-prop-label"></div>
+                    <div class="m-prop-value"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="m-statusbar">
+                <div class="m-status-item" style="width:18px;"></div>
+                <div style="flex:1;"></div>
+                <div class="m-status-item" style="width:16px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="layout-card-header" style="border-top:1px solid #E7E5E4;border-bottom:0;">
+          <p class="layout-ref">LAYOUTS.md &sect; 3.2</p>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div class="layout-card" data-preview="modal">
+        <div class="layout-card-header">
+          <h4>Modal / dialog</h4>
+          <p>Centered overlay, 3 sizes (sm / md / lg)</p>
+        </div>
+        <div class="layout-preview">
+          <div class="mini-frame mini-frame-desktop">
+            <div class="mini-frame-bar">
+              <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+            </div>
+            <div class="mini-frame-content" style="min-height:200px;position:relative;">
+              <!-- Background app (dimmed) -->
+              <div style="height:12px;background:var(--deep-forge);border-bottom:1px solid #27272A;opacity:0.5;"></div>
+              <div style="display:flex;height:178px;opacity:0.3;">
+                <div class="m-sidebar" style="background:var(--concrete);"></div>
+                <div class="m-content"></div>
+              </div>
+              <div style="height:10px;background:var(--deep-forge);opacity:0.5;"></div>
+              <!-- Modal overlay -->
+              <div class="m-modal-backdrop">
+                <div class="m-modal">
+                  <div class="m-modal-header">
+                    <div class="m-line" style="background:var(--deep-forge);width:45%;margin:0;height:3px;"></div>
+                    <div style="width:6px;height:6px;background:#D6D3D1;border-radius:1px;"></div>
+                  </div>
+                  <div class="m-modal-body">
+                    <div class="m-line" style="width:90%;"></div>
+                    <div class="m-line" style="width:75%;"></div>
+                    <div style="height:3px;"></div>
+                    <div class="m-form-field">
+                      <div class="m-form-label"></div>
+                      <div class="m-form-input"></div>
+                    </div>
+                    <div class="m-form-field" style="margin:0;">
+                      <div class="m-form-label"></div>
+                      <div class="m-form-input"></div>
+                    </div>
+                  </div>
+                  <div class="m-modal-footer">
+                    <div class="m-action-btn" style="border:1px solid #D6D3D1;"></div>
+                    <div class="m-action-btn" style="background:var(--amber);"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="layout-card-header" style="border-top:1px solid #E7E5E4;border-bottom:0;">
+          <p class="layout-ref">LAYOUTS.md &sect; 3.3</p>
+        </div>
+      </div>
+
+      <!-- Toolbar patterns -->
+      <div class="layout-card" data-preview="toolbar">
+        <div class="layout-card-header">
+          <h4>Toolbar patterns</h4>
+          <p>Horizontal (40px) and vertical (48px) variants</p>
+        </div>
+        <div class="layout-preview" style="flex-direction:column;gap:var(--sp-4);padding:var(--sp-6);">
+          <!-- Horizontal -->
+          <div style="width:100%;max-width:380px;">
+            <div style="font-family:var(--font-code);font-size:0.6rem;color:var(--scaffold-gray);margin-bottom:4px;">HORIZONTAL</div>
+            <div style="background:var(--concrete);border:1px solid #E7E5E4;border-radius:4px;padding:4px 8px;display:flex;align-items:center;gap:4px;">
+              <div style="width:18px;height:18px;background:var(--amber);border-radius:3px;"></div>
+              <div style="width:18px;height:18px;background:#E7E5E4;border-radius:3px;"></div>
+              <div style="width:18px;height:18px;background:#E7E5E4;border-radius:3px;"></div>
+              <div style="width:1px;height:18px;background:#E7E5E4;margin:0 2px;"></div>
+              <div style="width:18px;height:18px;background:#E7E5E4;border-radius:3px;"></div>
+              <div style="width:18px;height:18px;background:#E7E5E4;border-radius:3px;"></div>
+              <div style="flex:1;"></div>
+              <div style="width:40px;height:18px;border:1px solid #D6D3D1;border-radius:3px;font-family:var(--font-code);font-size:0.55rem;display:flex;align-items:center;justify-content:center;color:#57534E;">100%</div>
+              <div style="width:18px;height:18px;background:#E7E5E4;border-radius:3px;"></div>
+            </div>
+          </div>
+          <!-- Vertical -->
+          <div style="display:flex;gap:var(--sp-4);align-items:flex-start;">
+            <div>
+              <div style="font-family:var(--font-code);font-size:0.6rem;color:var(--scaffold-gray);margin-bottom:4px;">VERTICAL</div>
+              <div style="background:var(--concrete);border:1px solid #E7E5E4;border-radius:4px;padding:6px;display:flex;flex-direction:column;align-items:center;gap:3px;width:36px;">
+                <div style="width:22px;height:22px;background:var(--amber);border-radius:3px;"></div>
+                <div style="width:22px;height:22px;background:#E7E5E4;border-radius:3px;"></div>
+                <div style="width:22px;height:22px;background:#E7E5E4;border-radius:3px;"></div>
+                <div style="width:16px;height:1px;background:#E7E5E4;margin:1px 0;"></div>
+                <div style="width:22px;height:22px;background:#E7E5E4;border-radius:3px;"></div>
+              </div>
+            </div>
+            <div>
+              <div style="font-family:var(--font-code);font-size:0.6rem;color:var(--scaffold-gray);margin-bottom:4px;">DARK VARIANT</div>
+              <div style="background:var(--deep-forge);border:1px solid #27272A;border-radius:4px;padding:6px;display:flex;flex-direction:column;align-items:center;gap:3px;width:36px;">
+                <div style="width:22px;height:22px;background:var(--amber);border-radius:3px;"></div>
+                <div style="width:22px;height:22px;background:#27272A;border-radius:3px;"></div>
+                <div style="width:22px;height:22px;background:#27272A;border-radius:3px;"></div>
+                <div style="width:16px;height:1px;background:#27272A;margin:1px 0;"></div>
+                <div style="width:22px;height:22px;background:#27272A;border-radius:3px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="layout-card-header" style="border-top:1px solid #E7E5E4;border-bottom:0;">
+          <p class="layout-ref">LAYOUTS.md &sect; 3.4</p>
+        </div>
+      </div>
+
+    </div><!-- /layout-grid desktop -->
+
+  </section>
+
+
+  <!-- ================================================================
        FOOTER
        ================================================================ -->
   <footer style="text-align:center; padding:var(--sp-12) 0; color:var(--scaffold-gray); font-size:0.8rem;">
-    <p>OpenAEC Foundation &mdash; Style Guide v0.2 &mdash; March 2026</p>
+    <p>OpenAEC Foundation &mdash; Style Guide v0.3 &mdash; March 2026</p>
     <p class="mt-2">Build free. Build together.</p>
   </footer>
 
 </div><!-- /.container -->
+
+<!-- ================================================================
+     LAYOUT LIGHTBOX OVERLAYS
+     ================================================================ -->
+<div class="layout-lightbox" id="layoutLightbox">
+  <div class="layout-lightbox-inner">
+    <div class="layout-lightbox-bar">
+      <div>
+        <h3 id="lbTitle"></h3>
+        <span class="lb-ref" id="lbRef"></span>
+      </div>
+      <button class="layout-lightbox-close" id="lbClose">&times;</button>
+    </div>
+    <div class="layout-lightbox-body" id="lbBody"></div>
+  </div>
+</div>
+
+<!-- Full-size preview templates (hidden) -->
+<template id="tpl-landing">
+  <!-- Navbar -->
+  <div class="fp-navbar">
+    <div class="fp-brand">Open<span>AEC</span></div>
+    <div class="fp-nav-links">
+      <a class="fp-nav-link active" href="#">Home</a>
+      <a class="fp-nav-link" href="#">Tools</a>
+      <a class="fp-nav-link" href="#">Docs</a>
+      <a class="fp-nav-link" href="#">Community</a>
+      <a class="btn btn-primary btn-sm" href="#" style="text-decoration:none;line-height:1.2;">Get started</a>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div class="fp-hero">
+    <div class="fp-section-label">Open-source AEC platform</div>
+    <h1>Build free. Build <span>together.</span></h1>
+    <p class="fp-tagline">Free and open-source tools for the built environment. No vendor lock-in, no black boxes.</p>
+    <div class="fp-btn-row">
+      <a class="btn btn-primary" href="#" style="text-decoration:none;">Start contributing</a>
+      <a class="btn btn-ghost" href="#" style="text-decoration:none;color:var(--amber);border-color:var(--amber);">View the code</a>
+    </div>
+  </div>
+
+  <!-- Feature grid -->
+  <div class="fp-section">
+    <div class="fp-section-max">
+      <div style="text-align:center;margin-bottom:20px;">
+        <div class="fp-section-label">What we build</div>
+        <h2 style="font-size:1.4rem;">Tools that work for you</h2>
+      </div>
+      <div class="fp-grid-3">
+        <div class="fp-feature-card">
+          <div class="fp-feature-icon">&lt;/&gt;</div>
+          <h4>IFC Tooling</h4>
+          <p>Read, write, and validate IFC files without proprietary software.</p>
+        </div>
+        <div class="fp-feature-card">
+          <div class="fp-feature-icon">&#9651;</div>
+          <h4>Structural checks</h4>
+          <p>Unity checks, cross-section optimization, and code compliance.</p>
+        </div>
+        <div class="fp-feature-card">
+          <div class="fp-feature-icon">&#9633;</div>
+          <h4>BIM Automation</h4>
+          <p>Batch operations, data extraction, and model validation pipelines.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="fp-section-dark">
+    <div class="fp-section-max">
+      <div class="fp-grid-4">
+        <div class="fp-stat"><div class="fp-stat-value">150+</div><div class="fp-stat-label">Contributors</div></div>
+        <div class="fp-stat"><div class="fp-stat-value">50+</div><div class="fp-stat-label">Open tools</div></div>
+        <div class="fp-stat"><div class="fp-stat-value">12</div><div class="fp-stat-label">Countries</div></div>
+        <div class="fp-stat"><div class="fp-stat-value">99%</div><div class="fp-stat-label">Open-source</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="fp-cta-section">
+    <h2>Ready to contribute?</h2>
+    <p style="color:var(--scaffold-gray);font-size:0.85rem;margin-bottom:16px;">First PR? Welcome. Here are the good-first-issues.</p>
+    <a class="btn btn-primary btn-lg" href="#" style="text-decoration:none;">View open issues</a>
+  </div>
+
+  <!-- Footer -->
+  <div class="fp-footer">
+    <div>
+      <div class="fp-footer-brand">Open<span>AEC</span> Foundation</div>
+      <div class="fp-footer-legal" style="margin-top:4px;">CC BY-SA 4.0 &mdash; Build free. Build together.</div>
+    </div>
+    <div class="fp-footer-links">
+      <a class="fp-footer-link" href="#">GitHub</a>
+      <a class="fp-footer-link" href="#">Docs</a>
+      <a class="fp-footer-link" href="#">Community</a>
+      <a class="fp-footer-link" href="#">Contact</a>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-docs">
+  <div class="fp-navbar">
+    <div class="fp-brand">Open<span>AEC</span></div>
+    <div class="fp-nav-links">
+      <a class="fp-nav-link" href="#">Tools</a>
+      <a class="fp-nav-link active" href="#">Docs</a>
+      <a class="fp-nav-link" href="#">Community</a>
+      <div style="width:160px;height:28px;background:#27272A;border-radius:var(--radius-md);display:flex;align-items:center;padding:0 8px;">
+        <span style="font-size:0.7rem;color:#57534E;">Search docs...</span>
+      </div>
+    </div>
+  </div>
+  <div class="fp-docs-layout">
+    <!-- Sidebar -->
+    <div class="fp-sidebar">
+      <div class="fp-sidebar-heading">Getting started</div>
+      <a class="fp-sidebar-link" href="#">Introduction</a>
+      <a class="fp-sidebar-link active" href="#">Installation</a>
+      <a class="fp-sidebar-link" href="#">Quick start</a>
+      <div class="fp-sidebar-heading">Core concepts</div>
+      <a class="fp-sidebar-link" href="#">IFC schema</a>
+      <a class="fp-sidebar-link" href="#">Property sets</a>
+      <a class="fp-sidebar-link" href="#">Geometry</a>
+      <div class="fp-sidebar-heading">API Reference</div>
+      <a class="fp-sidebar-link" href="#">Model</a>
+      <a class="fp-sidebar-link" href="#">Elements</a>
+      <a class="fp-sidebar-link" href="#">Export</a>
+      <div class="fp-sidebar-heading">Guides</div>
+      <a class="fp-sidebar-link" href="#">Validation</a>
+      <a class="fp-sidebar-link" href="#">Migration</a>
+      <a class="fp-sidebar-link" href="#">Contributing</a>
+    </div>
+    <!-- Content -->
+    <div class="fp-doc-content">
+      <div class="fp-breadcrumb">Docs / Getting started / <strong>Installation</strong></div>
+      <h1>Installation</h1>
+      <p>OpenAEC tools are distributed as Python packages via PyPI. All core tools require Python 3.10 or later. Platform-specific instructions below.</p>
+
+      <h2>System requirements</h2>
+      <p>Before installing, ensure you have Python 3.10+ and pip available in your terminal. We recommend using a virtual environment to avoid conflicts with other packages.</p>
+
+      <pre style="font-size:0.75rem;padding:12px 16px;border-radius:6px;margin:12px 0;background:var(--night-build);color:var(--blueprint-white);"><code><span class="comment"># Create and activate virtual environment</span>
+<span class="keyword">python</span> -m venv .venv
+<span class="keyword">source</span> .venv/bin/activate
+
+<span class="comment"># Install the core package</span>
+<span class="keyword">pip</span> install openaec</code></pre>
+
+      <h2>Verify installation</h2>
+      <p>After installing, verify that everything works by running the version check command. This confirms the core library and all dependencies are correctly installed.</p>
+
+      <pre style="font-size:0.75rem;padding:12px 16px;border-radius:6px;margin:12px 0;background:var(--night-build);color:var(--blueprint-white);"><code><span class="keyword">openaec</span> --version
+<span class="comment"># OpenAEC v0.4.2</span></code></pre>
+
+      <!-- Prev/Next -->
+      <div style="display:flex;justify-content:space-between;margin-top:28px;padding-top:12px;border-top:1px solid #E7E5E4;">
+        <a href="#" style="font-size:0.8rem;font-weight:500;color:var(--amber);text-decoration:none;">&larr; Introduction</a>
+        <a href="#" style="font-size:0.8rem;font-weight:500;color:var(--amber);text-decoration:none;">Quick start &rarr;</a>
+      </div>
+    </div>
+    <!-- TOC -->
+    <div class="fp-toc">
+      <div class="fp-toc-heading">On this page</div>
+      <a class="fp-toc-link active" href="#">System requirements</a>
+      <a class="fp-toc-link" href="#">Verify installation</a>
+      <a class="fp-toc-link" href="#">Platform notes</a>
+      <a class="fp-toc-link" href="#">Troubleshooting</a>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-team">
+  <div class="fp-navbar">
+    <div class="fp-brand">Open<span>AEC</span></div>
+    <div class="fp-nav-links">
+      <a class="fp-nav-link" href="#">Tools</a>
+      <a class="fp-nav-link" href="#">Docs</a>
+      <a class="fp-nav-link active" href="#">About</a>
+      <a class="fp-nav-link" href="#">Community</a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <div class="fp-hero" style="padding:32px 24px;">
+    <div class="fp-section-label">About us</div>
+    <h1 style="font-size:1.75rem;">Open tools for the <span>built environment</span></h1>
+    <p class="fp-tagline">We are engineers, developers, and designers who believe the AEC industry deserves better software. Free as in freedom.</p>
+  </div>
+
+  <!-- Mission -->
+  <div class="fp-section">
+    <div class="fp-section-max">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;">
+        <div>
+          <h2 style="font-size:1.3rem;margin-bottom:8px;">Our mission</h2>
+          <p style="font-size:0.8rem;color:#57534E;line-height:1.7;">We build open-source tools that give engineers and architects full control over their workflows. No vendor lock-in. No proprietary formats. No artificial limitations.</p>
+          <p style="font-size:0.8rem;color:#57534E;line-height:1.7;">Every tool we ship is free to use, modify, and distribute. We publish specifications, not just software. We document decisions, not just features.</p>
+        </div>
+        <div style="background:linear-gradient(135deg,var(--concrete) 0%,#E7E5E4 100%);border-radius:var(--radius-lg);height:180px;display:flex;align-items:center;justify-content:center;color:var(--scaffold-gray);font-size:0.75rem;">Illustration</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Team grid -->
+  <div class="fp-section-alt">
+    <div class="fp-section-max">
+      <div style="text-align:center;margin-bottom:20px;">
+        <div class="fp-section-label">The people</div>
+        <h2 style="font-size:1.3rem;">Core team</h2>
+      </div>
+      <div class="fp-grid-4">
+        <div class="fp-team-card"><div class="fp-avatar"></div><h4>Alex de Vries</h4><p>Structural engineer</p></div>
+        <div class="fp-team-card"><div class="fp-avatar"></div><h4>Sam Bakker</h4><p>BIM developer</p></div>
+        <div class="fp-team-card"><div class="fp-avatar"></div><h4>Dana Kuiper</h4><p>Frontend lead</p></div>
+        <div class="fp-team-card"><div class="fp-avatar"></div><h4>Robin Smit</h4><p>DevOps engineer</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="fp-cta-section" style="padding:28px 24px;">
+    <h2 style="font-size:1.2rem;">Join us</h2>
+    <p style="color:var(--scaffold-gray);font-size:0.8rem;margin-bottom:12px;">We are always looking for contributors.</p>
+    <a class="btn btn-primary" href="#" style="text-decoration:none;">Start contributing</a>
+  </div>
+
+  <div class="fp-footer">
+    <div>
+      <div class="fp-footer-brand">Open<span>AEC</span> Foundation</div>
+      <div class="fp-footer-legal" style="margin-top:4px;">CC BY-SA 4.0</div>
+    </div>
+    <div class="fp-footer-links">
+      <a class="fp-footer-link" href="#">GitHub</a>
+      <a class="fp-footer-link" href="#">Docs</a>
+      <a class="fp-footer-link" href="#">Contact</a>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-blog">
+  <div class="fp-navbar">
+    <div class="fp-brand">Open<span>AEC</span></div>
+    <div class="fp-nav-links">
+      <a class="fp-nav-link" href="#">Tools</a>
+      <a class="fp-nav-link" href="#">Docs</a>
+      <a class="fp-nav-link active" href="#">Blog</a>
+      <a class="fp-nav-link" href="#">Community</a>
+    </div>
+  </div>
+
+  <div class="fp-section" style="padding-bottom:0;">
+    <div class="fp-section-max">
+      <h1 style="font-size:1.6rem;margin-bottom:0;">News &amp; updates</h1>
+      <div class="fp-tag-row">
+        <span class="fp-filter-tag active">All</span>
+        <span class="fp-filter-tag">Releases</span>
+        <span class="fp-filter-tag">Tutorials</span>
+        <span class="fp-filter-tag">Community</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="fp-section" style="padding-top:16px;">
+    <div class="fp-section-max">
+      <!-- Featured post -->
+      <div class="fp-featured-post">
+        <div class="fp-featured-image">16:9 cover image</div>
+        <div class="fp-featured-content">
+          <span class="badge badge-amber">Release</span>
+          <h3 style="margin-top:6px;">OpenAEC v0.4 &mdash; IFC4x3 support</h3>
+          <p>Full IFC4x3 ADD2 export with complete property sets. No lossy conversion, no proprietary dependencies.</p>
+          <div class="fp-post-meta">Alex de Vries &middot; March 5, 2026</div>
+        </div>
+      </div>
+
+      <!-- Post grid -->
+      <div class="fp-grid-3">
+        <div class="fp-post-card">
+          <div class="fp-post-image"></div>
+          <div class="fp-post-body">
+            <span class="badge badge-blue" style="font-size:0.55rem;">Tutorial</span>
+            <h4 style="margin-top:4px;">Batch model validation</h4>
+            <p>Automate IFC checks across 200 models in one pipeline run.</p>
+            <div class="fp-post-meta">Sam Bakker &middot; Feb 28, 2026</div>
+          </div>
+        </div>
+        <div class="fp-post-card">
+          <div class="fp-post-image"></div>
+          <div class="fp-post-body">
+            <span class="badge badge-green" style="font-size:0.55rem;">Community</span>
+            <h4 style="margin-top:4px;">Contributor spotlight: Q1</h4>
+            <p>Highlighting the engineers who shipped 23 PRs this quarter.</p>
+            <div class="fp-post-meta">Dana Kuiper &middot; Feb 20, 2026</div>
+          </div>
+        </div>
+        <div class="fp-post-card">
+          <div class="fp-post-image"></div>
+          <div class="fp-post-body">
+            <span class="badge badge-amber" style="font-size:0.55rem;">Release</span>
+            <h4 style="margin-top:4px;">Cross-section optimizer 2.0</h4>
+            <p>Faster UC calculations with multi-load-case support.</p>
+            <div class="fp-post-meta">Robin Smit &middot; Feb 12, 2026</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="fp-pagination">
+        <div class="fp-page-btn">&larr;</div>
+        <div class="fp-page-btn active">1</div>
+        <div class="fp-page-btn">2</div>
+        <div class="fp-page-btn">3</div>
+        <div class="fp-page-btn">&rarr;</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fp-footer">
+    <div>
+      <div class="fp-footer-brand">Open<span>AEC</span> Foundation</div>
+      <div class="fp-footer-legal" style="margin-top:4px;">CC BY-SA 4.0</div>
+    </div>
+    <div class="fp-footer-links">
+      <a class="fp-footer-link" href="#">GitHub</a>
+      <a class="fp-footer-link" href="#">RSS</a>
+    </div>
+  </div>
+</template>
+
+<!-- ===== WEB TOOL TEMPLATES ===== -->
+
+<template id="tpl-dashboard">
+  <div class="fp-app-shell">
+    <div class="fp-topbar">
+      <div class="fp-topbar-hamburger"><span></span><span></span><span></span></div>
+      <div class="fp-brand" style="font-size:0.85rem;">Open<span>AEC</span></div>
+      <div class="fp-topbar-search">Search...</div>
+      <div class="fp-topbar-right">
+        <div class="fp-topbar-icon"></div>
+        <div class="fp-topbar-icon"></div>
+        <div class="fp-topbar-avatar"></div>
+      </div>
+    </div>
+    <div class="fp-app-body">
+      <div class="fp-app-sidebar">
+        <div class="fp-app-sidebar-heading">Main</div>
+        <a class="fp-app-nav-item active" href="#"><div class="fp-app-nav-icon"></div>Dashboard</a>
+        <a class="fp-app-nav-item" href="#"><div class="fp-app-nav-icon"></div>Projects</a>
+        <a class="fp-app-nav-item" href="#"><div class="fp-app-nav-icon"></div>Models</a>
+        <a class="fp-app-nav-item" href="#"><div class="fp-app-nav-icon"></div>Checks</a>
+        <div class="fp-app-sidebar-heading">Data</div>
+        <a class="fp-app-nav-item" href="#"><div class="fp-app-nav-icon"></div>Reports</a>
+        <a class="fp-app-nav-item" href="#"><div class="fp-app-nav-icon"></div>Exports</a>
+        <div class="fp-app-sidebar-heading">Account</div>
+        <a class="fp-app-nav-item" href="#"><div class="fp-app-nav-icon"></div>Settings</a>
+      </div>
+      <div class="fp-app-content">
+        <div class="fp-page-header">
+          <div>
+            <h1>Dashboard</h1>
+            <p>Overview of your projects and activity.</p>
+          </div>
+          <a class="btn btn-primary btn-sm" href="#" style="text-decoration:none;">New project</a>
+        </div>
+        <div class="fp-kpi-grid">
+          <div class="fp-kpi-card">
+            <div class="fp-kpi-label">Active projects</div>
+            <div class="fp-kpi-value">24</div>
+            <div class="fp-kpi-trend up">&uarr; 12% from last month</div>
+          </div>
+          <div class="fp-kpi-card">
+            <div class="fp-kpi-label">Open checks</div>
+            <div class="fp-kpi-value">8</div>
+            <div class="fp-kpi-trend down">&darr; 3 since yesterday</div>
+          </div>
+          <div class="fp-kpi-card">
+            <div class="fp-kpi-label">Pass rate</div>
+            <div class="fp-kpi-value">95.2%</div>
+            <div class="fp-kpi-trend up">&uarr; 2.1%</div>
+          </div>
+          <div class="fp-kpi-card">
+            <div class="fp-kpi-label">Models processed</div>
+            <div class="fp-kpi-value">3.2k</div>
+            <div class="fp-kpi-trend up">&uarr; 340 this week</div>
+          </div>
+        </div>
+        <div class="fp-data-grid">
+          <div class="fp-panel">
+            <div class="fp-panel-header">
+              <h3>Checks over time</h3>
+              <select style="font-size:0.7rem;border:1px solid #D6D3D1;border-radius:4px;padding:3px 6px;">
+                <option>Last 30 days</option>
+              </select>
+            </div>
+            <div class="fp-chart-placeholder"></div>
+          </div>
+          <div class="fp-panel">
+            <div class="fp-panel-header"><h3>Recent activity</h3></div>
+            <div class="fp-activity-item">
+              <div class="fp-activity-avatar"></div>
+              <div><div class="fp-activity-text">Alex ran IFC validation on <strong>Tower-B.ifc</strong></div><div class="fp-activity-time">2 min ago</div></div>
+            </div>
+            <div class="fp-activity-item">
+              <div class="fp-activity-avatar"></div>
+              <div><div class="fp-activity-text">Sam exported structural report for <strong>Project Alpha</strong></div><div class="fp-activity-time">15 min ago</div></div>
+            </div>
+            <div class="fp-activity-item">
+              <div class="fp-activity-avatar"></div>
+              <div><div class="fp-activity-text">Dana updated model <strong>Foundation-v3.ifc</strong></div><div class="fp-activity-time">1 hour ago</div></div>
+            </div>
+            <div class="fp-activity-item">
+              <div class="fp-activity-avatar"></div>
+              <div><div class="fp-activity-text">Robin deployed check pipeline <strong>v2.4</strong></div><div class="fp-activity-time">3 hours ago</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-datatable">
+  <div class="fp-app-shell">
+    <div class="fp-topbar">
+      <div class="fp-topbar-hamburger"><span></span><span></span><span></span></div>
+      <div class="fp-brand" style="font-size:0.85rem;">Open<span>AEC</span></div>
+      <div class="fp-topbar-search">Search...</div>
+      <div class="fp-topbar-right"><div class="fp-topbar-icon"></div><div class="fp-topbar-avatar"></div></div>
+    </div>
+    <div class="fp-app-body">
+      <div class="fp-app-sidebar">
+        <div class="fp-app-sidebar-heading">Main</div>
+        <a class="fp-app-nav-item" href="#"><div class="fp-app-nav-icon"></div>Dashboard</a>
+        <a class="fp-app-nav-item active" href="#"><div class="fp-app-nav-icon"></div>Projects</a>
+        <a class="fp-app-nav-item" href="#"><div class="fp-app-nav-icon"></div>Models</a>
+        <a class="fp-app-nav-item" href="#"><div class="fp-app-nav-icon"></div>Checks</a>
+      </div>
+      <div class="fp-app-content">
+        <div class="fp-page-header">
+          <div><h1>Projects</h1></div>
+          <a class="btn btn-primary btn-sm" href="#" style="text-decoration:none;">+ New project</a>
+        </div>
+        <!-- Toolbar -->
+        <div class="fp-table-toolbar">
+          <input class="fp-table-search" type="text" placeholder="Search projects...">
+          <button class="fp-filter-btn">Status &darr;</button>
+          <button class="fp-filter-btn">Type &darr;</button>
+          <div style="flex:1;"></div>
+          <button class="fp-filter-btn">Export</button>
+        </div>
+        <!-- Applied filters -->
+        <div style="display:flex;gap:6px;padding:8px 14px;background:white;border:1px solid #E7E5E4;border-top:0;">
+          <span class="tag" style="font-size:0.65rem;">Active &times;</span>
+          <span class="tag" style="font-size:0.65rem;">Structural &times;</span>
+          <a href="#" style="font-size:0.65rem;margin-left:4px;">Clear all</a>
+        </div>
+        <!-- Table -->
+        <div class="fp-table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:40px;"><span class="fp-table-check"></span></th>
+                <th>Project name &uarr;&darr;</th>
+                <th>Status</th>
+                <th>Type</th>
+                <th>Last modified</th>
+                <th style="width:40px;"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background:#FEF3C7;">
+                <td><span class="fp-table-check checked"></span></td>
+                <td style="font-weight:500;">Tower Block B</td>
+                <td><span class="badge badge-green">Active</span></td>
+                <td>Structural</td>
+                <td>Mar 9, 2026</td>
+                <td style="color:var(--scaffold-gray);">&ctdot;</td>
+              </tr>
+              <tr>
+                <td><span class="fp-table-check"></span></td>
+                <td style="font-weight:500;">Parking Garage A</td>
+                <td><span class="badge badge-gray">Draft</span></td>
+                <td>Structural</td>
+                <td>Mar 8, 2026</td>
+                <td style="color:var(--scaffold-gray);">&ctdot;</td>
+              </tr>
+              <tr>
+                <td><span class="fp-table-check"></span></td>
+                <td style="font-weight:500;">Residential Complex</td>
+                <td><span class="badge badge-green">Active</span></td>
+                <td>BIM coordination</td>
+                <td>Mar 7, 2026</td>
+                <td style="color:var(--scaffold-gray);">&ctdot;</td>
+              </tr>
+              <tr>
+                <td><span class="fp-table-check"></span></td>
+                <td style="font-weight:500;">Office Renovation</td>
+                <td><span class="badge badge-amber">Review</span></td>
+                <td>Structural</td>
+                <td>Mar 5, 2026</td>
+                <td style="color:var(--scaffold-gray);">&ctdot;</td>
+              </tr>
+              <tr>
+                <td><span class="fp-table-check"></span></td>
+                <td style="font-weight:500;">Bridge Assessment</td>
+                <td><span class="badge badge-green">Active</span></td>
+                <td>Infrastructure</td>
+                <td>Mar 3, 2026</td>
+                <td style="color:var(--scaffold-gray);">&ctdot;</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Bulk bar -->
+        <div class="fp-bulk-bar">
+          <span>1 selected</span>
+          <div style="flex:1;"></div>
+          <button class="fp-bulk-btn">Export</button>
+          <button class="fp-bulk-btn">Archive</button>
+          <button class="fp-bulk-btn" style="border-color:var(--error);color:#FCA5A5;">Delete</button>
+        </div>
+        <!-- Pagination -->
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;">
+          <span style="font-size:0.75rem;color:var(--scaffold-gray);">Showing 1&ndash;25 of 142 projects</span>
+          <div class="fp-pagination">
+            <div class="fp-page-btn">&larr;</div>
+            <div class="fp-page-btn active">1</div>
+            <div class="fp-page-btn">2</div>
+            <div class="fp-page-btn">3</div>
+            <div class="fp-page-btn">&hellip;</div>
+            <div class="fp-page-btn">6</div>
+            <div class="fp-page-btn">&rarr;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-form">
+  <div class="fp-app-shell">
+    <div class="fp-topbar">
+      <div class="fp-topbar-hamburger"><span></span><span></span><span></span></div>
+      <div class="fp-brand" style="font-size:0.85rem;">Open<span>AEC</span></div>
+      <div class="fp-topbar-search">Search...</div>
+      <div class="fp-topbar-right"><div class="fp-topbar-icon"></div><div class="fp-topbar-avatar"></div></div>
+    </div>
+    <div class="fp-app-body">
+      <div class="fp-app-sidebar">
+        <div class="fp-app-sidebar-heading">Main</div>
+        <a class="fp-app-nav-item" href="#"><div class="fp-app-nav-icon"></div>Dashboard</a>
+        <a class="fp-app-nav-item active" href="#"><div class="fp-app-nav-icon"></div>Projects</a>
+        <a class="fp-app-nav-item" href="#"><div class="fp-app-nav-icon"></div>Models</a>
+      </div>
+      <div class="fp-app-content" style="max-width:720px;">
+        <div class="fp-breadcrumb" style="font-size:0.75rem;color:var(--scaffold-gray);margin-bottom:12px;">
+          Projects / Tower Block B / <strong style="color:var(--deep-forge);">Edit</strong>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
+          <h1 style="font-size:1.4rem;margin:0;">Tower Block B</h1>
+          <span class="badge badge-green">Active</span>
+        </div>
+        <div class="fp-form-section">
+          <div class="fp-form-section-title">General information</div>
+          <div class="fp-form-grid">
+            <label class="form-label">Project name</label>
+            <input class="form-input" type="text" value="Tower Block B">
+            <label class="form-label">Client</label>
+            <input class="form-input" type="text" value="Municipality of Rotterdam">
+            <label class="form-label">Description</label>
+            <textarea class="form-textarea" style="min-height:60px;" rows="2">Mixed-use residential tower, 24 floors. Structural assessment phase.</textarea>
+          </div>
+        </div>
+        <div class="fp-form-section">
+          <div class="fp-form-section-title">Configuration</div>
+          <div class="fp-form-grid">
+            <label class="form-label">Type</label>
+            <select class="form-select"><option>Structural</option></select>
+            <label class="form-label">Standard</label>
+            <select class="form-select"><option>Eurocode (NEN-EN 1993)</option></select>
+            <label class="form-label">Public</label>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div style="width:36px;height:20px;background:var(--amber);border-radius:9999px;position:relative;">
+                <div style="width:16px;height:16px;background:white;border-radius:50%;position:absolute;top:2px;right:2px;box-shadow:var(--shadow-sm);"></div>
+              </div>
+              <span style="font-size:0.75rem;color:var(--scaffold-gray);">Visible to all members</span>
+            </div>
+          </div>
+        </div>
+        <div class="fp-action-bar">
+          <a class="btn btn-ghost btn-sm" href="#" style="text-decoration:none;color:var(--error);border-color:var(--error);">Delete project</a>
+          <div style="display:flex;gap:8px;">
+            <a class="btn btn-secondary btn-sm" href="#" style="text-decoration:none;">Cancel</a>
+            <a class="btn btn-primary btn-sm" href="#" style="text-decoration:none;">Save changes</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-settings">
+  <div class="fp-app-shell">
+    <div class="fp-topbar">
+      <div class="fp-topbar-hamburger"><span></span><span></span><span></span></div>
+      <div class="fp-brand" style="font-size:0.85rem;">Open<span>AEC</span></div>
+      <div class="fp-topbar-search">Search...</div>
+      <div class="fp-topbar-right"><div class="fp-topbar-icon"></div><div class="fp-topbar-avatar"></div></div>
+    </div>
+    <div class="fp-app-body">
+      <div class="fp-app-sidebar">
+        <div class="fp-app-sidebar-heading">Main</div>
+        <a class="fp-app-nav-item" href="#"><div class="fp-app-nav-icon"></div>Dashboard</a>
+        <a class="fp-app-nav-item" href="#"><div class="fp-app-nav-icon"></div>Projects</a>
+        <div class="fp-app-sidebar-heading">Account</div>
+        <a class="fp-app-nav-item active" href="#"><div class="fp-app-nav-icon"></div>Settings</a>
+      </div>
+      <div class="fp-app-content">
+        <h1 style="font-size:1.4rem;margin-bottom:20px;">Settings</h1>
+        <div class="fp-settings-layout">
+          <div class="fp-settings-nav">
+            <a class="fp-settings-link active" href="#">General</a>
+            <a class="fp-settings-link" href="#">Profile</a>
+            <a class="fp-settings-link" href="#">Team</a>
+            <a class="fp-settings-link" href="#">Notifications</a>
+            <a class="fp-settings-link" href="#">API keys</a>
+            <a class="fp-settings-link" href="#" style="color:var(--error);margin-top:16px;">Danger zone</a>
+          </div>
+          <div class="fp-settings-content">
+            <h2>General</h2>
+            <p>Manage your workspace preferences.</p>
+            <div class="form-group">
+              <label class="form-label" style="font-size:0.8rem;">Workspace name</label>
+              <input class="form-input" type="text" value="OpenAEC Foundation">
+            </div>
+            <div class="form-group">
+              <label class="form-label" style="font-size:0.8rem;">Default language</label>
+              <select class="form-select"><option>English</option><option>Nederlands</option></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" style="font-size:0.8rem;">Default standard</label>
+              <select class="form-select"><option>Eurocode (NEN-EN)</option><option>AISC / ACI</option></select>
+            </div>
+            <a class="btn btn-primary btn-sm" href="#" style="text-decoration:none;">Save changes</a>
+
+            <div class="fp-danger-zone">
+              <h3>Danger zone</h3>
+              <p>Permanently delete this workspace and all associated data. This action cannot be undone.</p>
+              <a class="btn btn-ghost btn-sm" href="#" style="text-decoration:none;color:var(--error);border-color:var(--error);">Delete workspace</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<!-- ===== DESKTOP TOOL TEMPLATES ===== -->
+
+<template id="tpl-workspace">
+  <div class="fp-desktop-shell">
+    <div class="fp-titlebar">
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div style="width:14px;height:14px;background:var(--amber);border-radius:3px;"></div>
+        <div class="fp-titlebar-brand">Open<span>AEC</span></div>
+      </div>
+      <div class="fp-titlebar-file">structural-model.oaec &mdash; Tower Block B</div>
+      <div class="fp-win-controls">
+        <div class="fp-win-dot" style="background:var(--success);"></div>
+        <div class="fp-win-dot" style="background:var(--warm-gold);"></div>
+        <div class="fp-win-dot" style="background:var(--error);"></div>
+      </div>
+    </div>
+    <div class="fp-desktop-toolbar">
+      <div class="fp-tool-btn active" title="Select">&#9654;</div>
+      <div class="fp-tool-btn" title="Move">&#10021;</div>
+      <div class="fp-tool-btn" title="Rotate">&#8634;</div>
+      <div class="fp-tool-sep"></div>
+      <div class="fp-tool-btn" title="Draw">&#9998;</div>
+      <div class="fp-tool-btn" title="Measure">&#8943;</div>
+      <div style="flex:1;"></div>
+      <div class="fp-tb-dropdown">100% &#9662;</div>
+      <div class="fp-tool-btn" title="Settings">&#9881;</div>
+    </div>
+    <div class="fp-desktop-sidebar">
+      <div class="fp-tree-heading">Explorer</div>
+      <div class="fp-tree-node active"><span class="arrow">&#9660;</span> structural-model.oaec</div>
+      <div class="fp-tree-indent">
+        <div class="fp-tree-node"><span class="arrow">&#9660;</span> Foundations</div>
+        <div class="fp-tree-indent">
+          <div class="fp-tree-node">&nbsp;&nbsp;Pad footing F-01</div>
+          <div class="fp-tree-node">&nbsp;&nbsp;Strip footing F-02</div>
+        </div>
+        <div class="fp-tree-node"><span class="arrow">&#9654;</span> Columns</div>
+        <div class="fp-tree-node"><span class="arrow">&#9660;</span> Beams</div>
+        <div class="fp-tree-indent">
+          <div class="fp-tree-node">&nbsp;&nbsp;HEA 300 &mdash; B-01</div>
+          <div class="fp-tree-node">&nbsp;&nbsp;HEB 200 &mdash; B-02</div>
+          <div class="fp-tree-node">&nbsp;&nbsp;IPE 240 &mdash; B-03</div>
+        </div>
+        <div class="fp-tree-node"><span class="arrow">&#9654;</span> Slabs</div>
+        <div class="fp-tree-node"><span class="arrow">&#9654;</span> Walls</div>
+      </div>
+    </div>
+    <div class="fp-canvas">
+      <div class="fp-canvas-grid"></div>
+      <div class="fp-canvas-element-lg">
+        <div class="fp-canvas-handle" style="top:-3px;left:-3px;"></div>
+        <div class="fp-canvas-handle" style="top:-3px;right:-3px;"></div>
+        <div class="fp-canvas-handle" style="bottom:-3px;left:-3px;"></div>
+        <div class="fp-canvas-handle" style="bottom:-3px;right:-3px;"></div>
+      </div>
+      <div class="fp-canvas-unselected" style="top:20%;left:65%;"></div>
+      <div class="fp-canvas-unselected" style="top:65%;left:25%;width:100px;height:40px;"></div>
+    </div>
+    <div class="fp-desktop-statusbar">
+      <div class="fp-status-group">
+        <span>main</span>
+        <div class="fp-status-dot" style="background:var(--success);"></div>
+        <span>0 errors</span>
+        <span>2 warnings</span>
+      </div>
+      <div class="fp-status-group">
+        <span>Eurocode NEN-EN 1993</span>
+        <span>mm</span>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-inspector">
+  <div class="fp-desktop-shell" style="grid-template-columns:180px 1fr 240px;">
+    <div class="fp-titlebar">
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div style="width:14px;height:14px;background:var(--amber);border-radius:3px;"></div>
+        <div class="fp-titlebar-brand">Open<span>AEC</span></div>
+      </div>
+      <div class="fp-titlebar-file">structural-model.oaec</div>
+      <div class="fp-win-controls">
+        <div class="fp-win-dot" style="background:var(--success);"></div>
+        <div class="fp-win-dot" style="background:var(--warm-gold);"></div>
+        <div class="fp-win-dot" style="background:var(--error);"></div>
+      </div>
+    </div>
+    <div class="fp-desktop-toolbar">
+      <div class="fp-tool-btn" title="Select">&#9654;</div>
+      <div class="fp-tool-btn active" title="Inspect">&#128269;</div>
+      <div class="fp-tool-btn" title="Measure">&#8943;</div>
+      <div style="flex:1;"></div>
+    </div>
+    <div class="fp-desktop-sidebar" style="padding:6px;">
+      <div class="fp-tree-heading">Layers</div>
+      <div class="fp-tree-node active"><span class="arrow">&#9660;</span> Beams</div>
+      <div class="fp-tree-indent">
+        <div class="fp-tree-node">&nbsp;&nbsp;HEA 300 &mdash; B-01</div>
+      </div>
+      <div class="fp-tree-node"><span class="arrow">&#9654;</span> Columns</div>
+      <div class="fp-tree-node"><span class="arrow">&#9654;</span> Slabs</div>
+    </div>
+    <!-- Canvas -->
+    <div class="fp-canvas">
+      <div class="fp-canvas-grid"></div>
+      <div class="fp-canvas-element-lg" style="left:40%;">
+        <div class="fp-canvas-handle" style="top:-3px;left:-3px;"></div>
+        <div class="fp-canvas-handle" style="top:-3px;right:-3px;"></div>
+        <div class="fp-canvas-handle" style="bottom:-3px;left:-3px;"></div>
+        <div class="fp-canvas-handle" style="bottom:-3px;right:-3px;"></div>
+      </div>
+      <div class="fp-canvas-unselected" style="top:25%;left:62%;"></div>
+    </div>
+    <!-- Inspector panel -->
+    <div class="fp-inspector">
+      <div class="fp-inspector-tabs">
+        <div class="fp-inspector-tab active">Properties</div>
+        <div class="fp-inspector-tab">Styles</div>
+      </div>
+      <div class="fp-inspector-section">
+        <div class="fp-inspector-section-head">Element</div>
+        <div class="fp-prop-row"><div class="fp-prop-label">Name</div><input class="fp-prop-input" value="HEA 300 — B-01"></div>
+        <div class="fp-prop-row"><div class="fp-prop-label">Type</div><input class="fp-prop-input" value="Beam" readonly style="color:var(--scaffold-gray);"></div>
+        <div class="fp-prop-row"><div class="fp-prop-label">Material</div><input class="fp-prop-input" value="S355"></div>
+      </div>
+      <div class="fp-inspector-section" style="border-top:1px solid #E7E5E4;">
+        <div class="fp-inspector-section-head">Position</div>
+        <div class="fp-prop-pair">
+          <div><div class="fp-prop-pair-label">X</div><input class="fp-prop-input" value="4200" style="width:100%;"></div>
+          <div><div class="fp-prop-pair-label">Y</div><input class="fp-prop-input" value="1800" style="width:100%;"></div>
+        </div>
+        <div class="fp-prop-pair" style="margin-top:6px;">
+          <div><div class="fp-prop-pair-label">W</div><input class="fp-prop-input" value="6000" style="width:100%;"></div>
+          <div><div class="fp-prop-pair-label">H</div><input class="fp-prop-input" value="300" style="width:100%;"></div>
+        </div>
+      </div>
+      <div class="fp-inspector-section" style="border-top:1px solid #E7E5E4;">
+        <div class="fp-inspector-section-head">Appearance</div>
+        <div class="fp-prop-row">
+          <div class="fp-prop-label">Color</div>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <div class="fp-prop-swatch" style="background:var(--amber);"></div>
+            <input class="fp-prop-input" value="#D97706" style="width:70px;">
+          </div>
+        </div>
+        <div class="fp-prop-row"><div class="fp-prop-label">Opacity</div><input class="fp-prop-input" value="100%"></div>
+        <div class="fp-prop-row"><div class="fp-prop-label">Stroke</div><input class="fp-prop-input" value="2px"></div>
+      </div>
+    </div>
+    <div class="fp-desktop-statusbar">
+      <div class="fp-status-group"><span>1 element selected</span></div>
+      <div class="fp-status-group"><span>HEA 300</span><span>S355</span><span>mm</span></div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-modal">
+  <div class="fp-modal-scene">
+    <!-- Background app (dimmed) -->
+    <div class="fp-modal-app-bg">
+      <div class="fp-app-shell">
+        <div class="fp-topbar">
+          <div class="fp-topbar-hamburger"><span></span><span></span><span></span></div>
+          <div class="fp-brand" style="font-size:0.85rem;">Open<span>AEC</span></div>
+          <div style="flex:1;"></div>
+        </div>
+        <div class="fp-app-body">
+          <div class="fp-app-sidebar" style="width:160px;">
+            <div class="fp-app-sidebar-heading">Main</div>
+            <a class="fp-app-nav-item" href="#"><div class="fp-app-nav-icon"></div>Dashboard</a>
+            <a class="fp-app-nav-item active" href="#"><div class="fp-app-nav-icon"></div>Projects</a>
+          </div>
+          <div class="fp-app-content"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal overlay -->
+    <div class="fp-modal-overlay">
+      <div class="fp-modal-dialog md">
+        <div class="fp-modal-dialog-header">
+          <h3>Create new project</h3>
+          <button class="fp-modal-dialog-close">&times;</button>
+        </div>
+        <div class="fp-modal-dialog-body">
+          <p style="margin-bottom:14px;">Enter the details for your new project. You can configure additional settings later.</p>
+          <div class="form-group" style="margin-bottom:12px;">
+            <label class="form-label" style="font-size:0.8rem;">Project name</label>
+            <input class="form-input" type="text" placeholder="e.g., Bridge Assessment">
+          </div>
+          <div class="form-group" style="margin-bottom:12px;">
+            <label class="form-label" style="font-size:0.8rem;">Type</label>
+            <select class="form-select"><option>Structural</option><option>BIM coordination</option><option>Infrastructure</option></select>
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label" style="font-size:0.8rem;">Description</label>
+            <textarea class="form-textarea" style="min-height:50px;" placeholder="Brief project description..."></textarea>
+          </div>
+        </div>
+        <div class="fp-modal-dialog-footer">
+          <a class="btn btn-secondary btn-sm" href="#" style="text-decoration:none;">Cancel</a>
+          <a class="btn btn-primary btn-sm" href="#" style="text-decoration:none;">Create project</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-toolbar">
+  <div class="fp-toolbar-demo">
+    <!-- Horizontal light -->
+    <div class="fp-toolbar-label">Horizontal &mdash; light</div>
+    <div class="fp-toolbar-h" style="background:var(--concrete);border:1px solid #E7E5E4;">
+      <div class="fp-tb-icon active" title="Select">&#9654;</div>
+      <div class="fp-tb-icon" title="Move">&#10021;</div>
+      <div class="fp-tb-icon" title="Rotate">&#8634;</div>
+      <div class="fp-tool-sep" style="height:22px;background:#E7E5E4;"></div>
+      <div class="fp-tb-icon" title="Draw">&#9998;</div>
+      <div class="fp-tb-icon" title="Measure">&#8943;</div>
+      <div class="fp-tool-sep" style="height:22px;background:#E7E5E4;"></div>
+      <div class="fp-tb-icon" title="Undo">&#8630;</div>
+      <div class="fp-tb-icon" title="Redo">&#8631;</div>
+      <div style="flex:1;"></div>
+      <div class="fp-tb-dropdown">100% &#9662;</div>
+      <div class="fp-tool-sep" style="height:22px;background:#E7E5E4;"></div>
+      <div class="fp-tb-icon" title="Settings">&#9881;</div>
+    </div>
+
+    <!-- Horizontal dark -->
+    <div class="fp-toolbar-label">Horizontal &mdash; dark</div>
+    <div class="fp-toolbar-h" style="background:var(--deep-forge);border:1px solid #27272A;">
+      <div class="fp-tb-icon active" title="Select">&#9654;</div>
+      <div class="fp-tb-icon" style="color:var(--scaffold-gray);" title="Move">&#10021;</div>
+      <div class="fp-tb-icon" style="color:var(--scaffold-gray);" title="Rotate">&#8634;</div>
+      <div class="fp-tool-sep" style="height:22px;background:#27272A;"></div>
+      <div class="fp-tb-icon" style="color:var(--scaffold-gray);" title="Draw">&#9998;</div>
+      <div class="fp-tb-icon" style="color:var(--scaffold-gray);" title="Measure">&#8943;</div>
+      <div style="flex:1;"></div>
+      <div class="fp-tb-dropdown" style="border-color:#57534E;color:var(--scaffold-gray);">100% &#9662;</div>
+      <div class="fp-tool-sep" style="height:22px;background:#27272A;"></div>
+      <div class="fp-tb-icon" style="color:var(--scaffold-gray);" title="Settings">&#9881;</div>
+    </div>
+
+    <!-- Vertical light + dark -->
+    <div style="display:flex;gap:32px;margin-top:8px;">
+      <div>
+        <div class="fp-toolbar-label">Vertical &mdash; light</div>
+        <div class="fp-toolbar-v" style="background:var(--concrete);border:1px solid #E7E5E4;">
+          <div class="fp-tb-icon active">&#9654;</div>
+          <div class="fp-tb-icon">&#10021;</div>
+          <div class="fp-tb-icon">&#8634;</div>
+          <div class="fp-tool-sep" style="width:22px;height:1px;background:#E7E5E4;margin:2px 0;"></div>
+          <div class="fp-tb-icon">&#9998;</div>
+          <div class="fp-tb-icon">&#8943;</div>
+          <div style="flex:1;min-height:20px;"></div>
+          <div class="fp-tool-sep" style="width:22px;height:1px;background:#E7E5E4;margin:2px 0;"></div>
+          <div class="fp-tb-icon">&#9881;</div>
+        </div>
+      </div>
+      <div>
+        <div class="fp-toolbar-label">Vertical &mdash; dark</div>
+        <div class="fp-toolbar-v" style="background:var(--deep-forge);border:1px solid #27272A;">
+          <div class="fp-tb-icon active">&#9654;</div>
+          <div class="fp-tb-icon" style="color:var(--scaffold-gray);">&#10021;</div>
+          <div class="fp-tb-icon" style="color:var(--scaffold-gray);">&#8634;</div>
+          <div class="fp-tool-sep" style="width:22px;height:1px;background:#27272A;margin:2px 0;"></div>
+          <div class="fp-tb-icon" style="color:var(--scaffold-gray);">&#9998;</div>
+          <div class="fp-tb-icon" style="color:var(--scaffold-gray);">&#8943;</div>
+          <div style="flex:1;min-height:20px;"></div>
+          <div class="fp-tool-sep" style="width:22px;height:1px;background:#27272A;margin:2px 0;"></div>
+          <div class="fp-tb-icon" style="color:var(--scaffold-gray);">&#9881;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+(function() {
+  var lightbox = document.getElementById('layoutLightbox');
+  var lbTitle  = document.getElementById('lbTitle');
+  var lbRef    = document.getElementById('lbRef');
+  var lbBody   = document.getElementById('lbBody');
+  var lbClose  = document.getElementById('lbClose');
+
+  var meta = {
+    landing: { title: 'Landing page', ref: 'LAYOUTS.md \u00A7 1.1' },
+    docs:    { title: 'Documentation', ref: 'LAYOUTS.md \u00A7 1.2' },
+    team:    { title: 'About / Team', ref: 'LAYOUTS.md \u00A7 1.3' },
+    blog:      { title: 'Blog / News',     ref: 'LAYOUTS.md \u00A7 1.4' },
+    dashboard: { title: 'Dashboard',       ref: 'LAYOUTS.md \u00A7 2.1' },
+    datatable: { title: 'Data table',      ref: 'LAYOUTS.md \u00A7 2.2' },
+    form:      { title: 'Form / detail',   ref: 'LAYOUTS.md \u00A7 2.3' },
+    settings:  { title: 'Settings',        ref: 'LAYOUTS.md \u00A7 2.4' },
+    workspace: { title: 'Workspace',       ref: 'LAYOUTS.md \u00A7 3.1' },
+    inspector: { title: 'Inspector panel', ref: 'LAYOUTS.md \u00A7 3.2' },
+    modal:     { title: 'Modal / dialog',  ref: 'LAYOUTS.md \u00A7 3.3' },
+    toolbar:   { title: 'Toolbar patterns',ref: 'LAYOUTS.md \u00A7 3.4' }
+  };
+
+  function openPreview(id) {
+    var tpl = document.getElementById('tpl-' + id);
+    if (!tpl || !meta[id]) return;
+    lbTitle.textContent = meta[id].title;
+    lbRef.textContent   = meta[id].ref;
+    lbBody.innerHTML    = tpl.innerHTML;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePreview() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+    lbBody.innerHTML = '';
+  }
+
+  // Click handlers on cards
+  document.querySelectorAll('.layout-card[data-preview]').forEach(function(card) {
+    card.addEventListener('click', function() {
+      openPreview(this.getAttribute('data-preview'));
+    });
+  });
+
+  // Close handlers
+  lbClose.addEventListener('click', closePreview);
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) closePreview();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && lightbox.classList.contains('open')) closePreview();
+  });
+})();
+</script>
 
 </body>
 </html>

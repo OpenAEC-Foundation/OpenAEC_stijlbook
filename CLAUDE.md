@@ -30,6 +30,7 @@ De volledige visuele identiteit van OpenAEC Foundation beheren en beschikbaar st
 |---------|------|
 | `brandbook/BRANDBOOK.md` | Volledige merkrichtlijnen: naam, missie, kleuren, typografie, logo, tone of voice |
 | `brandbook/DESIGN-SYSTEM.md` | Machine-readable design tokens, componenten, layout templates, CSS starter |
+| `brandbook/LAYOUTS.md` | Uitgebreide layout specs: website, web-tools, desktop-tools met wireframes en CSS |
 | `brandbook/styleguide.html` | Visuele referentie (rendered) |
 | `brandbook/assets/logo/svg/` | Master vector logo bestanden (bron) |
 | `brandbook/assets/illustrations/svg/` | Master vector illustraties (bron) |

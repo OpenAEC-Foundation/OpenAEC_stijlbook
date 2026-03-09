@@ -1,6 +1,6 @@
 # OpenAEC Foundation — Design System Reference
 
-> Version 0.3 — March 2026
+> Version 0.4 — March 2026
 > Machine-readable brand & design specification for use by AI assistants (Claude Code, Claude Desktop).
 > When building ANY artifact for OpenAEC (website, app, report, letter, presentation, email), follow this document exactly.
 
@@ -369,46 +369,42 @@ SIDEBAR:
 
 ## 4. Layout Templates
 
-### 4.1 Website Page
+### 4.1 Website Layouts
 
-```
-STRUCTURE:
-  <navbar>           — fixed top, --deep-forge
-  <hero>             — --night-build, centered text, illustration background
-  <content sections> — alternating --blueprint-white and --concrete
-  <dark section>     — --deep-forge, for CTAs or stats
-  <footer>           — --deep-forge
+> Summary index — see [`LAYOUTS.md`](LAYOUTS.md) sections 1.1–1.4 for full specs with wireframes.
 
-HERO SECTION:
-  background: --night-build
-  padding: 96px vertical
-  text: centered
-  subtitle label: JetBrains Mono, --warm-gold, uppercase
-  h1: Space Grotesk 700, 3.5rem, white with --amber spans
-  tagline: Inter 1.25rem, --scaffold-gray
-  buttons: primary + ghost
-  background illustration: SVG at 30% opacity (see section 6)
+| Layout | Key structure | Details |
+|--------|--------------|---------|
+| **Landing page** | navbar → hero → feature grid → stats → CTA → footer | `LAYOUTS.md` § 1.1 |
+| **Documentation** | navbar → sidebar (260px) + content (720px) + TOC (200px) | `LAYOUTS.md` § 1.2 |
+| **About / Team** | navbar → header → mission (2-col) → team grid → CTA | `LAYOUTS.md` § 1.3 |
+| **Blog / News** | navbar → featured post → card grid (3-col) → pagination | `LAYOUTS.md` § 1.4 |
 
-MAX WIDTH: 1200px container
-RESPONSIVE: grid collapses to single column below 768px
-```
+**Shared foundations** (grid, breakpoints, z-index scale): `LAYOUTS.md` § 0.
 
-### 4.2 Desktop Application
+### 4.2 Application Layouts
 
-```
-STRUCTURE:
-  <titlebar>  — --deep-forge, brand left, window controls right
-  <sidebar>   — --concrete, 260px, navigation
-  <main>      — --blueprint-white, content area
-  <statusbar> — --deep-forge or --concrete, small text
+> Summary index — see [`LAYOUTS.md`](LAYOUTS.md) sections 2.1–2.4 (web tools) and 3.1–3.4 (desktop tools).
 
-PRINCIPLES:
-  - Use system-native window chrome where possible
-  - Sidebar collapsible
-  - All interactive elements have visible focus states (amber ring)
-  - Dark mode: swap --blueprint-white ↔ --deep-forge, --concrete ↔ #27272A
-  - Minimum touch target: 32px
-```
+**Web-based tools:**
+
+| Layout | Key structure | Details |
+|--------|--------------|---------|
+| **Dashboard** | topbar + sidebar + KPI cards + data area | `LAYOUTS.md` § 2.1 |
+| **Data table** | toolbar + table + bulk actions + pagination | `LAYOUTS.md` § 2.2 |
+| **Form / detail** | breadcrumb + form sections + sticky action bar | `LAYOUTS.md` § 2.3 |
+| **Settings** | settings nav (200px) + form content (640px) | `LAYOUTS.md` § 2.4 |
+
+**Desktop tools:**
+
+| Layout | Key structure | Details |
+|--------|--------------|---------|
+| **Workspace** | titlebar + toolbar + sidebar + canvas + statusbar | `LAYOUTS.md` § 3.1 |
+| **Inspector** | properties panel (280px) alongside canvas | `LAYOUTS.md` § 3.2 |
+| **Modal / dialog** | centered overlay, 3 sizes (400/560/720px) | `LAYOUTS.md` § 3.3 |
+| **Toolbar patterns** | horizontal (40px) and vertical (48px) variants | `LAYOUTS.md` § 3.4 |
+
+**CSS starter snippets** for all layouts: `LAYOUTS.md` § 4.
 
 ### 4.3 A4 Report
 
