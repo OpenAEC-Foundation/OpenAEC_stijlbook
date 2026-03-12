@@ -19,6 +19,22 @@
 
 This repository contains the **OpenAEC Foundation brand identity** — the complete visual language for our open-source AEC tools. Everything you need to build on-brand: logo's, color palette, typography, illustrations, and design system tokens.
 
+## Desktop Application Template
+
+A ready-to-use **Tauri v2 + React + TypeScript** template for building cross-platform desktop applications with the OpenAEC visual identity. All apps built from this template share the same look and feel.
+
+<p align="center">
+  <img src="project-templates/Tauri+React/screenshots/app-light-theme.png" alt="OpenAEC Desktop Template — Light Theme" width="800">
+</p>
+
+<p align="center">
+  <img src="project-templates/Tauri+React/screenshots/settings-theme-switcher.png" alt="OpenAEC Desktop Template — Theme Switcher" width="800">
+</p>
+
+**Includes:** Ribbon toolbar with animated tab switching, document tab bar, backstage file menu, side panels, status bar, custom frameless titlebar, i18n (EN/NL), persistent settings, themed dropdowns, and two themes (Light & Dark).
+
+See [`project-templates/Tauri+React/`](project-templates/Tauri+React/) for setup instructions.
+
 ## What's inside
 
 ```
@@ -36,6 +52,8 @@ brandbook/
     │   └── png/              # Raster exports at 72/144/216 DPI
     ├── colors/               # Color palette reference + CMYK specs
     └── export_assets.py      # Script to regenerate PNG/PDF from SVG
+project-templates/
+└── Tauri+React/              # Desktop app template (Tauri v2 + React + TS)
 ```
 
 ## Quick reference
