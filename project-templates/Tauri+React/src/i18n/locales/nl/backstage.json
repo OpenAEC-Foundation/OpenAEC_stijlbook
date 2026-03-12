@@ -1,0 +1,41 @@
+{
+  "file": "Bestand",
+  "new": "Nieuw",
+  "open": "Openen",
+  "save": "Opslaan",
+  "saveAs": "Opslaan als...",
+  "print": "Afdrukken",
+  "import": "Importeren",
+  "export": "Exporteren",
+  "preferences": "Voorkeuren",
+  "about": "Over",
+  "exit": "Afsluiten",
+  "aboutPanel": {
+    "title": "Over",
+    "appName": "Open Template",
+    "version": "Versie",
+    "tagline": "Een sjabloon voor het bouwen van desktopapps",
+    "description": "Een professionele sjabloonapplicatie voor het bouwen van platformonafhankelijke desktopapplicaties met Tauri, React en TypeScript. Inclusief een lint-UI, aangepaste titelbalk, themasysteem en meer.",
+    "companyName": "Impertio",
+    "companyDescription": "Professionele open source desktopapplicaties bouwen met moderne webtechnologieën. Transparante prijzen, transparante code.",
+    "website": "Website",
+    "github": "GitHub",
+    "copyright": "© 2025 Impertio. Gelicentieerd onder MIT."
+  },
+  "importPanel": {
+    "title": "Importeren",
+    "fromFile": "Importeren uit bestand",
+    "fromFileDesc": "Gegevens importeren uit ondersteunde bestandsindelingen",
+    "fromTemplate": "Importeren uit sjabloon",
+    "fromTemplateDesc": "Laad een vooraf gemaakt sjabloon als startpunt"
+  },
+  "exportPanel": {
+    "title": "Exporteren",
+    "asPdf": "Exporteren als PDF",
+    "asPdfDesc": "Sla het huidige document op als een PDF-bestand",
+    "asImage": "Exporteren als afbeelding",
+    "asImageDesc": "Opslaan als PNG- of JPEG-afbeeldingsbestanden",
+    "asHtml": "Exporteren als HTML",
+    "asHtmlDesc": "Exporteer het document als een HTML-bestand"
+  }
+}
