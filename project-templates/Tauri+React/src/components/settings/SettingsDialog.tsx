@@ -12,7 +12,14 @@ const THEME_OPTIONS = [
   { value: "openaec", labelKey: "appearance.dark", swatches: ["#27272A", "#D97706", "#FAFAF9", "#EA580C"] },
 ];
 
-const TAB_IDS = ["general", "appearance", "editor", "files", "shortcuts", "plugins", "about"] as const;
+/* ─── Tab configuratie ──────────────────────────────────────
+   Pas deze array aan voor jouw project.
+   Voeg domein-specifieke tabs toe, verwijder wat je niet nodig hebt.
+
+   Voorbeeld met domein-tab:
+     const TAB_IDS = ["general", "appearance", "calculation", "about"] as const;
+   ─────────────────────────────────────────────────────────── */
+const TAB_IDS = ["general", "appearance", "about"] as const;
 
 export function applyTheme(theme?: string) {
   document.documentElement.setAttribute("data-theme", theme || "light");
@@ -125,10 +132,6 @@ export default function SettingsDialog({
           {activeTab === "appearance" && (
             <AppearanceTabContent theme={draftTheme} onThemeSelect={setDraftTheme} />
           )}
-          {activeTab === "editor" && <EditorTabContent />}
-          {activeTab === "files" && <FilesTabContent />}
-          {activeTab === "shortcuts" && <ShortcutsTabContent />}
-          {activeTab === "plugins" && <PluginsTabContent />}
           {activeTab === "about" && <AboutTabContent />}
         </div>
       </div>
@@ -156,6 +159,10 @@ export default function SettingsDialog({
   );
 }
 
+/* ─── General Tab ───────────────────────────────────────────
+   Taalselectie werkt out-of-the-box.
+   Pas de overige secties aan of verwijder ze naar behoefte.
+   ─────────────────────────────────────────────────────────── */
 function GeneralTabContent({
   lang,
   onLangChange,
@@ -166,43 +173,24 @@ function GeneralTabContent({
   const { t } = useTranslation("settings");
 
   return (
-    <>
-      <div className="settings-section">
-        <h3>{t("general.application")}</h3>
-        <div className="settings-row">
-          <span className="settings-label">{t("general.language")}</span>
-          <ThemedSelect
-            value={lang}
-            options={LANGUAGES.map((l) => ({ value: l.code, label: l.name }))}
-            onChange={onLangChange}
-            style={{ width: 180 }}
-          />
-        </div>
+    <div className="settings-section">
+      <h3>{t("general.application")}</h3>
+      <div className="settings-row">
+        <span className="settings-label">{t("general.language")}</span>
+        <ThemedSelect
+          value={lang}
+          options={LANGUAGES.map((l) => ({ value: l.code, label: l.name }))}
+          onChange={onLangChange}
+          style={{ width: 180 }}
+        />
       </div>
-
-      <div className="settings-section">
-        <h3>{t("general.startup")}</h3>
-        <div className="settings-checkbox-row">
-          <input type="checkbox" id="restore-session" />
-          <label htmlFor="restore-session">{t("general.restoreSession")}</label>
-        </div>
-        <div className="settings-checkbox-row">
-          <input type="checkbox" id="check-updates" defaultChecked />
-          <label htmlFor="check-updates">{t("general.checkUpdates")}</label>
-        </div>
-      </div>
-
-      <div className="settings-section">
-        <h3>{t("general.author")}</h3>
-        <div className="settings-row">
-          <span className="settings-label">{t("general.authorName")}</span>
-          <input className="settings-input" type="text" placeholder={t("general.authorName")} />
-        </div>
-      </div>
-    </>
+    </div>
   );
 }
 
+/* ─── Appearance Tab ────────────────────────────────────────
+   Themaselectie werkt out-of-the-box.
+   ─────────────────────────────────────────────────────────── */
 function AppearanceTabContent({
   theme,
   onThemeSelect,
@@ -211,32 +199,11 @@ function AppearanceTabContent({
   onThemeSelect: (value: string) => void;
 }) {
   const { t } = useTranslation("settings");
-  const [fontSize, setFontSize] = useState("14");
   return (
-    <>
-      <div className="settings-section">
-        <h3>{t("appearance.theme")}</h3>
-        <ThemeDropdown theme={theme} onThemeSelect={onThemeSelect} />
-      </div>
-
-      <div className="settings-section">
-        <h3>{t("appearance.font")}</h3>
-        <div className="settings-row">
-          <span className="settings-label">{t("appearance.uiFontSize")}</span>
-          <ThemedSelect
-            value={fontSize}
-            options={[
-              { value: "12", label: "12px" },
-              { value: "13", label: "13px" },
-              { value: "14", label: "14px" },
-              { value: "15", label: "15px" },
-              { value: "16", label: "16px" },
-            ]}
-            onChange={setFontSize}
-          />
-        </div>
-      </div>
-    </>
+    <div className="settings-section">
+      <h3>{t("appearance.theme")}</h3>
+      <ThemeDropdown theme={theme} onThemeSelect={onThemeSelect} />
+    </div>
   );
 }
 
@@ -297,124 +264,10 @@ function ThemeDropdown({
   );
 }
 
-function EditorTabContent() {
-  const { t } = useTranslation("settings");
-  const [tabSize, setTabSize] = useState("4");
-  return (
-    <>
-      <div className="settings-section">
-        <h3>{t("editor.general")}</h3>
-        <div className="settings-checkbox-row">
-          <input type="checkbox" id="word-wrap" defaultChecked />
-          <label htmlFor="word-wrap">{t("editor.wordWrap")}</label>
-        </div>
-        <div className="settings-checkbox-row">
-          <input type="checkbox" id="line-numbers" defaultChecked />
-          <label htmlFor="line-numbers">{t("editor.lineNumbers")}</label>
-        </div>
-        <div className="settings-checkbox-row">
-          <input type="checkbox" id="minimap" />
-          <label htmlFor="minimap">{t("editor.minimap")}</label>
-        </div>
-      </div>
-
-      <div className="settings-section">
-        <h3>{t("editor.indentation")}</h3>
-        <div className="settings-row">
-          <span className="settings-label">{t("editor.tabSize")}</span>
-          <ThemedSelect
-            value={tabSize}
-            options={[
-              { value: "2", label: t("editor.nSpaces", { count: 2 }) },
-              { value: "4", label: t("editor.nSpaces", { count: 4 }) },
-              { value: "8", label: t("editor.nSpaces", { count: 8 }) },
-            ]}
-            onChange={setTabSize}
-          />
-        </div>
-        <div className="settings-checkbox-row">
-          <input type="checkbox" id="insert-spaces" defaultChecked />
-          <label htmlFor="insert-spaces">{t("editor.insertSpaces")}</label>
-        </div>
-      </div>
-    </>
-  );
-}
-
-function FilesTabContent() {
-  const { t } = useTranslation("settings");
-  const [autoSave, setAutoSave] = useState("off");
-  const [encoding, setEncoding] = useState("utf-8");
-  return (
-    <>
-      <div className="settings-section">
-        <h3>{t("files.autoSave")}</h3>
-        <div className="settings-row">
-          <span className="settings-label">{t("files.autoSaveOption")}</span>
-          <ThemedSelect
-            value={autoSave}
-            options={[
-              { value: "off", label: t("files.off") },
-              { value: "afterDelay", label: t("files.afterDelay") },
-              { value: "onFocusChange", label: t("files.onFocusChange") },
-              { value: "onWindowChange", label: t("files.onWindowChange") },
-            ]}
-            onChange={setAutoSave}
-          />
-        </div>
-      </div>
-
-      <div className="settings-section">
-        <h3>{t("files.encoding")}</h3>
-        <div className="settings-row">
-          <span className="settings-label">{t("files.defaultEncoding")}</span>
-          <ThemedSelect
-            value={encoding}
-            options={[
-              { value: "utf-8", label: "UTF-8" },
-              { value: "utf-16", label: "UTF-16" },
-              { value: "ascii", label: "ASCII" },
-            ]}
-            onChange={setEncoding}
-          />
-        </div>
-      </div>
-
-      <div className="settings-section">
-        <h3>{t("files.backup")}</h3>
-        <div className="settings-checkbox-row">
-          <input type="checkbox" id="auto-backup" defaultChecked />
-          <label htmlFor="auto-backup">{t("files.autoBackup")}</label>
-        </div>
-      </div>
-    </>
-  );
-}
-
-function ShortcutsTabContent() {
-  const { t } = useTranslation("settings");
-  return (
-    <div className="settings-placeholder">
-      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-      </svg>
-      <p>{t("shortcuts.placeholder")}</p>
-    </div>
-  );
-}
-
-function PluginsTabContent() {
-  const { t } = useTranslation("settings");
-  return (
-    <div className="settings-placeholder">
-      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
-      </svg>
-      <p>{t("plugins.placeholder")}</p>
-    </div>
-  );
-}
-
+/* ─── About Tab ─────────────────────────────────────────────
+   Pas naam, versie en beschrijving aan via i18n keys
+   in locales/*/settings.json → about.*
+   ─────────────────────────────────────────────────────────── */
 function AboutTabContent() {
   const { t } = useTranslation("settings");
   return (

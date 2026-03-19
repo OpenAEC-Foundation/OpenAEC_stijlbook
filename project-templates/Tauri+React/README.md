@@ -107,15 +107,24 @@ Produces platform-specific installers (NSIS for Windows, DMG for macOS, DEB/AppI
 
 ## Creating a New Application
 
+> **Volledige integratieguide:** zie [`INTEGRATION.md`](INTEGRATION.md) voor stap-voor-stap instructies,
+> Tailwind bridge setup, en veelgemaakte fouten.
+>
+> **Component referentie:** zie [`COMPONENT-MANIFEST.md`](COMPONENT-MANIFEST.md) voor per-component
+> documentatie (verplicht/optioneel/aanpassen).
+
 1. **Copy** this template directory and rename it to your application name
 2. **Update identifiers** in the following files:
    - `package.json` — `name` field
    - `src-tauri/tauri.conf.json` — `productName`, `identifier`, and window `title`
    - `src-tauri/Cargo.toml` — `name`, `description`, and lib `name`
 3. **Replace icons** in `src-tauri/icons/` with your application-specific icons
-4. **Add your content** to the main view area in `App.tsx`
-5. **Extend the ribbon** by modifying or adding tab components in `src/components/ribbon/`
-6. **Add translations** for any new UI strings in both `en/` and `nl/` locale directories
+4. **Set up the Tailwind bridge** — see `tailwind.config.ts` (maps CSS custom properties to Tailwind tokens)
+5. **Add your content** to the main view area in `App.tsx`
+6. **Extend the ribbon** by modifying or adding tab components in `src/components/ribbon/`
+7. **Define domain tokens** — add `--domain-*` CSS custom properties in `themes.css`
+8. **Add translations** for any new UI strings in both `en/` and `nl/` locale directories
+9. **Run the cleanup checklist** in `INTEGRATION.md` — remove unused buttons, settings tabs, and template text
 
 > Keep the shell structure (title bar, ribbon, side panels, status bar) intact to maintain visual consistency across OpenAEC applications.
 
