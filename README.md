@@ -54,7 +54,15 @@ brandbook/
     └── export_assets.py      # Script to regenerate PNG/PDF from SVG
 project-templates/
 └── Tauri+React/              # Desktop app template (Tauri v2 + React + TS)
+packages/
+└── tokens/                   # Machine-readable design tokens (npm package)
 ```
+
+## Machine-readable tokens
+
+The design tokens specified in [`brandbook/DESIGN-SYSTEM.md`](brandbook/DESIGN-SYSTEM.md) §2 are also available as a machine-readable npm package in [`packages/tokens/`](packages/tokens/). Use this when integrating OpenAEC tokens into an application (Tailwind preset, CSS variables, or JS import).
+
+See [`packages/tokens/README.md`](packages/tokens/README.md) for usage.
 
 ## Quick reference
 

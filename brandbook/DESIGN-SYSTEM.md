@@ -23,6 +23,8 @@
 
 ## 2. Design Tokens
 
+> **Machine-readable version:** see [`packages/tokens/`](../packages/tokens/) for JSON source, generated CSS variables, and Tailwind preset. Values in this section are authoritative — keep them aligned.
+
 ### 2.1 Colors
 
 ```
